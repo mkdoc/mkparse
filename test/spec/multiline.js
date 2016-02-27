@@ -6,11 +6,13 @@ describe('cparse:', function() {
 
   it('should parse multiline comment block', function(done) {
     var source = 'test/fixtures/multiline.js'
-      , stream = parse.file(source);
+      , stream = parse.file(source)
+      , expected = '' + fs.readFileSync(source);
 
     stream.once('comment', function(comment) {
-      //console.dir(comment)
-      expect(comment.source + '\n').to.eql('' + fs.readFileSync(source));
+      console.dir(comment.source)
+      console.dir(expected)
+      expect(comment.source).to.eql(expected);
       expect(comment.tags).to.eql([]);
       done();
     })
