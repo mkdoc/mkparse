@@ -1,18 +1,15 @@
 var fs = require('fs')
-  , assert = require('assert')
+  //, assert = require('assert')
   , EOL = require('os').EOL
   , through = require('through3')
-  , LineStream = require('stream-lines')
-  , rules = require('./lib');
+  , LineStream = require('stream-lines');
 
 function Comment(opts) {
   opts = opts || {};
 
-  opts.lang = opts.lang || 'javascript';
+  this.rules = opts.rules || require('./c');
 
-  this.rules = rules[opts.lang];
-
-  assert(this.rules, 'unsupported comment language ' + opts.lang);
+  //assert(this.rules, 'unsupported comment language ' + opts.lang);
 
   // current list of comment lines
   this.current = null;
