@@ -191,8 +191,7 @@ function parser(chunk, encoding, cb) {
     comment.description = comment.description.trim(); 
   }
 
-  console.dir(comment);
-
+  this.emit('comment', comment);
   this.push(comment);
   cb();
 }
@@ -202,7 +201,7 @@ var Parser = through.transform(parser, {ctor: Parser})
 
 function file(path, opts) {
   var source = fs.createReadStream(path); 
-  source
+  return source
     .pipe(new LineStream(opts))
     .pipe(new Comment(opts))
     .pipe(new Parser(opts));

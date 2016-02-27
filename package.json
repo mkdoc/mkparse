@@ -14,13 +14,47 @@
   },
   "keywords": [
     "comment",
-    "parser"
+    "parser",
+    "stream",
+    "tag",
+    "annotation"
   ],
   "dependencies": {
     "stream-lines": "~1.1.7",
     "through3": "~1.1.5"
   },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "coveralls": "~2.11.8",
+    "istanbul": "~0.4.2",
+    "mocha": "~2.4.5"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf coverage",
+    "readme": "mdp --force -v",
+    "lint": "jshint . && jscs .",
+    "api": "mdapi index.js lib/*.js --level=2 --title=API",
+    "test": "NODE_env=test mocha ${SPEC:-test/spec}",
+    "cover": "NODE_ENV=test istanbul cover _mocha -- ${SPEC:-test/spec}",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "mdp": {
+    "title": "Comment Parser",
+    "pedantic": true,
+    "include": "doc/readme",
+    "require": "lib",
+    "links": "links.md",
+    "toc": "Table of Contents",
+    "base": "https://github.com/tmpfs/cparse",
+    "partial": [
+      {
+        "inc": [
+          "introduction.md",
+          "install.md",
+          "usage.md",
+          "developer.md"
+        ]
+      }
+    ]
   }
 }
