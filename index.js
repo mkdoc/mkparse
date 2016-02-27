@@ -119,8 +119,8 @@ function Parser(opts) {
     }
 
     line.replace(this.pattern, replacer);
-
     tag.optional = this.optional.test(tag.name);
+
     if(tag.optional) {
       tag.name = tag.name.replace(this.optional, '$1'); 
     }
@@ -154,7 +154,8 @@ function parser(chunk, encoding, cb) {
       tag: '',
       type: '',
       optional: false,
-      line: lineno
+      line: lineno,
+      source: start
     }
     this.parse.call(this, start, tag);
     for(var i = index + 1;i < lines.length;i++) {
@@ -163,7 +164,8 @@ function parser(chunk, encoding, cb) {
       }else{
         tag.description += lines[i] + EOL;
         index++;
-      } 
+      }
+      tag.source += lines[i] + EOL;
     }
 
     if(this.trim) {
@@ -185,11 +187,11 @@ function parser(chunk, encoding, cb) {
     }
   }
 
-  console.dir(comment);
-
   if(this.trim) {
     comment.description = comment.description.trim(); 
   }
+
+  console.dir(comment);
 
   this.push(comment);
   cb();
