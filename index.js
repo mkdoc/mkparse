@@ -38,7 +38,15 @@ function Comment(opts) {
   opts = opts || {};
 
   this.rules = opts.rules || rules;
+
+  // current list of comment lines
   this.current = null;
+
+  // current line number
+  this.line = 0;
+
+  // current comment start line number
+  this.start = 0;
 }
 
 /**
@@ -64,13 +72,21 @@ function comment(chunk, encoding, cb) {
 
   for(i = 0;i < chunk.length;i++) {
     line = chunk[i];
+    this.line++;
     if(!this.current) {
       this.rule = find.call(this, line); 
+      this.start = this.line;
     }else{
       if(this.rule && this.rule.end(line)) {
-        this.push({lines: this.current, rule: this.rule});
+        this.push(
+          {
+            lines: this.current,
+            rule: this.rule,
+            start: this.start,
+            end: this.line});
         this.current = null;
         this.rule = null;
+        this.start = 0;
       }else{
         this.current.push(line);
       }
@@ -85,7 +101,7 @@ function comment(chunk, encoding, cb) {
 function parser(chunk, encoding, cb) {
   console.dir(chunk);
   var lines = chunk.rule.strip(chunk.lines);
-  //console.dir(lines)
+  console.dir(lines)
   cb();
 }
 
