@@ -156,7 +156,14 @@ function parser(chunk, encoding, cb) {
       line: lineno
     }
     this.parse.call(this, start, tag);
-    //console.dir(tag);
+    for(var i = index + 1;i < lines.length;i++) {
+      if(this.rule.test(lines[i])) {
+        break
+      }else{
+        tag.description += lines[i] + '\n';
+        index++;
+      } 
+    }
     return {tag: tag, end: index};
   }
 

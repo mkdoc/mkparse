@@ -11,5 +11,20 @@
  *  
  */
 
+/**
+ *  Multiline description.
+ *
+ *  With some more paragraphs.
+ *
+ *  @name {function} getName Function description that spans 
+ *  some paragraphs.
+ *
+ *  For you to read about the function.
+ */
+
+/*
+ *  This comment is ignored.
+ */
+
 // @name {function} foo
 // @private
