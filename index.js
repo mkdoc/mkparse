@@ -1,4 +1,5 @@
 var fs = require('fs')
+  , EOL = require('os').EOL
   , through = require('through3')
   , LineStream = require('stream-lines')
   , rules = {
@@ -11,7 +12,7 @@ var fs = require('fs')
         },
         strip: function(lines) {
           return lines.map(function(line) {
-            return line.replace(/^\s*\/?\*+\*?/, '');
+            return line.replace(/^\s*\/?\*+\*?\/?/, '');
           }) 
         }
       },
@@ -105,15 +106,14 @@ function Parser(opts) {
     ? opts.pattern : /^\s*@(\w+)\s?(\{(\w+)\})?\s?(\[?\w+\]?)?\s?(.*)?/;
 
   this.optional = opts.optional instanceof RegExp
-    ? opts.optional : /^\[([^\]]+)\]$/
+    ? opts.optional : /^\[([^\]]+)\]$/;
+
+  this.trim = typeof opts.trim === 'boolean' ? opts.trim : true;
 
   function parse(line, tag) {
-    function replacer(match, id, type, typedef, name, description) {
-      //console.dir(arguments)
-      //console.log('tag %s', id);
-      //console.log('name %s', name);
+    function replacer(match, id, typedef, type, name, description) {
       tag.tag = id;
-      tag.type = typedef || '';
+      tag.type = type || '';
       tag.name = name || '';
       tag.description = description || '';
     }
@@ -140,12 +140,13 @@ function parser(chunk, encoding, cb) {
     , i
     , line
     , comment = {
-        source: chunk.lines.join('\n'),
+        source: chunk.lines.join(EOL),
         description: '',
         line: chunk.start,
         pos: {start: chunk.start, end: chunk.end},
         tags: []
       }
+    , seen = false
     , result;
 
   function parse(start, index, lineno) {
@@ -160,10 +161,15 @@ function parser(chunk, encoding, cb) {
       if(this.rule.test(lines[i])) {
         break
       }else{
-        tag.description += lines[i] + '\n';
+        tag.description += lines[i] + EOL;
         index++;
       } 
     }
+
+    if(this.trim) {
+      tag.description = tag.description.trim(); 
+    }
+
     return {tag: tag, end: index};
   }
 
@@ -173,10 +179,17 @@ function parser(chunk, encoding, cb) {
       result = parse.call(this, line, i, chunk.start + i);
       comment.tags.push(result.tag);
       i = result.end;
+      seen = true;
+    }else if(!seen){
+      comment.description += line + EOL; 
     }
   }
 
   console.dir(comment);
+
+  if(this.trim) {
+    comment.description = comment.description.trim(); 
+  }
 
   this.push(comment);
   cb();
