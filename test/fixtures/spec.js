@@ -1,6 +1,8 @@
 /**Description abutted
  *
- *  @name {function} getName
+ *  @name {function} getName Function description.
+ *
+ *  @param {Object} [opts] configuration options.
  *
  *  @usage
  *

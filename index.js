@@ -30,10 +30,6 @@ var fs = require('fs')
       }
     }
 
-function ParserStream(opts) {
-  opts = opts || {};
-}
-
 function Comment(opts) {
   opts = opts || {};
 
@@ -41,6 +37,9 @@ function Comment(opts) {
 
   // current list of comment lines
   this.current = null;
+
+  // current raw source string
+  this.source = null;
 
   // current line number
   this.line = 0;
@@ -72,12 +71,12 @@ function comment(chunk, encoding, cb) {
 
   for(i = 0;i < chunk.length;i++) {
     line = chunk[i];
-    this.line++;
     if(!this.current) {
       this.rule = find.call(this, line); 
       this.start = this.line;
     }else{
       if(this.rule && this.rule.end(line)) {
+        this.current.push(line);
         this.push(
           {
             lines: this.current,
@@ -91,22 +90,88 @@ function comment(chunk, encoding, cb) {
         this.current.push(line);
       }
     }
+
+    this.line++;
   }
   cb();
 }
 
+function Parser(opts) {
+  opts = opts || {};
+
+  this.rule = opts.rule instanceof RegExp
+    ? opts.rule : /^\s*@/;
+
+  this.pattern = opts.pattern instanceof RegExp
+    ? opts.pattern : /^\s*@(\w+)\s?(\{(\w+)\})?\s?(\[?\w+\]?)?\s?(.*)?/;
+
+  this.optional = opts.optional instanceof RegExp
+    ? opts.optional : /^\[([^\]]+)\]$/
+
+  function parse(line, tag) {
+    function replacer(match, id, type, typedef, name, description) {
+      //console.dir(arguments)
+      //console.log('tag %s', id);
+      //console.log('name %s', name);
+      tag.tag = id;
+      tag.type = typedef || '';
+      tag.name = name || '';
+      tag.description = description || '';
+    }
+
+    line.replace(this.pattern, replacer);
+
+    tag.optional = this.optional.test(tag.name);
+    if(tag.optional) {
+      tag.name = tag.name.replace(this.optional, '$1'); 
+    }
+
+    return tag;
+  }
+
+  this.parse = opts.parse instanceof Function
+    ? opts.parse : parse;
+}
+
 /**
- *  Parse meta data from a comment block.
+ *  Parse comment description and tags.
  */
 function parser(chunk, encoding, cb) {
-  console.dir(chunk);
-  var lines = chunk.rule.strip(chunk.lines);
-  console.dir(lines)
+  var lines = chunk.rule.strip(chunk.lines)
+    , i
+    , line
+    , comment = {
+        source: chunk.lines.join('\n'),
+        description: '',
+        line: chunk.start,
+        pos: {start: chunk.start, end: chunk.end},
+        tags: []
+      }
+
+  function parse(start/*, index*/) {
+    var tag = {
+      tag: '',
+      type: '',
+      optional: false,
+
+    }
+
+    this.parse.call(this, start, tag);
+    console.dir(tag);
+  }
+
+  for(i = 0;i < lines.length;i++) {
+    line = lines[i];
+    if(this.rule.test(line)) {
+      parse.call(this, line, i);
+    }
+  }
+
   cb();
 }
 
 var Comment = through.transform(comment, {ctor: Comment})
-var Parser = through.transform(parser, {ctor: ParserStream})
+var Parser = through.transform(parser, {ctor: Parser})
 
 function file(path, opts) {
   var source = fs.createReadStream(path); 
