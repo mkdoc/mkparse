@@ -26,5 +26,10 @@
  *  This comment is ignored.
  */
 
+//
+// Single lines comment block description.
+//
+//   With multiple lines.
+//  
 // @name {function} foo
 // @private
