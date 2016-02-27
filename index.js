@@ -8,6 +8,11 @@ var fs = require('fs')
         },
         end: function(line) {
           return /^\s*\*\//.test(line);
+        },
+        strip: function(lines) {
+          return lines.map(function(line) {
+            return line.replace(/^\s*\/?\*+\*?/, '');
+          }) 
         }
       },
       block: {
@@ -16,6 +21,11 @@ var fs = require('fs')
         },
         end: function(line) {
           return !/^\s*\/\//.test(line);
+        },
+        strip: function(lines) {
+          return lines.map(function(line) {
+            return line.replace(/^\s*\/\//, '');
+          }) 
         }
       }
     }
@@ -24,7 +34,7 @@ function ParserStream(opts) {
   opts = opts || {};
 }
 
-function CommentStream(opts) {
+function Comment(opts) {
   opts = opts || {};
 
   this.rules = opts.rules || rules;
@@ -58,8 +68,9 @@ function comment(chunk, encoding, cb) {
       this.rule = find.call(this, line); 
     }else{
       if(this.rule && this.rule.end(line)) {
-        this.push(this.current);
+        this.push({lines: this.current, rule: this.rule});
         this.current = null;
+        this.rule = null;
       }else{
         this.current.push(line);
       }
@@ -73,10 +84,12 @@ function comment(chunk, encoding, cb) {
  */
 function parser(chunk, encoding, cb) {
   console.dir(chunk);
+  var lines = chunk.rule.strip(chunk.lines);
+  //console.dir(lines)
   cb();
 }
 
-var Comment = through.transform(comment, {ctor: CommentStream})
+var Comment = through.transform(comment, {ctor: Comment})
 var Parser = through.transform(parser, {ctor: ParserStream})
 
 function file(path, opts) {
