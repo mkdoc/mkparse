@@ -2,34 +2,7 @@ var fs = require('fs')
   , EOL = require('os').EOL
   , through = require('through3')
   , LineStream = require('stream-lines')
-  , rules = {
-      multiline: {
-        start: function(line) {
-          return /^\s*\/\*\*/.test(line);
-        },
-        end: function(line) {
-          return /^\s*\*\//.test(line);
-        },
-        strip: function(lines) {
-          return lines.map(function(line) {
-            return line.replace(/^\s*\/?\*+\*?\/?/, '');
-          }) 
-        }
-      },
-      block: {
-        start: function(line) {
-          return /^\s*\/\//.test(line);
-        },
-        end: function(line) {
-          return !/^\s*\/\//.test(line);
-        },
-        strip: function(lines) {
-          return lines.map(function(line) {
-            return line.replace(/^\s*\/\//, '');
-          }) 
-        }
-      }
-    }
+  , rules = require('./lib').javascript;
 
 function Comment(opts) {
   opts = opts || {};
