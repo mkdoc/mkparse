@@ -90,7 +90,6 @@ function comment(chunk, encoding, cb) {
         this.current.push(line);
       }
     }
-
     this.line++;
   }
   cb();
@@ -147,26 +146,32 @@ function parser(chunk, encoding, cb) {
         pos: {start: chunk.start, end: chunk.end},
         tags: []
       }
+    , result;
 
-  function parse(start/*, index*/) {
+  function parse(start, index, lineno) {
     var tag = {
       tag: '',
       type: '',
       optional: false,
-
+      line: lineno
     }
-
     this.parse.call(this, start, tag);
-    console.dir(tag);
+    //console.dir(tag);
+    return {tag: tag, end: index};
   }
 
   for(i = 0;i < lines.length;i++) {
     line = lines[i];
     if(this.rule.test(line)) {
-      parse.call(this, line, i);
+      result = parse.call(this, line, i, chunk.start + i);
+      comment.tags.push(result.tag);
+      i = result.end;
     }
   }
 
+  console.dir(comment);
+
+  this.push(comment);
   cb();
 }
 
