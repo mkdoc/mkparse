@@ -5,7 +5,7 @@ describe('cparse:', function() {
 
   it('should parse empty multiline comment block', function(done) {
     var source = 'test/fixtures/empty-multiline.js'
-      , stream = parse.file(source);
+      , stream = parse.file(source, {trim: true});
 
     stream.once('comment', function(comment) {
       expect(comment.source).to.be.a('string');
