@@ -36,6 +36,8 @@ function comment(chunk, encoding, cb) {
   var i
     , line;
 
+  //console.dir(chunk)
+
   function find(line) {
     for(var k in this.rules) {
       if(this.rules[k].start(line)) {
@@ -123,6 +125,8 @@ function parser(chunk, encoding, cb) {
       }
     , seen = false
     , result;
+
+  //console.dir(chunk.lines);
 
   function parse(start, index, lineno) {
     var tag = {
