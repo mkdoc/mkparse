@@ -21,6 +21,5 @@
 
 /**
  *  @object point.x
- *  @object point.y
- *  @object point.z
+ *  @object point.x.y.z
  */

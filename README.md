@@ -79,8 +79,7 @@ stream.on('comment', function(comment) {
 
 /**
  *  @object point.x
- *  @object point.y
- *  @object point.z
+ *  @object point.x.y.z
  */
 ```
 
@@ -157,12 +156,12 @@ stream.on('comment', function(comment) {
   ]
 }
 {
-  "source": "/**\n *  @object point.x\n *  @object point.y\n *  @object point.z\n */",
+  "source": "/**\n *  @object point.x\n *  @object point.x.y.z\n */",
   "description": "",
   "line": 22,
   "pos": {
     "start": 22,
-    "end": 26
+    "end": 25
   },
   "tags": [
     {
@@ -179,25 +178,27 @@ stream.on('comment', function(comment) {
           "line": 23,
           "source": " @object point.x",
           "name": "x",
-          "description": ""
-        },
-        {
-          "tag": "object",
-          "type": "",
-          "optional": false,
-          "line": 24,
-          "source": " @object point.y",
-          "name": "y",
-          "description": ""
-        },
-        {
-          "tag": "object",
-          "type": "",
-          "optional": false,
-          "line": 25,
-          "source": " @object point.z \n",
-          "name": "z",
-          "description": ""
+          "description": "",
+          "tags": [
+            {
+              "tag": "object",
+              "line": 24,
+              "name": "y",
+              "type": "",
+              "description": "",
+              "tags": [
+                {
+                  "tag": "object",
+                  "type": "",
+                  "optional": false,
+                  "line": 24,
+                  "source": " @object point.x.y.z \n",
+                  "name": "z",
+                  "description": ""
+                }
+              ]
+            }
+          ]
         }
       ]
     }
