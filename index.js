@@ -1,15 +1,19 @@
 var fs = require('fs')
-  //, assert = require('assert')
   , EOL = require('os').EOL
   , through = require('through3')
   , LineStream = require('stream-lines');
 
+/**
+ *  Creates a comment stream.
+ *
+ *  @constructor Comment
+ *  @param {Object} [opts] stream options.
+ *  @option {Object} rules defines the comment rules.
+ */
 function Comment(opts) {
   opts = opts || {};
 
   this.rules = opts.rules || require('./c');
-
-  //assert(this.rules, 'unsupported comment language ' + opts.lang);
 
   // current list of comment lines
   this.current = null;
@@ -25,12 +29,18 @@ function Comment(opts) {
 }
 
 /**
- *  Comment transform stream.
+ *  Comment transform handler.
  *
- *  Parse a comment from an array of lines.
+ *  Parse comments from an array of lines.
+ *
+ *  When a comment is parsed an object is pushed to the stream 
+ *  with an array of `lines`, the `rule` for the comment and the 
+ *  `start` and `end` line numbers.
  *
  *  @function comment
- *  @param {Array} chunk array of lines to process.
+ *  @param {Array} chunk lines to process.
+ *  @param {String} encoding character encoding.
+ *  @param {Function} callback function.
  */
 function comment(chunk, encoding, cb) {
   var i
@@ -90,6 +100,15 @@ function comment(chunk, encoding, cb) {
   cb();
 }
 
+/**
+ *  Creates a tag parser stream.
+ *
+ *  @constructor Comment
+ *  @param {Object} [opts] stream options.
+ *  @option {Object} tag defines the tag patterns.
+ *
+ *  @see #tag tag
+ */
 function Parser(opts) {
   opts = opts || {};
 
@@ -117,7 +136,17 @@ function Parser(opts) {
 }
 
 /**
- *  Parse comment description and tags.
+ */
+
+/**
+ *  Comment and tag parser, parses comment description and tags.
+ *
+ *  @function parser
+ *  @param {Array} chunk lines to process.
+ *  @param {String} encoding character encoding.
+ *  @param {Function} callback function.
+ *
+ *  @event comment when a comment has been parsed.
  */
 function parser(chunk, encoding, cb) {
   var lines = chunk.rule.strip(chunk.lines)
@@ -196,6 +225,15 @@ function parser(chunk, encoding, cb) {
 var Comment = through.transform(comment, {ctor: Comment})
 var Parser = through.transform(parser, {ctor: Parser})
 
+/**
+ *  Parse a file.
+ *
+ *  The options are passed to the `LineStream`, `Comment` and `Parser`.
+ *
+ *  @function file
+ *  @param {String} file path.
+ *  @param {Object} [opts] processing options.
+ */
 function file(path, opts) {
   var source = fs.createReadStream(path); 
   return source
@@ -205,5 +243,7 @@ function file(path, opts) {
 }
 
 module.exports = {
-  file: file
+  file: file,
+  Comment: Comment,
+  Parser: Parser
 }

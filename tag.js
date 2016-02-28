@@ -1,13 +1,59 @@
+/**
+ *  Defines the patterns and functions that perform the tag parsing.
+ *
+ *  Create a custom tag definition if you wanted to use an alternative 
+ *  syntax or prefer something other than `@` as the tag identifier.
+ *
+ *  @module tag
+ *
+ *  @see #Parser Parser
+ */
 module.exports = {
-  // pattern that collects tag lines
+
+  /**
+   *  Pattern that collects tag lines.
+   *
+   *  @property {RegExp} rule
+   */
   rule: /^\s*@/,
-  // pattern the collects the constituent parts of the tag line
+
+  /**
+   *  Pattern that collects tag component parts.
+   *
+   *  @property {RegExp} pattern
+   */
   pattern : /^\s*@(\w+)\s?(\{(\w+)\})?\s?(\[?\w+\]?)?\s?(.*)?/,
-  // pattern to test and extract the [] optionality notation
+
+  /**
+   *  Pattern that determines optionality.
+   *  @property {RegExp} optional
+   */
   optional: /^\[([^\]]+)\]$/,
-  // pattern to strip leading whitespace from lines
+
+  /**
+   *  Pattern that determines how to strip leading whitespace from 
+   *  lines.
+   *  
+   *  By default will match a single space or a tab character once, depending 
+   *  upon your comment style you should adjust this so that whitespace is 
+   *  preserved as intended.
+   *
+   *  @property {RegExp} whitespace
+   */
   whitespace: /^[ \t]{1,1}/,
-  // parses the tag line using `this.pattern`
+
+  /**
+   *  Parses the component parts of a tag definition.
+   *
+   *  This will add the `tag`, `type`, `name` and `description` 
+   *  fields to the input `tag` argument.
+   *  
+   *  @function parse
+   *  @param {String} line the current line being parsed.
+   *  @param {Object} tag the target for parsed data.
+   *
+   *  @todo rename tag field to `id`.
+   */
   parse: function parser(line, tag) {
 
     function replacer(match, id, typedef, type, name, description) {
