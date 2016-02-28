@@ -10,11 +10,11 @@ describe('cparse:', function() {
       , expected = ('' + fs.readFileSync(source)).trim();
 
     stream.once('comment', function(comment) {
-      //console.dir('source: ')
-      //console.dir(comment.source)
-      //console.dir('expected: ')
-      //console.dir(expected)
+      //console.dir(comment);
       expect(comment.source).to.eql(expected);
+      expect(comment.line).to.eql(1);
+      expect(comment.pos.start).to.eql(1);
+      expect(comment.pos.end).to.eql(3);
       expect(comment.tags).to.eql([]);
       done();
     })

@@ -11,7 +11,8 @@ module.exports = {
       return lines.map(function(line) {
         return line.replace(/^\s*\/?\*+\*?\/?/, '');
       }) 
-    }
+    },
+    last: true
   },
   block: {
     start: function(line) {
@@ -24,6 +25,7 @@ module.exports = {
       return lines.map(function(line) {
         return line.replace(/^\s*\/\//, '');
       }) 
-    }
+    },
+    last: false
   }
 }

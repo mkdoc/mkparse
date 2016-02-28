@@ -18,7 +18,7 @@ function Comment(opts) {
   this.source = null;
 
   // current line number
-  this.line = 0;
+  this.line = 1;
 
   // current comment start line number
   this.start = 0;
@@ -54,13 +54,15 @@ function comment(chunk, encoding, cb) {
       this.start = this.line;
     }else{
       if(this.rule && this.rule.end(line)) {
-        this.current.push(line);
+        if(this.rule.last) {
+          this.current.push(line);
+        }
         this.push(
           {
             lines: this.current,
             rule: this.rule,
             start: this.start,
-            end: this.line});
+            end: this.rule.last ? this.line : (this.line - 1)});
         this.current = null;
         this.rule = null;
         this.start = 0;
