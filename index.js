@@ -40,10 +40,7 @@ function Comment(opts) {
   this.source = null;
 
   // current line number
-  this.line = 1;
-
-  // current comment start line number
-  this.start = 0;
+  this.line = 0;
 }
 
 /**
@@ -75,21 +72,22 @@ function comment(chunk, encoding, cb) {
   function reset() {
     this.current = null;
     this.rule = null;
-    this.start = 0;
   }
 
   for(i = 0;i < chunk.length;i++) {
     line = chunk[i];
-    if(!this.current) {
-      this.rule = find.call(this, line); 
-      this.start = this.line;
-      if(this.rule) {
 
+    this.line++;
+
+    if(!this.current) {
+      // find the rule in the map
+      this.rule = find.call(this, line); 
+      if(this.rule) {
         // set up comment block
         block = {
             lines: this.current,
             rule: this.rule,
-            start: this.start,
+            start: this.line,
             end: this.line};
 
         // handles comments that terminate on the same line
@@ -111,7 +109,6 @@ function comment(chunk, encoding, cb) {
         this.current.push(line);
       }
     }
-    this.line++;
   }
   cb();
 }
