@@ -194,7 +194,7 @@ function parser(chunk, encoding, cb) {
       comment.tags.push(result.tag);
       i = result.end;
       seen = true;
-    }else if(!seen) {
+    }else{
       if(comment.description) {
         line = line.replace(this.whitespace, ''); 
         line = EOL + line;
