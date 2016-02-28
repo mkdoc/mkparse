@@ -1,4 +1,4 @@
-var parser = require('./index')
+var parser = require('../index')
   , stream = parser.file('test/fixtures/multiline-compact.js');
 
 stream.on('comment', function(comment) {
