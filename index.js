@@ -34,9 +34,8 @@ function Comment(opts) {
  */
 function comment(chunk, encoding, cb) {
   var i
-    , line;
-
-  //console.dir(chunk)
+    , line
+    , block;
 
   function find(line) {
     for(var k in this.rules) {
@@ -47,38 +46,41 @@ function comment(chunk, encoding, cb) {
     }
   }
 
+  function reset() {
+    this.current = null;
+    this.rule = null;
+    this.start = 0;
+  }
+
   for(i = 0;i < chunk.length;i++) {
     line = chunk[i];
     if(!this.current) {
       this.rule = find.call(this, line); 
       this.start = this.line;
-      if(this.rule && this.rule.end(line)) {
-        // handles comments that terminate on the same line
-        this.push(
-          {
+      if(this.rule) {
+
+        // set up comment block
+        block = {
             lines: this.current,
             rule: this.rule,
             start: this.start,
-            end: this.line});
-        this.current = null;
-        this.rule = null;
-        this.start = 0;
-        continue;
+            end: this.line};
+
+        // handles comments that terminate on the same line
+        if(this.rule.end(line)) {
+          this.push(block);
+          reset.call(this);
+          continue;
+        }
       }
     }else{
       if(this.rule && this.rule.end(line)) {
         if(this.rule.last) {
           this.current.push(line);
         }
-        this.push(
-          {
-            lines: this.current,
-            rule: this.rule,
-            start: this.start,
-            end: this.rule.last ? this.line : (this.line - 1)});
-        this.current = null;
-        this.rule = null;
-        this.start = 0;
+        block.end = this.rule.last ? this.line : (this.line - 1);
+        this.push(block);
+        reset.call(this);
       }else{
         this.current.push(line);
       }
