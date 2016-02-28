@@ -59,7 +59,7 @@ function comment(chunk, encoding, cb) {
             lines: this.current,
             rule: this.rule,
             start: this.start,
-            end: this.rule.last ? this.line : (this.line - 1)});
+            end: this.line});
         this.current = null;
         this.rule = null;
         this.start = 0;
