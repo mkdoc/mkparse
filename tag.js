@@ -22,7 +22,8 @@ module.exports = {
    *
    *  @property {RegExp} pattern
    */
-  pattern : /^\s*@([\w_-]+)\s?(\{(\w+)\})?\s?(\[?\w+\]?)?\s?(.*)?/,
+  pattern :
+    /^\s*@([\w_-]+)\s?(\{([\w_-]+)\})?\s?(\[?[\.\w_-]+\]?)?\s?(.*)?/,
 
   /**
    *  Pattern that determines optionality.
