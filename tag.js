@@ -4,7 +4,7 @@
  *  Create a custom tag definition if you wanted to use an alternative 
  *  syntax or prefer something other than `@` as the tag identifier.
  *
- *  See the [#Parser](tag parser).
+ *  See the [tag parser](#Parser).
  *
  *  @module Tag
  */

@@ -103,7 +103,7 @@ function comment(chunk, encoding, cb) {
  *
  *  @constructor Parser
  *  @param {Object} [opts] stream options.
- *  @option {Object} tag defines the tag patterns, see [#tag](tag)
+ *  @option {Object} tag defines the tag patterns, see [tag](#tag)
  */
 function Parser(opts) {
   opts = opts || {};
