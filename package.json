@@ -55,6 +55,14 @@
         ]
       },
       {
+        "title": "Input",
+        "inc": "../../test/example.js"
+      },
+      {
+        "title": "Output",
+        "bin": "node test/spec test/example.js"
+      },
+      {
         "bin": "mdapi index.js tag.js c.js --level=2 --title=API"
       },
       {
