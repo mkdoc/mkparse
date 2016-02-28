@@ -55,14 +55,14 @@ stream.on('comment', function(comment) {
 
 ## Input
 
+```javascript
 /**Short multi-line comment*/
 
-/*.
+/*
+ *  Comment is ignored, single leading asterisk.
+ */
 
-* Comment is ignored, single leading asterisk.
-*/
-
-// Single-line comment.
+// Single-line comment
 
 // 
 // Super fly
@@ -70,57 +70,87 @@ stream.on('comment', function(comment) {
 // @function {Object} method super fly stuff.
 // @param {Object} [opts] configuration options.
 
-/**.
-
-* @usage.
-*
-* var x = 'y'
-* , v = 'w';
-*/
+/**
+ * @usage
+ *
+ * var x = 'y'
+ *   , v = 'w';
+ */
+```
 
 ## Output
 
-{ source: '/**Short multi-line comment*/',
-  description: 'Short multi-line comment',
-  line: 1,
-  pos: { start: 1, end: 1 },
-  tags: [] }
-{ source: '// Single-line comment',
-  description: 'Single-line comment',
-  line: 6,
-  pos: { start: 6, end: 6 },
-  tags: [] }
-{ source: '// \n// Super fly\n//\n// @function {Object} method super fly stuff.\n// @param {Object} [opts] configuration options.',
-  description: 'Super fly',
-  line: 8,
-  pos: { start: 8, end: 12 },
-  tags: 
-   [ { tag: 'function',
-       type: 'Object',
-       optional: false,
-       line: 11,
-       source: '@function {Object} method super fly stuff.',
-       name: 'method',
-       description: 'super fly stuff.' },
-     { tag: 'param',
-       type: 'Object',
-       optional: true,
-       line: 12,
-       source: '@param {Object} [opts] configuration options.',
-       name: 'opts',
-       description: 'configuration options.' } ] }
-{ source: '/**\n * @usage\n *\n * var x = \'y\'\n *   , v = \'w\';\n */',
-  description: '',
-  line: 14,
-  pos: { start: 14, end: 19 },
-  tags: 
-   [ { tag: 'usage',
-       type: '',
-       optional: false,
-       line: 15,
-       source: '@usage\n var x = \'y\'\n   , v = \'w\';\n \n',
-       name: '',
-       description: 'var x = \'y\'\n  , v = \'w\';' } ] }
+```json
+{
+  "source": "/**Short multi-line comment*/",
+  "description": "Short multi-line comment",
+  "line": 1,
+  "pos": {
+    "start": 1,
+    "end": 1
+  },
+  "tags": []
+}
+{
+  "source": "// Single-line comment",
+  "description": "Single-line comment",
+  "line": 6,
+  "pos": {
+    "start": 6,
+    "end": 6
+  },
+  "tags": []
+}
+{
+  "source": "// \n// Super fly\n//\n// @function {Object} method super fly stuff.\n// @param {Object} [opts] configuration options.",
+  "description": "Super fly",
+  "line": 8,
+  "pos": {
+    "start": 8,
+    "end": 12
+  },
+  "tags": [
+    {
+      "tag": "function",
+      "type": "Object",
+      "optional": false,
+      "line": 11,
+      "source": "@function {Object} method super fly stuff.",
+      "name": "method",
+      "description": "super fly stuff."
+    },
+    {
+      "tag": "param",
+      "type": "Object",
+      "optional": true,
+      "line": 12,
+      "source": "@param {Object} [opts] configuration options.",
+      "name": "opts",
+      "description": "configuration options."
+    }
+  ]
+}
+{
+  "source": "/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */",
+  "description": "",
+  "line": 14,
+  "pos": {
+    "start": 14,
+    "end": 19
+  },
+  "tags": [
+    {
+      "tag": "usage",
+      "type": "",
+      "optional": false,
+      "line": 15,
+      "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
+      "name": "",
+      "description": "var x = 'y'\n  , v = 'w';"
+    }
+  ]
+}
+```
 
 ## API
 
