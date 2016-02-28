@@ -152,8 +152,6 @@ function parser(chunk, encoding, cb) {
     , seen = false
     , result;
 
-  //console.dir(chunk.lines);
-
   function parse(start, index, lineno) {
     var tag = {
         tag: '',
