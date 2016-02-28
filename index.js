@@ -4,6 +4,24 @@ var fs = require('fs')
   , LineStream = require('stream-lines');
 
 /**
+ *  Parse a file.
+ *
+ *  The options are passed to the `LineStream`, `Comment` and `Parser`.
+ *
+ *  @function file
+ *  @param {String} file path.
+ *  @param {Object} [opts] processing options.
+ */
+function file(path, opts) {
+  var source = fs.createReadStream(path); 
+  return source
+    .pipe(new LineStream(opts))
+    .pipe(new Comment(opts))
+    .pipe(new Parser(opts));
+}
+
+
+/**
  *  Creates a comment stream.
  *
  *  @constructor Comment
@@ -220,23 +238,6 @@ function parser(chunk, encoding, cb) {
 
 var Comment = through.transform(comment, {ctor: Comment})
 var Parser = through.transform(parser, {ctor: Parser})
-
-/**
- *  Parse a file.
- *
- *  The options are passed to the `LineStream`, `Comment` and `Parser`.
- *
- *  @function file
- *  @param {String} file path.
- *  @param {Object} [opts] processing options.
- */
-function file(path, opts) {
-  var source = fs.createReadStream(path); 
-  return source
-    .pipe(new LineStream(opts))
-    .pipe(new Comment(opts))
-    .pipe(new Parser(opts));
-}
 
 module.exports = {
   file: file,

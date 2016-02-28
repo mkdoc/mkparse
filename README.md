@@ -5,6 +5,7 @@ Table of Contents
   * [Install](#install)
   * [Usage](#usage)
   * [API](#api)
+    * [file](#file)
     * [Comment](#comment)
       * [Options](#options)
     * [comment](#comment)
@@ -12,7 +13,6 @@ Table of Contents
       * [Options](#options-1)
     * [parser](#parser)
       * [Events](#events)
-    * [file](#file)
     * [Tag](#tag)
       * [rule](#rule)
       * [pattern](#pattern)
@@ -52,6 +52,19 @@ stream.on('comment', function(comment) {
 ```
 
 ## API
+
+### file
+
+```javascript
+file(file[, opts])
+```
+
+Parse a file.
+
+The options are passed to the `LineStream`, `Comment` and `Parser`.
+
+* `file` String path.
+* `opts` Object processing options.
 
 ### Comment
 
@@ -112,19 +125,6 @@ Comment and tag parser, parses comment description and tags.
 #### Events
 
 * `comment` when a comment has been parsed.
-
-### file
-
-```javascript
-file(file[, opts])
-```
-
-Parse a file.
-
-The options are passed to the `LineStream`, `Comment` and `Parser`.
-
-* `file` String path.
-* `opts` Object processing options.
 
 ### Tag
 
