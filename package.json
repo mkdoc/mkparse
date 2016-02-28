@@ -51,7 +51,14 @@
         "inc": [
           "introduction.md",
           "install.md",
-          "usage.md",
+          "usage.md"
+        ]
+      },
+      {
+        "bin": "mdapi index.js tag.js c.js --level=2 --title=API"
+      },
+      {
+        "inc": [
           "developer.md"
         ]
       }
