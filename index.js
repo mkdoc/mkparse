@@ -129,7 +129,7 @@ function Parser(opts) {
 
   // pattern that strips leading whitespace from description lines
   this.whitespace = opts.whitespace instanceof RegExp
-    ? opts.whitespace : /^\s{1,1}/
+    ? opts.whitespace : /^[ \t]{1,1}/
 
   this.parse = opts.parse instanceof Function
     ? opts.parse : parse;
@@ -150,7 +150,8 @@ function parser(chunk, encoding, cb) {
         tags: []
       }
     , seen = false
-    , result;
+    , result
+    , desc = [];
 
   function parse(start, index, lineno) {
     var tag = {
@@ -187,19 +188,19 @@ function parser(chunk, encoding, cb) {
   for(i = 0;i < lines.length;i++) {
     line = lines[i];
     seen = this.rule.test(line);
+    line = line.replace(this.whitespace, ''); 
+
     if(seen) {
       result = parse.call(this, line, i, chunk.start + i);
       comment.tags.push(result.tag);
       i = result.end;
       seen = true;
     }else{
-      if(comment.description) {
-        line = line.replace(this.whitespace, ''); 
-        line = EOL + line;
-      }
-      comment.description += line; 
+      desc.push(line);
     }
   }
+
+  comment.description = desc.join(EOL);
 
   if(this.trim) {
     comment.description = comment.description.trim(); 
