@@ -70,10 +70,8 @@ Creates a comment stream.
 ### comment
 
 ```javascript
-comment(chunk, encoding, callback)
+protected comment(chunk, encoding, callback)
 ```
-
-Comment transform handler.
 
 Parse comments from an array of lines.
 
@@ -107,7 +105,7 @@ Creates a tag parser stream.
 ### parser
 
 ```javascript
-parser(chunk, encoding, callback)
+protected parser(chunk, encoding, callback)
 ```
 
 Comment and tag parser, parses comment description and tags.

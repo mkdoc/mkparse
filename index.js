@@ -29,15 +29,13 @@ function Comment(opts) {
 }
 
 /**
- *  Comment transform handler.
- *
  *  Parse comments from an array of lines.
  *
  *  When a comment is parsed an object is pushed to the stream 
  *  with an array of `lines`, the `rule` for the comment and the 
  *  `start` and `end` line numbers.
  *
- *  @function comment
+ *  @protected {function} comment
  *  @param {Array} chunk lines to process.
  *  @param {String} encoding character encoding.
  *  @param {Function} callback function.
@@ -141,7 +139,7 @@ function Parser(opts) {
 /**
  *  Comment and tag parser, parses comment description and tags.
  *
- *  @function parser
+ *  @protected {function} parser
  *  @param {Array} chunk lines to process.
  *  @param {String} encoding character encoding.
  *  @param {Function} callback function.
