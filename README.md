@@ -13,7 +13,7 @@ Table of Contents
     * [parser](#parser)
       * [Events](#events)
     * [file](#file)
-    * [tag](#tag)
+    * [Tag](#tag)
       * [rule](#rule)
       * [pattern](#pattern)
       * [optional](#optional)
@@ -95,12 +95,7 @@ Creates a tag parser stream.
 
 #### Options
 
-* `tag` Object defines the tag patterns.
-
-
-* [tag](#tag).
-
-
+* `tag` Object defines the tag patterns, see [#tag](https://github.com/tmpfs/cparsetag).
 
 ### parser
 
@@ -131,14 +126,14 @@ The options are passed to the `LineStream`, `Comment` and `Parser`.
 * `file` String path.
 * `opts` Object processing options.
 
-### tag
+### Tag
 
 Defines the patterns and functions that perform the tag parsing.
 
 Create a custom tag definition if you wanted to use an alternative
 syntax or prefer something other than `@` as the tag identifier.
 
-* [Parser](#Parser).
+See the [#Parser](https://github.com/tmpfs/cparsetag parser).
 
 #### rule
 
