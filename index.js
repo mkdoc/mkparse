@@ -188,16 +188,18 @@ function parser(chunk, encoding, cb) {
 
   for(i = 0;i < lines.length;i++) {
     line = lines[i];
-    if(this.rule.test(line)) {
+    seen = this.rule.test(line);
+    if(seen) {
       result = parse.call(this, line, i, chunk.start + i);
       comment.tags.push(result.tag);
       i = result.end;
       seen = true;
-    }else if(!seen){
+    }else if(!seen) {
       if(comment.description) {
         line = line.replace(this.whitespace, ''); 
+        line = EOL + line;
       }
-      comment.description += line + EOL; 
+      comment.description += line; 
     }
   }
 
