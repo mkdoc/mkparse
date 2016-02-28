@@ -144,6 +144,9 @@ function Parser(opts) {
   // whether to trim leading and trailing whitespace from descriptions
   // for intermediary lines use the `whitespace` pattern
   this.trim = typeof opts.trim === 'boolean' ? opts.trim : true;
+
+  // whether to enable dotted property expansion
+  this.dotted = opts.dotted;
 }
 
 /**
@@ -233,6 +236,14 @@ function parser(chunk, encoding, cb) {
   if(this.trim) {
     comment.description = comment.description.trim(); 
   }
+
+  if(this.dotted) {
+    console.dir('got dotted properties to expand');
+    for(i = 0;i < comment.tags.length;i++) {
+      console.dir(comment.tags[i]); 
+    }
+  }
+    
 
   this.emit('comment', comment);
   this.push(comment);
