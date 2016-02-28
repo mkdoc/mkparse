@@ -161,7 +161,8 @@ function parser(chunk, encoding, cb) {
         line: lineno,
         source: start
       }
-      , line;
+      , line
+      , desc = [];
 
     this.parse.call(this, start, tag);
     for(var i = index + 1;i < lines.length;i++) {
@@ -169,14 +170,14 @@ function parser(chunk, encoding, cb) {
       if(this.rule.test(lines[i])) {
         break
       }else{
-        if(tag.description) {
-          line = line.replace(this.whitespace, ''); 
-        }
-        tag.description += line + EOL;
+        line = line.replace(this.whitespace, ''); 
+        desc.push(line);
         index++;
       }
       tag.source += lines[i] + EOL;
     }
+
+    tag.description = desc.join(EOL);
 
     if(this.trim) {
       tag.description = tag.description.trim(); 
