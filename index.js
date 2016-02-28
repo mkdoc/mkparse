@@ -103,7 +103,7 @@ function comment(chunk, encoding, cb) {
 /**
  *  Creates a tag parser stream.
  *
- *  @constructor Comment
+ *  @constructor Parser
  *  @param {Object} [opts] stream options.
  *  @option {Object} tag defines the tag patterns.
  *

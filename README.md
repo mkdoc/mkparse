@@ -8,7 +8,7 @@ Table of Contents
     * [Comment](#comment)
       * [Options](#options)
     * [comment](#comment)
-    * [Comment](#comment-1)
+    * [Parser](#parser)
       * [Options](#options-1)
     * [parser](#parser)
       * [Events](#events)
@@ -85,10 +85,10 @@ with an array of `lines`, the `rule` for the comment and the
 * `encoding` String character encoding.
 * `callback` Function function.
 
-### Comment
+### Parser
 
 ```javascript
-new Comment([opts])
+new Parser([opts])
 ```
 
 Creates a tag parser stream.
