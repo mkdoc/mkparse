@@ -1,3 +1,6 @@
-var parser = require('./index');
+var parser = require('./index')
+  , stream = parser.file('test/fixtures/singleline-multi-tags.js');
 
-parser.file('test/fixtures/spec.js');
+stream.on('comment', function(comment) {
+  console.dir(comment)
+});

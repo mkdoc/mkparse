@@ -141,18 +141,24 @@ function parser(chunk, encoding, cb) {
 
   function parse(start, index, lineno) {
     var tag = {
-      tag: '',
-      type: '',
-      optional: false,
-      line: lineno,
-      source: start
-    }
+        tag: '',
+        type: '',
+        optional: false,
+        line: lineno,
+        source: start
+      }
+      , line;
+
     this.parse.call(this, start, tag);
     for(var i = index + 1;i < lines.length;i++) {
+      line = lines[i];
       if(this.rule.test(lines[i])) {
         break
       }else{
-        tag.description += lines[i] + EOL;
+        if(tag.description) {
+          line = line.replace(this.whitespace, ''); 
+        }
+        tag.description += line + EOL;
         index++;
       }
       tag.source += lines[i] + EOL;
