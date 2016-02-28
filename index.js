@@ -28,9 +28,9 @@ function file(path, opts) {
 function find(list, filter) {
   var k, i = list.length, matchs = true;
   while (i--) {
-    for (k in filter) { if (filter.hasOwnProperty(k)) {
-        matchs = (filter[k] === list[i][k]) && matchs;
-    }}
+    for (k in filter) { 
+      matchs = (filter[k] === list[i][k]) && matchs;
+    }
     if (matchs) { return list[i]; }
   }
   return null;
@@ -134,6 +134,7 @@ function comment(chunk, encoding, cb) {
  *  @constructor Parser
  *  @param {Object} [opts] stream options.
  *  @option {Object} tag defines the tag patterns, see [tag](#tag)
+ *  @option {Boolean} dotted parse dotted names in tags.
  */
 function Parser(opts) {
   opts = opts || {};
@@ -254,8 +255,6 @@ function parser(chunk, encoding, cb) {
 
   if(this.dotted) {
     comment.tags = comment.tags.reduce(function(tags, tag) {
-      if (!tag) { return tags; }
-
       if (tag.name.indexOf('.') !== -1) {
         var parentName;
         var parentTag;

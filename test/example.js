@@ -18,3 +18,9 @@
  * var x = 'y'
  *   , v = 'w';
  */
+
+/**
+ *  @object point.x
+ *  @object point.y
+ *  @object point.z
+ */

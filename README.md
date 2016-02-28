@@ -76,6 +76,12 @@ stream.on('comment', function(comment) {
  * var x = 'y'
  *   , v = 'w';
  */
+
+/**
+ *  @object point.x
+ *  @object point.y
+ *  @object point.z
+ */
 ```
 
 ## Output
@@ -94,27 +100,27 @@ stream.on('comment', function(comment) {
 {
   "source": "// Single-line comment",
   "description": "Single-line comment",
-  "line": 6,
+  "line": 7,
   "pos": {
-    "start": 6,
-    "end": 6
+    "start": 7,
+    "end": 7
   },
   "tags": []
 }
 {
   "source": "// \n// Super fly\n//\n// @function {Object} method super fly stuff.\n// @param {Object} [opts] configuration options.",
   "description": "Super fly",
-  "line": 8,
+  "line": 9,
   "pos": {
-    "start": 8,
-    "end": 12
+    "start": 9,
+    "end": 13
   },
   "tags": [
     {
       "tag": "function",
       "type": "Object",
       "optional": false,
-      "line": 11,
+      "line": 12,
       "source": "@function {Object} method super fly stuff.",
       "name": "method",
       "description": "super fly stuff."
@@ -123,7 +129,7 @@ stream.on('comment', function(comment) {
       "tag": "param",
       "type": "Object",
       "optional": true,
-      "line": 12,
+      "line": 13,
       "source": "@param {Object} [opts] configuration options.",
       "name": "opts",
       "description": "configuration options."
@@ -133,20 +139,67 @@ stream.on('comment', function(comment) {
 {
   "source": "/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */",
   "description": "",
-  "line": 14,
+  "line": 15,
   "pos": {
-    "start": 14,
-    "end": 19
+    "start": 15,
+    "end": 20
   },
   "tags": [
     {
       "tag": "usage",
       "type": "",
       "optional": false,
-      "line": 15,
+      "line": 16,
       "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
       "name": "",
       "description": "var x = 'y'\n  , v = 'w';"
+    }
+  ]
+}
+{
+  "source": "/**\n *  @object point.x\n *  @object point.y\n *  @object point.z\n */",
+  "description": "",
+  "line": 22,
+  "pos": {
+    "start": 22,
+    "end": 26
+  },
+  "tags": [
+    {
+      "tag": "object",
+      "line": 23,
+      "name": "point",
+      "type": "",
+      "description": "",
+      "tags": [
+        {
+          "tag": "object",
+          "type": "",
+          "optional": false,
+          "line": 23,
+          "source": " @object point.x",
+          "name": "x",
+          "description": ""
+        },
+        {
+          "tag": "object",
+          "type": "",
+          "optional": false,
+          "line": 24,
+          "source": " @object point.y",
+          "name": "y",
+          "description": ""
+        },
+        {
+          "tag": "object",
+          "type": "",
+          "optional": false,
+          "line": 25,
+          "source": " @object point.z \n",
+          "name": "z",
+          "description": ""
+        }
+      ]
     }
   ]
 }
@@ -210,6 +263,7 @@ Creates a tag parser stream.
 #### Options
 
 * `tag` Object defines the tag patterns, see [tag](#tag).
+* `dotted` Boolean parse dotted names in tags.
 
 ### parser
 
