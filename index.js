@@ -78,15 +78,20 @@ function comment(chunk, encoding, cb) {
 function Parser(opts) {
   opts = opts || {};
 
+  // pattern that determines if we have encountered a tag
   this.rule = opts.rule instanceof RegExp
     ? opts.rule : /^\s*@/;
 
+  // extraction pattern for matched tags
   this.pattern = opts.pattern instanceof RegExp
     ? opts.pattern : /^\s*@(\w+)\s?(\{(\w+)\})?\s?(\[?\w+\]?)?\s?(.*)?/;
 
+  // pattern that determines optionality
   this.optional = opts.optional instanceof RegExp
     ? opts.optional : /^\[([^\]]+)\]$/;
 
+  // whether to trim leading and trailing whitespace from descriptions
+  // for intermediary lines use `whitespace`
   this.trim = typeof opts.trim === 'boolean' ? opts.trim : true;
 
   function parse(line, tag) {
@@ -106,6 +111,10 @@ function Parser(opts) {
 
     return tag;
   }
+
+  // pattern that strips leading whitespace from description lines
+  this.whitespace = opts.whitespace instanceof RegExp
+    ? opts.whitespace : /^\s{1,1}/
 
   this.parse = opts.parse instanceof Function
     ? opts.parse : parse;
@@ -164,6 +173,9 @@ function parser(chunk, encoding, cb) {
       i = result.end;
       seen = true;
     }else if(!seen){
+      if(comment.description) {
+        line = line.replace(this.whitespace, ''); 
+      }
       comment.description += line + EOL; 
     }
   }
