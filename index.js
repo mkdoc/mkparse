@@ -52,6 +52,19 @@ function comment(chunk, encoding, cb) {
     if(!this.current) {
       this.rule = find.call(this, line); 
       this.start = this.line;
+      if(this.rule && this.rule.end(line)) {
+        // handles comments that terminate on the same line
+        this.push(
+          {
+            lines: this.current,
+            rule: this.rule,
+            start: this.start,
+            end: this.rule.last ? this.line : (this.line - 1)});
+        this.current = null;
+        this.rule = null;
+        this.start = 0;
+        continue;
+      }
     }else{
       if(this.rule && this.rule.end(line)) {
         if(this.rule.last) {

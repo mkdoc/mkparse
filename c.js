@@ -5,11 +5,21 @@ module.exports = {
       return /^\s*\/\*\*/.test(line);
     },
     end: function(line) {
-      return /^\s*\*\//.test(line);
+      return /\*\//.test(line);
     },
     strip: function(lines) {
       return lines.map(function(line) {
-        return line.replace(/^\s*\/?\*+\*?\/?/, '');
+
+        // this catchs opening declarations: '/**'
+        line = line.replace(/\/\*\*/, '');
+
+        // this catches the close tag: `*/`, should come before pattern below!
+        line = line.replace(/\*+\//, '');
+
+        // and lines prefixed with ` *`
+        line = line.replace(/^\s*\*([^\/]?)/, '$1');
+
+        return line;
       }) 
     },
     last: true
