@@ -7,7 +7,7 @@ describe('cparse:', function() {
   it('should parse multiline comment block w/ optional tag name',
     function(done) {
       var source = 'test/fixtures/multiline-optional-name.js'
-        , stream = parse.file(source)
+        , stream = parse.load(source)
         , expected = ('' + fs.readFileSync(source)).trim();
 
       stream.once('comment', function(comment) {

@@ -7,7 +7,7 @@ describe('cparse:', function() {
   it('should parse singleline comment block w/ comment description',
     function(done) {
       var source = 'test/fixtures/singleline-comment-description.js'
-        , stream = parse.file(source)
+        , stream = parse.load(source)
         , expected = ('' + fs.readFileSync(source)).trim()
         , desc = 'Function description.\n\nWith multiple lines.\n\n'
             + 'On separate paragraphs.';

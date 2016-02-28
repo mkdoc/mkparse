@@ -1,5 +1,5 @@
 var parser = require('../index')
-  , stream = parser.file(process.argv[2], {dotted: true});
+  , stream = parser.load(process.argv[2], {dotted: true});
 
 stream.on('comment', function(comment) {
   if(~process.argv.indexOf('--json')) {

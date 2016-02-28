@@ -7,7 +7,7 @@ describe('cparse:', function() {
   it('should parse tag description w/ trim disabled (singleline)',
     function(done) {
       var source = 'test/fixtures/singleline-trim-disabled.js'
-        , stream = parse.file(source, {trim: false})
+        , stream = parse.load(source, {trim: false})
         , expected = ('' + fs.readFileSync(source)).trim()
         , desc = '\nComment with leading and trailing whitespace (newline).\n'
         , tag = '\nvar x = \'y\';\n';

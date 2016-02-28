@@ -7,7 +7,7 @@ describe('cparse:', function() {
   it('should concat short tag description w/ additional lines',
     function(done) {
       var source = 'test/fixtures/tag-description-concat.js'
-        , stream = parse.file(source)
+        , stream = parse.load(source)
         , expected = ('' + fs.readFileSync(source)).trim()
         , desc = 'Perform some operation, then try:\n\n var x = \'y\';';
 

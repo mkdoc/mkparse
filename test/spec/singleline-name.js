@@ -6,7 +6,7 @@ describe('cparse:', function() {
 
   it('should parse singleline comment block w/ tag name', function(done) {
     var source = 'test/fixtures/singleline-name.js'
-      , stream = parse.file(source)
+      , stream = parse.load(source)
       , expected = ('' + fs.readFileSync(source)).trim();
 
     stream.once('comment', function(comment) {

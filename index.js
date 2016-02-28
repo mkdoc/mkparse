@@ -8,11 +8,11 @@ var fs = require('fs')
  *
  *  The options are passed to the `LineStream`, `Comment` and `Parser`.
  *
- *  @function file
+ *  @function load
  *  @param {String} file path.
  *  @param {Object} [opts] processing options.
  */
-function file(path, opts) {
+function load(path, opts) {
   var source = fs.createReadStream(path); 
   return source
     .pipe(new LineStream(opts))
@@ -302,7 +302,7 @@ var Comment = through.transform(comment, {ctor: Comment})
 var Parser = through.transform(parser, {ctor: Parser})
 
 module.exports = {
-  file: file,
+  load: load,
   Comment: Comment,
   Parser: Parser
 }

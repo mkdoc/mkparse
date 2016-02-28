@@ -5,7 +5,7 @@ describe('cparse:', function() {
 
   it('should parse empty singleline comment block', function(done) {
     var source = 'test/fixtures/empty-singleline.js'
-      , stream = parse.file(source);
+      , stream = parse.load(source);
 
     stream.once('comment', function(comment) {
       expect(comment.source).to.be.a('string');

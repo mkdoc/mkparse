@@ -6,7 +6,7 @@ describe('cparse:', function() {
 
   it('should parse multiline comment block on single line', function(done) {
     var source = 'test/fixtures/multiline-compact.js'
-      , stream = parse.file(source)
+      , stream = parse.load(source)
       , expected = ('' + fs.readFileSync(source)).trim();
 
     stream.once('comment', function(comment) {

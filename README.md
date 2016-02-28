@@ -7,7 +7,7 @@ Table of Contents
   * [Input](#input)
   * [Output](#output)
   * [API](#api)
-    * [file](#file)
+    * [load](#load)
     * [Comment](#comment)
       * [Options](#options)
     * [comment](#comment)
@@ -208,10 +208,10 @@ stream.on('comment', function(comment) {
 
 ## API
 
-### file
+### load
 
 ```javascript
-file(file[, opts])
+load(file[, opts])
 ```
 
 Parse a file.

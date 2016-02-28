@@ -6,7 +6,7 @@ describe('cparse:', function() {
 
   it('should parse tag description w/ single tag (singleline)', function(done) {
     var source = 'test/fixtures/singleline-tag-description.js'
-      , stream = parse.file(source)
+      , stream = parse.load(source)
       , expected = ('' + fs.readFileSync(source)).trim()
       , desc = 'var foo = \'bar\'\n  , x = \'y\';';
 

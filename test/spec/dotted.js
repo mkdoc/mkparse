@@ -5,7 +5,7 @@ describe('cparse:', function() {
 
   it('should parse dotted names', function(done) {
     var source = 'test/fixtures/dotted.js'
-      , stream = parse.file(source, {dotted: true})
+      , stream = parse.load(source, {dotted: true})
       , tagName = 'my-tag';
 
     stream.once('comment', function(comment) {
