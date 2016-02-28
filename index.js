@@ -93,46 +93,27 @@ function comment(chunk, encoding, cb) {
 function Parser(opts) {
   opts = opts || {};
 
+  // default tag configuration
+  this.tag = opts.tag || require('./tag');
+
   // pattern that determines if we have encountered a tag
-  this.rule = opts.rule instanceof RegExp
-    ? opts.rule : /^\s*@/;
+  this.rule = this.tag.rule;
 
   // extraction pattern for matched tags
-  this.pattern = opts.pattern instanceof RegExp
-    ? opts.pattern : /^\s*@(\w+)\s?(\{(\w+)\})?\s?(\[?\w+\]?)?\s?(.*)?/;
+  this.pattern = this.tag.pattern;
 
   // pattern that determines optionality
-  this.optional = opts.optional instanceof RegExp
-    ? opts.optional : /^\[([^\]]+)\]$/;
-
-  // whether to trim leading and trailing whitespace from descriptions
-  // for intermediary lines use `whitespace`
-  this.trim = typeof opts.trim === 'boolean' ? opts.trim : true;
-
-  function parse(line, tag) {
-    function replacer(match, id, typedef, type, name, description) {
-      tag.tag = id;
-      tag.type = type || '';
-      tag.name = name || '';
-      tag.description = description || '';
-    }
-
-    line.replace(this.pattern, replacer);
-    tag.optional = this.optional.test(tag.name);
-
-    if(tag.optional) {
-      tag.name = tag.name.replace(this.optional, '$1'); 
-    }
-
-    return tag;
-  }
+  this.optional = this.tag.optional;
 
   // pattern that strips leading whitespace from description lines
-  this.whitespace = opts.whitespace instanceof RegExp
-    ? opts.whitespace : /^[ \t]{1,1}/
+  this.whitespace = this.tag.whitespace; 
 
-  this.parse = opts.parse instanceof Function
-    ? opts.parse : parse;
+  // parse function
+  this.parse = this.tag.parse; 
+
+  // whether to trim leading and trailing whitespace from descriptions
+  // for intermediary lines use the `whitespace` pattern
+  this.trim = typeof opts.trim === 'boolean' ? opts.trim : true;
 }
 
 /**
