@@ -189,6 +189,7 @@ function parser(chunk, encoding, cb) {
       , desc = [];
 
     this.parse.call(this, start, tag);
+
     for(var i = index + 1;i < lines.length;i++) {
       line = lines[i];
       if(this.rule.test(lines[i])) {
@@ -199,6 +200,11 @@ function parser(chunk, encoding, cb) {
         index++;
       }
       tag.source += lines[i] + EOL;
+    }
+
+    // got short description, prepend
+    if(tag.description) {
+      desc.unshift(tag.description); 
     }
 
     tag.description = desc.join(EOL);
