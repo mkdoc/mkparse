@@ -20,6 +20,21 @@ function file(path, opts) {
     .pipe(new Parser(opts));
 }
 
+/**
+ *  Borrowed from comment-parser.
+ *
+ *  @private
+ */
+function find(list, filter) {
+  var k, i = list.length, matchs = true;
+  while (i--) {
+    for (k in filter) { if (filter.hasOwnProperty(k)) {
+        matchs = (filter[k] === list[i][k]) && matchs;
+    }}
+    if (matchs) { return list[i]; }
+  }
+  return null;
+}
 
 /**
  *  Creates a comment stream.
@@ -238,10 +253,44 @@ function parser(chunk, encoding, cb) {
   }
 
   if(this.dotted) {
-    console.dir('got dotted properties to expand');
-    for(i = 0;i < comment.tags.length;i++) {
-      console.dir(comment.tags[i]); 
-    }
+    comment.tags = comment.tags.reduce(function(tags, tag) {
+      if (!tag) { return tags; }
+
+      if (tag.name.indexOf('.') !== -1) {
+        var parentName;
+        var parentTag;
+        var parentTags = tags;
+        var parts = tag.name.split('.');
+
+        while (parts.length > 1) {
+          parentName = parts.shift();
+          parentTag  = find(parentTags, {
+            tag  : tag.tag,
+            name : parentName
+          });
+
+          if (!parentTag) {
+            parentTag = {
+              tag         : tag.tag,
+              line        : Number(tag.line),
+              name        : parentName,
+              type        : '',
+              description : ''
+            };
+            parentTags.push(parentTag);
+          }
+
+          parentTag.tags = parentTag.tags || [];
+          parentTags = parentTag.tags;
+        }
+
+        tag.name = parts[0];
+        parentTags.push(tag);
+        return tags;
+      }
+
+      return tags.concat(tag);
+    }, []);
   }
     
 
