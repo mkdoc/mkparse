@@ -9,8 +9,9 @@
 // 
 // Super fly
 //
-// @function {Object} method super fly stuff.
+// @public {function} getNinja super fly stuff.
 // @param {Object} [opts] configuration options.
+// @returns {Object} a command line ninja.
 
 /**
  * @usage

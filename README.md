@@ -67,8 +67,9 @@ stream.on('comment', function(comment) {
 // 
 // Super fly
 //
-// @function {Object} method super fly stuff.
+// @public {function} getNinja super fly stuff.
 // @param {Object} [opts] configuration options.
+// @returns {Object} a command line ninja.
 
 /**
  * @usage
@@ -107,21 +108,21 @@ stream.on('comment', function(comment) {
   "tags": []
 }
 {
-  "source": "// \n// Super fly\n//\n// @function {Object} method super fly stuff.\n// @param {Object} [opts] configuration options.",
+  "source": "// \n// Super fly\n//\n// @public {function} getNinja super fly stuff.\n// @param {Object} [opts] configuration options.\n// @returns {Object} a command line ninja.",
   "description": "Super fly",
   "line": 9,
   "pos": {
     "start": 9,
-    "end": 13
+    "end": 14
   },
   "tags": [
     {
-      "tag": "function",
-      "type": "Object",
+      "tag": "public",
+      "type": "function",
       "optional": false,
       "line": 12,
-      "source": "@function {Object} method super fly stuff.",
-      "name": "method",
+      "source": "@public {function} getNinja super fly stuff.",
+      "name": "getNinja",
       "description": "super fly stuff."
     },
     {
@@ -132,23 +133,32 @@ stream.on('comment', function(comment) {
       "source": "@param {Object} [opts] configuration options.",
       "name": "opts",
       "description": "configuration options."
+    },
+    {
+      "tag": "returns",
+      "type": "Object",
+      "optional": false,
+      "line": 14,
+      "source": "@returns {Object} a command line ninja.",
+      "name": "a",
+      "description": "command line ninja."
     }
   ]
 }
 {
   "source": "/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */",
   "description": "",
-  "line": 15,
+  "line": 16,
   "pos": {
-    "start": 15,
-    "end": 20
+    "start": 16,
+    "end": 21
   },
   "tags": [
     {
       "tag": "usage",
       "type": "",
       "optional": false,
-      "line": 16,
+      "line": 17,
       "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
       "name": "",
       "description": "var x = 'y'\n  , v = 'w';"
@@ -158,15 +168,15 @@ stream.on('comment', function(comment) {
 {
   "source": "/**\n *  @object point.x\n *  @object point.x.y.z\n */",
   "description": "",
-  "line": 22,
+  "line": 23,
   "pos": {
-    "start": 22,
-    "end": 25
+    "start": 23,
+    "end": 26
   },
   "tags": [
     {
       "tag": "object",
-      "line": 23,
+      "line": 24,
       "name": "point",
       "type": "",
       "description": "",
@@ -175,14 +185,14 @@ stream.on('comment', function(comment) {
           "tag": "object",
           "type": "",
           "optional": false,
-          "line": 23,
+          "line": 24,
           "source": " @object point.x",
           "name": "x",
           "description": "",
           "tags": [
             {
               "tag": "object",
-              "line": 24,
+              "line": 25,
               "name": "y",
               "type": "",
               "description": "",
@@ -191,7 +201,7 @@ stream.on('comment', function(comment) {
                   "tag": "object",
                   "type": "",
                   "optional": false,
-                  "line": 24,
+                  "line": 25,
                   "source": " @object point.x.y.z \n",
                   "name": "z",
                   "description": ""
