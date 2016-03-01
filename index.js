@@ -4,7 +4,7 @@ var fs = require('fs')
   , LineStream = require('stream-lines');
 
 /**
- *  Parse a file.
+ *  Load and parse file contents.
  *
  *  The options are passed to the `LineStream`, `Comment` and `Parser`.
  *
@@ -24,6 +24,46 @@ function load(path, opts) {
     .pipe(lines)
     .pipe(comment)
     .pipe(parser);
+}
+
+/**
+ *  Parse a string or buffer.
+ *
+ *  @function parse
+ *  @param {String|Buffer} buffer input data.
+ *  @param {Object} [opts] processing options.
+ *  @param {Function} [cb] callback function.
+ */
+function parse(buffer, opts, cb) {
+
+  if(typeof opts === 'function') {
+    cb = opts;
+    opts =  null;
+  }
+
+  var Readable = through.passthrough()
+    , source = new Readable()
+    , lines = new LineStream(opts)
+    , comment = new Comment(opts)
+    , parser = new Parser(opts);
+
+  source
+    .pipe(lines)
+    .pipe(comment)
+    .pipe(parser);
+
+  if(cb) {
+    parser
+      .once('error', cb)
+      .once('finish', cb);
+  }
+
+  // give callers a chance to listen for events
+  process.nextTick(function() {
+    source.end(buffer);
+  })
+
+  return parser;
 }
 
 /**
@@ -299,8 +339,7 @@ function parser(chunk, encoding, cb) {
       return tags.concat(tag);
     }, []);
   }
-    
-
+   
   this.emit('comment', comment);
   this.push(comment);
   cb();
@@ -342,6 +381,7 @@ var Parser = through.transform(parser, {ctor: Parser})
 
 module.exports = {
   load: load,
+  parse: parse,
   Comment: Comment,
   Parser: Parser
 }

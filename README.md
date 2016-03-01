@@ -8,6 +8,7 @@ Table of Contents
   * [Output](#output)
   * [API](#api)
     * [load](#load)
+    * [parse](#parse)
     * [Comment](#comment)
       * [Options](#options)
     * [.comment](#comment)
@@ -21,7 +22,7 @@ Table of Contents
       * [pattern](#pattern)
       * [optional](#optional)
       * [whitespace](#whitespace)
-      * [parse](#parse)
+      * [parse](#parse-1)
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
@@ -225,7 +226,7 @@ stream.on('comment', function(comment) {
 load(file[, opts])
 ```
 
-Parse a file.
+Load and parse file contents.
 
 The options are passed to the `LineStream`, `Comment` and `Parser`.
 
@@ -233,6 +234,18 @@ Returns the parser stream.
 
 * `file` String path.
 * `opts` Object processing options.
+
+### parse
+
+```javascript
+parse(buffer[, opts][, cb])
+```
+
+Parse a string or buffer.
+
+* `buffer` String|Buffer input data.
+* `opts` Object processing options.
+* `cb` Function callback function.
 
 ### Comment
 
