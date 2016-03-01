@@ -8,3 +8,13 @@ stream.on('comment', function(comment) {
     console.dir(comment)
   }
 });
+
+//console.dir(stream);
+
+//stream.on('end', function() {
+  //console.dir('ended');
+//});
+
+stream.on('finish', function() {
+  //console.dir('finished');
+});
