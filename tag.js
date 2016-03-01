@@ -46,14 +46,12 @@ module.exports = {
   /**
    *  Parses the component parts of a tag definition.
    *
-   *  This will add the `tag`, `type`, `name` and `description` 
+   *  This will add the `id`, `type`, `name` and `description` 
    *  fields to the input `tag` argument.
    *  
    *  @function parse
    *  @param {String} line the current line being parsed.
    *  @param {Object} tag the target for parsed data.
-   *
-   *  @todo rename tag field to `id`.
    */
   parse: function parser(line, tag) {
 

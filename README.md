@@ -362,10 +362,9 @@ parse(line, tag)
 
 Parses the component parts of a tag definition.
 
-This will add the `tag`, `type`, `name` and `description`
+This will add the `id`, `type`, `name` and `description`
 fields to the input `tag` argument.
 
-* `TODO` rename tag field to `id`.
 * `line` String the current line being parsed.
 * `tag` Object the target for parsed data.
 
