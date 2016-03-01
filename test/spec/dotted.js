@@ -17,9 +17,9 @@ describe('cparse:', function() {
       expect(comment.pos).to.be.an('object');
       expect(comment.pos.start).to.eql(1);
 
-      expect(comment.tags[0].tag).to.eql(tagName);
-      expect(comment.tags[0].tags[0].tag).to.eql(tagName);
-      expect(comment.tags[0].tags[0].tags[0].tag).to.eql(tagName);
+      expect(comment.tags[0].id).to.eql(tagName);
+      expect(comment.tags[0].tags[0].id).to.eql(tagName);
+      expect(comment.tags[0].tags[0].tags[0].id).to.eql(tagName);
 
       expect(comment.tags[0].name).to.eql('name');
       expect(comment.tags[0].tags[0].name).to.eql('sub-name');
@@ -29,9 +29,9 @@ describe('cparse:', function() {
       expect(comment.tags[0].tags[0].line).to.eql(5);
       expect(comment.tags[0].tags[0].tags[0].line).to.eql(6);
 
-      expect(comment.tags[1].tag).to.eql('deep-tag');
+      expect(comment.tags[1].id).to.eql('deep-tag');
       expect(comment.tags[1].name).to.eql('foo');
-      expect(comment.tags[1].tags[0].tag).to.eql('deep-tag');
+      expect(comment.tags[1].tags[0].id).to.eql('deep-tag');
       expect(comment.tags[1].tags[0].name).to.eql('bar');
 
       done();

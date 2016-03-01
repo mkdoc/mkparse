@@ -58,7 +58,7 @@ module.exports = {
   parse: function parser(line, tag) {
 
     function replacer(match, id, typedef, type, name, description) {
-      tag.tag = id;
+      tag.id = id;
       tag.type = type || '';
       tag.name = name || '';
       tag.description = description || '';

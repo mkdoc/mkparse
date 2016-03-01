@@ -272,13 +272,13 @@ function parser(chunk, encoding, cb) {
         while (parts.length > 1) {
           parentName = parts.shift();
           parentTag  = find(parentTags, {
-            tag  : tag.tag,
+            id  : tag.id,
             name : parentName
           });
 
           if (!parentTag) {
             parentTag = {
-              tag         : tag.tag,
+              id          : tag.id,
               line        : Number(tag.line),
               name        : parentName,
               type        : '',

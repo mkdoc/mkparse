@@ -16,7 +16,7 @@ describe('cparse:', function() {
         expect(comment.pos.start).to.eql(1);
         expect(comment.pos.end).to.eql(3);
         expect(comment.tags.length).to.eql(1);
-        expect(comment.tags[0].tag).to.eql('function');
+        expect(comment.tags[0].id).to.eql('function');
         expect(comment.tags[0].name).to.eql('Name');
         expect(comment.tags[0].optional).to.eql(true);
         done();
