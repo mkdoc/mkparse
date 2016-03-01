@@ -29,10 +29,15 @@ function load(path, opts) {
 /**
  *  Parse a string or buffer.
  *
+ *  When a callback function is given it is added as a listener for 
+ *  the error and finish events on the parser stream.
+ *
  *  @function parse
  *  @param {String|Buffer} buffer input data.
  *  @param {Object} [opts] processing options.
  *  @param {Function} [cb] callback function.
+ *
+ *  @returns the parser stream.
  */
 function parse(buffer, opts, cb) {
 

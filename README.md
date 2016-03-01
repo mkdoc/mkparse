@@ -243,6 +243,11 @@ parse(buffer[, opts][, cb])
 
 Parse a string or buffer.
 
+When a callback function is given it is added as a listener for
+the error and finish events on the parser stream.
+
+Returns the parser stream.
+
 * `buffer` String|Buffer input data.
 * `opts` Object processing options.
 * `cb` Function callback function.
