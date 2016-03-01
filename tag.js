@@ -50,8 +50,8 @@ module.exports = {
    *  fields to the input `tag` argument.
    *  
    *  @function parse
-   *  @param {String} line the current line being parsed.
-   *  @param {Object} tag the target for parsed data.
+   *  @param {String} line current line being parsed.
+   *  @param {Object} tag target for parsed data.
    */
   parse: function parser(line, tag) {
 

@@ -47,12 +47,33 @@ npm i cparse
 
 ## Usage
 
+Parse a string or buffer:
+
+```javascript
+var cparse = require('cparse')
+  , stream = cparse.parse('/**Compact comment*/');
+stream.on('comment', function(comment) {
+  console.dir(comment);
+}
+```
+
+Load and parse file contents:
+
 ```javascript
 var cparse = require('cparse')
   , stream = cparse.load('index.js');
 stream.on('comment', function(comment) {
   console.dir(comment);
 }
+```
+
+Parse and write comment data to file as newline delimited JSON:
+
+```javascript
+var cparse = require('cparse')
+  , fs = require('fs')
+  , stream = cparse.load('index.js').stringify();
+stream.pipe(fs.createWriteStream('index-ast.json.log'));
 ```
 
 ## Input
@@ -383,8 +404,8 @@ Parses the component parts of a tag definition.
 This will add the `id`, `type`, `name` and `description`
 fields to the input `tag` argument.
 
-* `line` String the current line being parsed.
-* `tag` Object the target for parsed data.
+* `line` String current line being parsed.
+* `tag` Object target for parsed data.
 
 ## Developer
 
