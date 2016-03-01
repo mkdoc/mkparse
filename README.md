@@ -15,6 +15,7 @@ Table of Contents
       * [Options](#options-1)
     * [parser](#parser)
       * [Events](#events)
+    * [.stringify](#stringify)
     * [Tag](#tag)
       * [rule](#rule)
       * [pattern](#pattern)
@@ -87,133 +88,7 @@ stream.on('comment', function(comment) {
 ## Output
 
 ```json
-{
-  "source": "/**Short multi-line comment*/",
-  "description": "Short multi-line comment",
-  "line": 1,
-  "pos": {
-    "start": 1,
-    "end": 1
-  },
-  "tags": []
-}
-{
-  "source": "// Single-line comment",
-  "description": "Single-line comment",
-  "line": 7,
-  "pos": {
-    "start": 7,
-    "end": 7
-  },
-  "tags": []
-}
-{
-  "source": "// \n// Super fly\n//\n// @public {function} getNinja super fly stuff.\n// @param {Object} [opts] configuration options.\n// @returns {Object} a command line ninja.",
-  "description": "Super fly",
-  "line": 9,
-  "pos": {
-    "start": 9,
-    "end": 14
-  },
-  "tags": [
-    {
-      "tag": "public",
-      "type": "function",
-      "optional": false,
-      "line": 12,
-      "source": "@public {function} getNinja super fly stuff.",
-      "name": "getNinja",
-      "description": "super fly stuff."
-    },
-    {
-      "tag": "param",
-      "type": "Object",
-      "optional": true,
-      "line": 13,
-      "source": "@param {Object} [opts] configuration options.",
-      "name": "opts",
-      "description": "configuration options."
-    },
-    {
-      "tag": "returns",
-      "type": "Object",
-      "optional": false,
-      "line": 14,
-      "source": "@returns {Object} a command line ninja.",
-      "name": "a",
-      "description": "command line ninja."
-    }
-  ]
-}
-{
-  "source": "/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */",
-  "description": "",
-  "line": 16,
-  "pos": {
-    "start": 16,
-    "end": 21
-  },
-  "tags": [
-    {
-      "tag": "usage",
-      "type": "",
-      "optional": false,
-      "line": 17,
-      "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
-      "name": "",
-      "description": "var x = 'y'\n  , v = 'w';"
-    }
-  ]
-}
-{
-  "source": "/**\n *  @object point.x\n *  @object point.x.y.z\n */",
-  "description": "",
-  "line": 23,
-  "pos": {
-    "start": 23,
-    "end": 26
-  },
-  "tags": [
-    {
-      "tag": "object",
-      "line": 24,
-      "name": "point",
-      "type": "",
-      "description": "",
-      "tags": [
-        {
-          "tag": "object",
-          "type": "",
-          "optional": false,
-          "line": 24,
-          "source": " @object point.x",
-          "name": "x",
-          "description": "",
-          "tags": [
-            {
-              "tag": "object",
-              "line": 25,
-              "name": "y",
-              "type": "",
-              "description": "",
-              "tags": [
-                {
-                  "tag": "object",
-                  "type": "",
-                  "optional": false,
-                  "line": 25,
-                  "source": " @object point.x.y.z \n",
-                  "name": "z",
-                  "description": ""
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+{"source":"/**Short multi-line comment*/","description":"Short multi-line comment","line":1,"pos":{"start":1,"end":1},"tags":[]}{"source":"// Single-line comment","description":"Single-line comment","line":7,"pos":{"start":7,"end":7},"tags":[]}{"source":"// \n// Super fly\n//\n// @public {function} getNinja super fly stuff.\n// @param {Object} [opts] configuration options.\n// @returns {Object} a command line ninja.","description":"Super fly","line":9,"pos":{"start":9,"end":14},"tags":[{"tag":"public","type":"function","optional":false,"line":12,"source":"@public {function} getNinja super fly stuff.","name":"getNinja","description":"super fly stuff."},{"tag":"param","type":"Object","optional":true,"line":13,"source":"@param {Object} [opts] configuration options.","name":"opts","description":"configuration options."},{"tag":"returns","type":"Object","optional":false,"line":14,"source":"@returns {Object} a command line ninja.","name":"a","description":"command line ninja."}]}{"source":"/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */","description":"","line":16,"pos":{"start":16,"end":21},"tags":[{"tag":"usage","type":"","optional":false,"line":17,"source":"@usage\n var x = 'y'\n   , v = 'w';\n \n","name":"","description":"var x = 'y'\n  , v = 'w';"}]}{"source":"/**\n *  @object point.x\n *  @object point.x.y.z\n */","description":"","line":23,"pos":{"start":23,"end":26},"tags":[{"tag":"object","line":24,"name":"point","type":"","description":"","tags":[{"tag":"object","type":"","optional":false,"line":24,"source":" @object point.x","name":"x","description":"","tags":[{"tag":"object","line":25,"name":"y","type":"","description":"","tags":[{"tag":"object","type":"","optional":false,"line":25,"source":" @object point.x.y.z \n","name":"z","description":""}]}]}]}]}
 ```
 
 ## API
@@ -227,6 +102,8 @@ load(file[, opts])
 Parse a file.
 
 The options are passed to the `LineStream`, `Comment` and `Parser`.
+
+Returns the parser stream.
 
 * `file` String path.
 * `opts` Object processing options.
@@ -291,6 +168,19 @@ Comment and tag parser, parses comment description and tags.
 #### Events
 
 * `comment` when a comment has been parsed.
+
+### .stringify
+
+```javascript
+Parser.prototype.stringify(indent)
+```
+
+Creates a stream that transforms to JSON, the created stream is
+piped from this parser.
+
+Returns the stringify stream.
+
+* `indent` Number the number of spaces to indent the JSON.
 
 ### Tag
 

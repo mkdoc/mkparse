@@ -1,19 +1,20 @@
 var parser = require('../index')
-  , stream = parser.load(process.argv[2], {dotted: true});
+  , json = Boolean(~process.argv.indexOf('--json'))
+  , opts = {dotted: true}
+  , stream = parser.load(process.argv[2], opts);
 
-stream.on('comment', function(comment) {
-  if(~process.argv.indexOf('--json')) {
-    console.log(JSON.stringify(comment, undefined, 2));
-  }else{
+if(!json) {
+  stream.on('comment', function(comment) {
     console.dir(comment)
-  }
-});
+  });
+}else{
+  stream = stream.stringify()
+  stream.pipe(process.stdout);
+}
 
-//console.dir(stream);
-
-//stream.on('end', function() {
+stream.on('end', function() {
   //console.dir('ended');
-//});
+});
 
 stream.on('finish', function() {
   //console.dir('finished');

@@ -11,13 +11,19 @@ var fs = require('fs')
  *  @function load
  *  @param {String} file path.
  *  @param {Object} [opts] processing options.
+ *
+ *  @returns the parser stream.
  */
 function load(path, opts) {
-  var source = fs.createReadStream(path); 
+  var source = fs.createReadStream(path)
+    , lines = new LineStream(opts)
+    , comment = new Comment(opts)
+    , parser = new Parser(opts);
+
   return source
-    .pipe(new LineStream(opts))
-    .pipe(new Comment(opts))
-    .pipe(new Parser(opts));
+    .pipe(lines)
+    .pipe(comment)
+    .pipe(parser);
 }
 
 /**
@@ -295,8 +301,39 @@ function parser(chunk, encoding, cb) {
 
   this.emit('comment', comment);
   this.push(comment);
+  //this.push(JSON.stringify(comment));
   cb();
 }
+
+/**
+ *  Creates a stream that transforms to JSON, the created stream is 
+ *  piped from this parser.
+ *
+ *  @function stringify
+ *  @member Parser
+ *  @param {Number} indent the number of spaces to indent the JSON.
+ *
+ *  @returns the stringify stream.
+ */
+function stringify(indent) {
+
+  function transform(chunk, encoding, cb) {
+    var err
+      , str;
+    try {
+      str = JSON.stringify(chunk, undefined, indent)
+    }catch(e) {
+      err = e; 
+    }
+    cb(err, str);
+  }
+
+  // create and pipe to the stream
+  var Stringify = through.transform(transform);
+  return this.pipe(new Stringify());
+}
+
+Parser.prototype.stringify = stringify;
 
 var Comment = through.transform(comment, {ctor: Comment})
 var Parser = through.transform(parser, {ctor: Parser})
