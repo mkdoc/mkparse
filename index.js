@@ -72,6 +72,7 @@ function Comment(opts) {
  *  `start` and `end` line numbers.
  *
  *  @protected {function} comment
+ *  @member Comment
  *  @param {Array} chunk lines to process.
  *  @param {String} encoding character encoding.
  *  @param {Function} callback function.
@@ -178,6 +179,7 @@ function Parser(opts) {
  *  Comment and tag parser, parses comment description and tags.
  *
  *  @protected {function} parser
+ *  @member Parser
  *  @param {Array} chunk lines to process.
  *  @param {String} encoding character encoding.
  *  @param {Function} callback function.

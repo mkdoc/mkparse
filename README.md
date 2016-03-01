@@ -10,10 +10,10 @@ Table of Contents
     * [load](#load)
     * [Comment](#comment)
       * [Options](#options)
-    * [comment](#comment)
+    * [.comment](#comment)
     * [Parser](#parser)
       * [Options](#options-1)
-    * [parser](#parser)
+    * [.parser](#parser)
       * [Events](#events)
     * [.stringify](#stringify)
     * [Tag](#tag)
@@ -122,10 +122,10 @@ Creates a comment stream.
 
 * `rules` Object defines the comment rules.
 
-### comment
+### .comment
 
 ```javascript
-protected comment(chunk, encoding, callback)
+protected Comment.prototype.comment(chunk, encoding, callback)
 ```
 
 Parse comments from an array of lines.
@@ -153,10 +153,10 @@ Creates a tag parser stream.
 * `tag` Object defines the tag patterns, see [tag](#tag).
 * `dotted` Boolean parse dotted names in tags.
 
-### parser
+### .parser
 
 ```javascript
-protected parser(chunk, encoding, callback)
+protected Parser.prototype.parser(chunk, encoding, callback)
 ```
 
 Comment and tag parser, parses comment description and tags.
