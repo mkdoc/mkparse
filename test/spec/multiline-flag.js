@@ -15,7 +15,7 @@ describe('cparse:', function() {
       expect(comment.pos.start).to.eql(1);
       expect(comment.pos.end).to.eql(3);
       expect(comment.tags.length).to.eql(1);
-      expect(comment.tags[0].tag).to.eql('private');
+      expect(comment.tags[0].id).to.eql('private');
       done();
     })
   });

@@ -118,29 +118,32 @@ stream.on('comment', function(comment) {
   },
   "tags": [
     {
-      "tag": "public",
+      "tag": "",
       "type": "function",
       "optional": false,
       "line": 12,
       "source": "@public {function} getNinja super fly stuff.",
+      "id": "public",
       "name": "getNinja",
       "description": "super fly stuff."
     },
     {
-      "tag": "param",
+      "tag": "",
       "type": "Object",
       "optional": true,
       "line": 13,
       "source": "@param {Object} [opts] configuration options.",
+      "id": "param",
       "name": "opts",
       "description": "configuration options."
     },
     {
-      "tag": "returns",
+      "tag": "",
       "type": "Object",
       "optional": false,
       "line": 14,
       "source": "@returns {Object} a command line ninja.",
+      "id": "returns",
       "name": "a",
       "description": "command line ninja."
     }
@@ -156,11 +159,12 @@ stream.on('comment', function(comment) {
   },
   "tags": [
     {
-      "tag": "usage",
+      "tag": "",
       "type": "",
       "optional": false,
       "line": 17,
       "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
+      "id": "usage",
       "name": "",
       "description": "var x = 'y'\n  , v = 'w';"
     }
@@ -176,34 +180,36 @@ stream.on('comment', function(comment) {
   },
   "tags": [
     {
-      "tag": "object",
+      "id": "object",
       "line": 24,
       "name": "point",
       "type": "",
       "description": "",
       "tags": [
         {
-          "tag": "object",
+          "tag": "",
           "type": "",
           "optional": false,
           "line": 24,
           "source": " @object point.x",
+          "id": "object",
           "name": "x",
           "description": "",
           "tags": [
             {
-              "tag": "object",
+              "id": "object",
               "line": 25,
               "name": "y",
               "type": "",
               "description": "",
               "tags": [
                 {
-                  "tag": "object",
+                  "tag": "",
                   "type": "",
                   "optional": false,
                   "line": 25,
                   "source": " @object point.x.y.z \n",
+                  "id": "object",
                   "name": "z",
                   "description": ""
                 }
@@ -320,7 +326,7 @@ See the [tag parser](#parser).
 #### rule
 
 ```javascript
-rule
+RegExp rule
 ```
 
 Pattern that collects tag lines.
@@ -328,7 +334,7 @@ Pattern that collects tag lines.
 #### pattern
 
 ```javascript
-pattern
+RegExp pattern
 ```
 
 Pattern that collects tag component parts.
@@ -336,7 +342,7 @@ Pattern that collects tag component parts.
 #### optional
 
 ```javascript
-optional
+RegExp optional
 ```
 
 Pattern that determines optionality.
@@ -344,7 +350,7 @@ Pattern that determines optionality.
 #### whitespace
 
 ```javascript
-whitespace
+RegExp whitespace
 ```
 
 Pattern that determines how to strip leading whitespace from
