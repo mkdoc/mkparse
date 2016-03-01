@@ -62,7 +62,7 @@
       },
       {
         "title": "Output",
-        "bin": "node test/spec test/example.js --json",
+        "bin": "INDENT=2 node test/spec test/example.js --json",
         "type": "code",
         "language": "json"
       },

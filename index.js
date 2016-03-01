@@ -303,13 +303,12 @@ function parser(chunk, encoding, cb) {
 
   this.emit('comment', comment);
   this.push(comment);
-  //this.push(JSON.stringify(comment));
   cb();
 }
 
 /**
- *  Creates a stream that transforms to JSON, the created stream is 
- *  piped from this parser.
+ *  Creates a stream that transforms to newline-delimited JSON, the 
+ *  created stream is piped from this parser.
  *
  *  @function stringify
  *  @member Parser
@@ -323,7 +322,7 @@ function stringify(indent) {
     var err
       , str;
     try {
-      str = JSON.stringify(chunk, undefined, indent)
+      str = JSON.stringify(chunk, undefined, indent) + EOL;
     }catch(e) {
       err = e; 
     }
