@@ -324,6 +324,7 @@ function stringify(indent) {
     try {
       str = JSON.stringify(chunk, undefined, indent) + EOL;
     }catch(e) {
+      /* istanbul ignore next: no circular references in comments */
       err = e; 
     }
     cb(err, str);
