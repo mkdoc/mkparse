@@ -203,7 +203,7 @@ function parser(chunk, encoding, cb) {
 
   function parse(start, index, lineno) {
     var tag = {
-        tag: '',
+        id: '',
         type: '',
         optional: false,
         line: lineno,

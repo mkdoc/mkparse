@@ -118,32 +118,29 @@ stream.on('comment', function(comment) {
   },
   "tags": [
     {
-      "tag": "",
+      "id": "public",
       "type": "function",
       "optional": false,
       "line": 12,
       "source": "@public {function} getNinja super fly stuff.",
-      "id": "public",
       "name": "getNinja",
       "description": "super fly stuff."
     },
     {
-      "tag": "",
+      "id": "param",
       "type": "Object",
       "optional": true,
       "line": 13,
       "source": "@param {Object} [opts] configuration options.",
-      "id": "param",
       "name": "opts",
       "description": "configuration options."
     },
     {
-      "tag": "",
+      "id": "returns",
       "type": "Object",
       "optional": false,
       "line": 14,
       "source": "@returns {Object} a command line ninja.",
-      "id": "returns",
       "name": "a",
       "description": "command line ninja."
     }
@@ -159,12 +156,11 @@ stream.on('comment', function(comment) {
   },
   "tags": [
     {
-      "tag": "",
+      "id": "usage",
       "type": "",
       "optional": false,
       "line": 17,
       "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
-      "id": "usage",
       "name": "",
       "description": "var x = 'y'\n  , v = 'w';"
     }
@@ -187,12 +183,11 @@ stream.on('comment', function(comment) {
       "description": "",
       "tags": [
         {
-          "tag": "",
+          "id": "object",
           "type": "",
           "optional": false,
           "line": 24,
           "source": " @object point.x",
-          "id": "object",
           "name": "x",
           "description": "",
           "tags": [
@@ -204,12 +199,11 @@ stream.on('comment', function(comment) {
               "description": "",
               "tags": [
                 {
-                  "tag": "",
+                  "id": "object",
                   "type": "",
                   "optional": false,
                   "line": 25,
                   "source": " @object point.x.y.z \n",
-                  "id": "object",
                   "name": "z",
                   "description": ""
                 }
