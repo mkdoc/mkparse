@@ -1,5 +1,14 @@
 /**
  *  Creates an array of language rules for the C family of languages.
+ *
+ *  A language rule is an object containing the `start`, `end` and `strip` 
+ *  functions.
+ *
+ *  The start and end functions are passed the current line and should 
+ *  return the `exec` match for the pattern.
+ *
+ *  The strip function is passed an array of lines for the entire comment and 
+ *  should remove comment start, end and intermediate markup.
  *  
  *  @function c
  *  @param {Object} [opts] processing options.
@@ -26,11 +35,25 @@ function c(opts) {
   return set;
 }
 
+/**
+ *  Creates a multi-line rule, when no options are given creates the 
+ *  default C family multi-line rule.
+ *  
+ *  @function multi
+ *  @param {Object} [opts] processing options.
+ *
+ *  @option {Boolean} greedy include `/*` comments.
+ *  @option {RegExp} start comment start pattern.
+ *  @option {RegExp} end comment end pattern.
+ *  @option {RegExp} strip comment strip pattern.
+ *  @option {Boolean} last extract description from the last line.
+ *
+ *  @returns {Object} multi-line language rule.
+ */
 function multi(opts) {
   opts = opts || {};
   var start = opts.greedy ? /\/\*/ : /\/\*\*/
-    , end = opts.end instanceof RegExp ? opts.end : /\*\//
-    , close = opts.close instanceof RegExp ? opts.close : /\*+\//
+    , end = opts.end instanceof RegExp ? opts.end : /\*+\//
     , strip = opts.strip instanceof RegExp ? opts.strip : /^\s*\*([^\/]?)/
     , last = opts.last !== undefined ? opts.last : true;
 
@@ -53,7 +76,7 @@ function multi(opts) {
         line = line.replace(start, '');
 
         // this catches the close tag: `*/`, should come before pattern below!
-        line = line.replace(close, '');
+        line = line.replace(end, '');
 
         // and lines prefixed with ` *`
         line = line.replace(strip, '$1');
@@ -65,21 +88,40 @@ function multi(opts) {
   }
 }
 
+/**
+ *  Creates a single-line rule, when no options are given creates the 
+ *  default C family single-line rule.
+ *  
+ *  @function single
+ *  @param {Object} [opts] processing options.
+ *
+ *  @option {RegExp} start comment start pattern.
+ *  @option {RegExp} end comment end pattern.
+ *  @option {RegExp} strip comment strip pattern.
+ *  @option {Boolean} last extract description from the last line.
+ *
+ *  @returns {Object} single-line language rule.
+ */
 function single(opts) {
   opts = opts || {};
+  var start = opts.start instanceof RegExp ? opts.start : /\/\//
+    , end = opts.end instanceof RegExp ? opts.end : /\/\//
+    , strip = opts.strip instanceof RegExp ? opts.strip : /^\s*\/\//
+    , last = opts.last !== undefined ? opts.last : false;
+
   return {
     start: function(line) {
-      return /\/\//.exec(line);
+      return start.exec(line);
     },
     end: function(line) {
-      return !/\/\//.exec(line);
+      return !end.exec(line);
     },
     strip: function(lines) {
       return lines.map(function(line) {
-        return line.replace(/^\s*\/\//, '');
+        return line.replace(strip, '');
       }) 
     },
-    last: false
+    last: last
   }
 }
 

@@ -10,11 +10,16 @@ Table of Contents
     * [load](#load)
     * [parse](#parse)
     * [c](#c)
-    * [Comment](#comment)
       * [Options](#options)
+    * [multi](#multi)
+      * [Options](#options-1)
+    * [single](#single)
+      * [Options](#options-2)
+    * [Comment](#comment)
+      * [Options](#options-3)
     * [.comment](#comment)
     * [Parser](#parser)
-      * [Options](#options-1)
+      * [Options](#options-4)
     * [.parser](#parser)
       * [Events](#events)
     * [.stringify](#stringify)
@@ -326,9 +331,64 @@ c([opts])
 
 Creates an array of language rules for the C family of languages.
 
+A language rule is an object containing the `start`, `end` and `strip`
+functions.
+
+The start and end functions are passed the current line and should
+return the `exec` match for the pattern.
+
+The strip function is passed an array of lines for the entire comment and
+should remove comment start, end and intermediate markup.
+
 Returns list of language rules.
 
 * `opts` Object processing options.
+
+#### Options
+
+* `multi` Object multi-line rule configuration.
+* `single` Object single-line rule configuration.
+
+### multi
+
+```javascript
+multi([opts])
+```
+
+Creates a multi-line rule, when no options are given creates the
+default C family multi-line rule.
+
+Returns multi-line language rule.
+
+* `opts` Object processing options.
+
+#### Options
+
+* `greedy` Boolean include `/*` comments.
+* `start` RegExp comment start pattern.
+* `end` RegExp comment end pattern.
+* `strip` RegExp comment strip pattern.
+* `last` Boolean extract description from the last line.
+
+### single
+
+```javascript
+single([opts])
+```
+
+Creates a single-line rule, when no options are given creates the
+default C family single-line rule.
+
+Returns single-line language rule.
+
+* `opts` Object processing options.
+
+#### Options
+
+* `start` RegExp comment start pattern.
+* `end` RegExp comment end pattern.
+* `strip` RegExp comment strip pattern.
+* `last` Boolean extract description from the last line.
 
 ### Comment
 
