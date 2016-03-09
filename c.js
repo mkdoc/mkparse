@@ -2,14 +2,20 @@
 module.exports = [
   {
     start: function(line) {
-      var match = /\/\*\*/.exec(line);
+      var match = /\/\*\*/.exec(line)
+        , finished;
+      // inline multiline comments on the same line
       if(match) {
+        if((finished = this.end(line))) {
+          return line.substr(
+            match.index, (finished.index - match.index) + finished[0].length);
+        }
         return line.substr(match.index);
       }
       return match;
     },
     end: function(line) {
-      return /\*\//.test(line);
+      return /\*\//.exec(line);
     },
     strip: function(lines) {
       return lines.map(function(line) {
