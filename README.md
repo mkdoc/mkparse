@@ -9,8 +9,8 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
-    * [language](#language)
-      * [c](#c)
+    * [defaults](#defaults)
+      * [defaults](#defaults-1)
         * [Options](#options)
       * [#multi](#multi)
         * [Options](#options-1)
@@ -321,7 +321,9 @@ Returns the parser stream.
 * `opts` Object processing options.
 * `cb` Function callback function.
 
-### language
+### defaults
+
+Default language pack for the C family.
 
 A language rule is an object containing the `open`, `close` and `strip`
 functions.
@@ -330,12 +332,12 @@ The start and end functions are passed the current line and should
 return the `exec` match for the pattern.
 
 The strip function is passed an array of lines for the entire comment and
-should remove comment start, end and intermediate markup.
+should remove comment meta characters from all lines.
 
-#### c
+#### defaults
 
 ```javascript
-c([opts])
+defaults([opts])
 ```
 
 Creates an array of language rules for the C family of languages.
@@ -378,6 +380,9 @@ Returns multi-line language rule.
 * `end` RegExp comment end pattern.
 * `strip` RegExp comment strip pattern.
 * `last` Boolean extract description from the last line.
+* `open` Function override default open function.
+* `close` Function override default close function.
+* `strip` Function override default strip function.
 
 #### #single
 
@@ -398,6 +403,9 @@ Returns single-line language rule.
 * `end` RegExp comment end pattern.
 * `strip` RegExp comment strip pattern.
 * `last` Boolean extract description from the last line.
+* `open` Function override default open function.
+* `close` Function override default close function.
+* `strip` Function override default strip function.
 
 #### shell
 

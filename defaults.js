@@ -8,7 +8,7 @@
  *  return the `exec` match for the pattern.
  *
  *  The strip function is passed an array of lines for the entire comment and 
- *  should remove comment start, end and intermediate markup.
+ *  should remove comment meta characters from all lines.
  *
  *  @module defaults
  */
@@ -62,6 +62,9 @@ function defaults(opts) {
  *  @option {RegExp} end comment end pattern.
  *  @option {RegExp} strip comment strip pattern.
  *  @option {Boolean} last extract description from the last line.
+ *  @option {Function} open override default open function.
+ *  @option {Function} close override default close function.
+ *  @option {Function} strip override default strip function.
  *
  *  @returns {Object} multi-line language rule.
  */
@@ -120,6 +123,9 @@ function multi(opts) {
  *  @option {RegExp} end comment end pattern.
  *  @option {RegExp} strip comment strip pattern.
  *  @option {Boolean} last extract description from the last line.
+ *  @option {Function} open override default open function.
+ *  @option {Function} close override default close function.
+ *  @option {Function} strip override default strip function.
  *
  *  @returns {Object} single-line language rule.
  */
