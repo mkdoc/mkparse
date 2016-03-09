@@ -52,7 +52,7 @@ function c(opts) {
  */
 function multi(opts) {
   opts = opts || {};
-  var start = opts.greedy ? /\/\*/ : /\/\*\*/
+  var start = opts.greedy ? /\/\*+/ : /\/\*\*+/
     , end = opts.end instanceof RegExp ? opts.end : /\*+\//
     , strip = opts.strip instanceof RegExp ? opts.strip : /^\s*\*([^\/]?)/
     , last = opts.last !== undefined ? opts.last : true;
