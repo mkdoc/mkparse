@@ -1,6 +1,4 @@
 /**
- *  Creates an array of language rules for the C family of languages.
- *
  *  A language rule is an object containing the `start`, `end` and `strip` 
  *  functions.
  *
@@ -9,6 +7,12 @@
  *
  *  The strip function is passed an array of lines for the entire comment and 
  *  should remove comment start, end and intermediate markup.
+ *
+ *  @module language
+ */
+
+/**
+ *  Creates an array of language rules for the C family of languages.
  *
  *  By default recognises continuous lines with `//` comments and terminated 
  *  multi-line comments starting with `/**`.
@@ -48,7 +52,7 @@ function c(opts) {
  *  Creates a multi-line rule, when no options are given creates the 
  *  default C family multi-line rule.
  *  
- *  @function multi
+ *  @static {function} multi
  *  @param {Object} [opts] processing options.
  *
  *  @option {Boolean} greedy include `/*` comments.
@@ -101,7 +105,7 @@ function multi(opts) {
  *  Creates a single-line rule, when no options are given creates the 
  *  default C family single-line rule.
  *  
- *  @function single
+ *  @static {function} single
  *  @param {Object} [opts] processing options.
  *
  *  @option {RegExp} start comment start pattern.

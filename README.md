@@ -9,19 +9,18 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
-    * [c](#c)
-      * [Options](#options)
-    * [multi](#multi)
-      * [Options](#options-1)
-    * [single](#single)
-      * [Options](#options-2)
-    * [shell](#shell)
-      * [Options](#options-3)
+    * [language](#language)
+      * [c](#c)
+        * [Options](#options)
+      * [#multi](#multi)
+        * [Options](#options-1)
+      * [#single](#single)
+        * [Options](#options-2)
+      * [shell](#shell)
+        * [Options](#options-3)
     * [Comment](#comment)
-      * [Options](#options-4)
     * [Parser](#parser)
-      * [Options](#options-5)
-    * [.stringify](#stringify)
+      * [.stringify](#stringify)
     * [Tag](#tag)
       * [rule](#rule)
       * [pattern](#pattern)
@@ -322,13 +321,7 @@ Returns the parser stream.
 * `opts` Object processing options.
 * `cb` Function callback function.
 
-### c
-
-```javascript
-c([opts])
-```
-
-Creates an array of language rules for the C family of languages.
+### language
 
 A language rule is an object containing the `start`, `end` and `strip`
 functions.
@@ -338,6 +331,14 @@ return the `exec` match for the pattern.
 
 The strip function is passed an array of lines for the entire comment and
 should remove comment start, end and intermediate markup.
+
+#### c
+
+```javascript
+c([opts])
+```
+
+Creates an array of language rules for the C family of languages.
 
 By default recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
@@ -352,15 +353,15 @@ Returns list of language rules.
 
 * `opts` Object processing options.
 
-#### Options
+##### Options
 
 * `multi` Object multi-line rule configuration.
 * `single` Object single-line rule configuration.
 
-### multi
+#### #multi
 
 ```javascript
-multi([opts])
+static multi([opts])
 ```
 
 Creates a multi-line rule, when no options are given creates the
@@ -370,7 +371,7 @@ Returns multi-line language rule.
 
 * `opts` Object processing options.
 
-#### Options
+##### Options
 
 * `greedy` Boolean include `/*` comments.
 * `start` RegExp comment start pattern.
@@ -378,10 +379,10 @@ Returns multi-line language rule.
 * `strip` RegExp comment strip pattern.
 * `last` Boolean extract description from the last line.
 
-### single
+#### #single
 
 ```javascript
-single([opts])
+static single([opts])
 ```
 
 Creates a single-line rule, when no options are given creates the
@@ -391,14 +392,14 @@ Returns single-line language rule.
 
 * `opts` Object processing options.
 
-#### Options
+##### Options
 
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
 * `strip` RegExp comment strip pattern.
 * `last` Boolean extract description from the last line.
 
-### shell
+#### shell
 
 ```javascript
 shell([opts])
@@ -412,7 +413,7 @@ Returns list of language rules.
 
 * `opts` Object processing options.
 
-#### Options
+##### Options
 
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
@@ -422,38 +423,17 @@ Returns list of language rules.
 
 ### Comment
 
-```javascript
-new Comment([opts])
-```
-
 Parse comments from an array of lines.
 
 When a comment is parsed an object is pushed to the stream
 with an array of `lines`, the `rule` for the comment and the
 `start` and `end` line numbers.
 
-* `opts` Object stream options.
-
-#### Options
-
-* `rules` Object defines the comment rules.
-
 ### Parser
-
-```javascript
-new Parser([opts])
-```
 
 Comment and tag parser, parses comment description and tags.
 
-* `opts` Object stream options.
-
-#### Options
-
-* `tag` Object defines the tag patterns, see [tag](#tag).
-* `dotted` Boolean parse dotted names in tags.
-
-### .stringify
+#### .stringify
 
 ```javascript
 Parser.prototype.stringify(indent)
