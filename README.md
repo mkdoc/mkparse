@@ -105,6 +105,10 @@ stream.pipe(fs.createWriteStream('index-ast.json.log'));
  *  @object point.x
  *  @object point.x.y.z
  */
+
+function request(url, opts /** @param {Object} opts request options */)
+
+const foo = 'bar';  // @private {String} foo private constant
 ```
 
 ## Output
@@ -234,6 +238,46 @@ stream.pipe(fs.createWriteStream('index-ast.json.log'));
           ]
         }
       ]
+    }
+  ]
+}
+{
+  "source": "/** @param {Object} opts request options */",
+  "description": "",
+  "line": 28,
+  "pos": {
+    "start": 28,
+    "end": 28
+  },
+  "tags": [
+    {
+      "id": "param",
+      "type": "Object",
+      "optional": false,
+      "line": 28,
+      "source": "@param {Object} opts request options ",
+      "name": "opts",
+      "description": "request options"
+    }
+  ]
+}
+{
+  "source": "// @private {String} foo private constant",
+  "description": "",
+  "line": 30,
+  "pos": {
+    "start": 30,
+    "end": 30
+  },
+  "tags": [
+    {
+      "id": "private",
+      "type": "String",
+      "optional": false,
+      "line": 30,
+      "source": "@private {String} foo private constant",
+      "name": "foo",
+      "description": "private constant"
     }
   ]
 }
