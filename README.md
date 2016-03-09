@@ -9,14 +9,16 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
-    * [Comment](#comment)
-      * [Options](#options)
-    * [.comment](#comment)
-    * [Parser](#parser)
-      * [Options](#options-1)
-    * [.parser](#parser)
-      * [Events](#events)
-    * [.stringify](#stringify)
+    * [C](#c)
+      * [rules](#rules)
+      * [Comment](#comment)
+        * [Options](#options)
+      * [.comment](#comment)
+      * [Parser](#parser)
+        * [Options](#options-1)
+      * [.parser](#parser)
+        * [Events](#events)
+      * [.stringify](#stringify)
     * [Tag](#tag)
       * [rule](#rule)
       * [pattern](#pattern)
@@ -317,7 +319,23 @@ Returns the parser stream.
 * `opts` Object processing options.
 * `cb` Function callback function.
 
-### Comment
+### C
+
+Patterns for C style comment blocks.
+
+#### rules
+
+```javascript
+rules([opts])
+```
+
+Creates an array of language rules.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### Comment
 
 ```javascript
 new Comment([opts])
@@ -327,11 +345,11 @@ Creates a comment stream.
 
 * `opts` Object stream options.
 
-#### Options
+##### Options
 
 * `rules` Object defines the comment rules.
 
-### .comment
+#### .comment
 
 ```javascript
 protected Comment.prototype.comment(chunk, encoding, callback)
@@ -347,7 +365,7 @@ with an array of `lines`, the `rule` for the comment and the
 * `encoding` String character encoding.
 * `callback` Function function.
 
-### Parser
+#### Parser
 
 ```javascript
 new Parser([opts])
@@ -357,12 +375,12 @@ Creates a tag parser stream.
 
 * `opts` Object stream options.
 
-#### Options
+##### Options
 
 * `tag` Object defines the tag patterns, see [tag](#tag).
 * `dotted` Boolean parse dotted names in tags.
 
-### .parser
+#### .parser
 
 ```javascript
 protected Parser.prototype.parser(chunk, encoding, callback)
@@ -374,11 +392,11 @@ Comment and tag parser, parses comment description and tags.
 * `encoding` String character encoding.
 * `callback` Function function.
 
-#### Events
+##### Events
 
 * `comment` when a comment has been parsed.
 
-### .stringify
+#### .stringify
 
 ```javascript
 Parser.prototype.stringify(indent)
