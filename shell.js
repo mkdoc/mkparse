@@ -1,3 +1,5 @@
+var lang = require('./c');
+
 /**
  *  Creates an array of language rules for shell and configuration files.
  *
@@ -16,28 +18,24 @@
  */
 function shell(opts) {
   opts = opts || {};
-  var start = opts.start instanceof RegExp ? opts.start : /#+/
-    , end = opts.end instanceof RegExp ? opts.end : /#+/
-    , strip = opts.strip instanceof RegExp ? opts.strip : /^\s*#+/
-    , trail = opts.trail instanceof RegExp ? opts.trail: /\s*#+.*$/
-    , last = opts.last !== undefined ? opts.last : false;
+  opts.start = opts.start instanceof RegExp ? opts.start : /#+/;
+  opts.end = opts.end instanceof RegExp ? opts.end : /#+/;
+  opts.lead = opts.lead instanceof RegExp ? opts.strip : /^\s*#+/;
+  opts.trail = opts.trail instanceof RegExp ? opts.trail: /\s*#+.*$/;
+  opts.last = opts.last !== undefined ? opts.last : false;
+
+  // also strip trailing meta characters
+  function strip(lines) {
+    return lines.map(function(line) {
+      line = line.replace(opts.lead, '');
+      return line.replace(opts.trail, '');
+    }) 
+  }
+
+  opts.strip = strip;
 
   // single rule style for this language pack
-  return [{
-    start: function(line) {
-      return start.exec(line);
-    },
-    end: function(line) {
-      return !end.exec(line);
-    },
-    strip: function(lines) {
-      return lines.map(function(line) {
-        line = line.replace(strip, '');
-        return line.replace(trail, '');
-      }) 
-    },
-    last: last
-  }];
+  return [lang.single(opts)];
 }
 
 module.exports = shell;

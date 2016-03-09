@@ -67,7 +67,7 @@ function multi(opts) {
   opts = opts || {};
   var start = opts.greedy ? /\/\*+/ : /\/\*\*+/
     , end = opts.end instanceof RegExp ? opts.end : /\*+\//
-    , strip = opts.strip instanceof RegExp ? opts.strip : /^\s*\*([^\/]?)/
+    , lead = opts.lead instanceof RegExp ? opts.lead : /^\s*\*([^\/]?)/
     , last = opts.last !== undefined ? opts.last : true;
 
   // override start pattern
@@ -92,7 +92,7 @@ function multi(opts) {
         line = line.replace(end, '');
 
         // and lines prefixed with ` *`
-        line = line.replace(strip, '$1');
+        line = line.replace(lead, '$1');
 
         return line;
       }) 
@@ -119,21 +119,27 @@ function single(opts) {
   opts = opts || {};
   var start = opts.start instanceof RegExp ? opts.start : /\/\//
     , end = opts.end instanceof RegExp ? opts.end : /\/\//
-    , strip = opts.strip instanceof RegExp ? opts.strip : /^\s*\/\//
+    , lead = opts.lead instanceof RegExp ? opts.lead : /^\s*\/\//
     , last = opts.last !== undefined ? opts.last : false;
 
+  function open(line) {
+    return start.exec(line);
+  }
+
+  function close(line) {
+    return !end.exec(line);
+  }
+
+  function strip(lines) {
+    return lines.map(function(line) {
+      return line.replace(lead, '');
+    }) 
+  }
+
   return {
-    start: function(line) {
-      return start.exec(line);
-    },
-    end: function(line) {
-      return !end.exec(line);
-    },
-    strip: function(lines) {
-      return lines.map(function(line) {
-        return line.replace(strip, '');
-      }) 
-    },
+    start: opts.open instanceof Function ? opts.open : open,
+    end: opts.close instanceof Function ? opts.close : close,
+    strip: opts.strip instanceof Function ? opts.strip : strip,
     last: last
   }
 }
