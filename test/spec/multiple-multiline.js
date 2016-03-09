@@ -12,12 +12,17 @@ describe('cparse:', function() {
 
       stream.on('comment', function(comment) {
         comments.push(comment);
-        console.dir(comment)
       })
 
       stream.on('finish', function() {
         expect(comments.length).to.eql(2);
         expect(comments[0].description).to.eql(expected);
+
+        expect(comments[1].description).to.eql('');
+        expect(comments[1].tags.length).to.eql(1);
+        expect(comments[1].tags[0].id).to.eql('param');
+        expect(comments[1].tags[0].name).to.eql('opts');
+        expect(comments[1].tags[0].description).to.eql('request options');
         done();
       });
     }
