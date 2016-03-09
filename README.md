@@ -377,7 +377,7 @@ Returns multi-line language rule.
 * `greedy` Boolean include `/*` comments.
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
-* `strip` RegExp comment strip pattern.
+* `lead` RegExp comment lead strip pattern.
 * `last` Boolean extract description from the last line.
 * `open` Function override default open function.
 * `close` Function override default close function.
@@ -401,7 +401,8 @@ Returns single-line language rule.
 * `mark` RegExp sub pattern.
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
-* `strip` RegExp comment strip pattern.
+* `lead` RegExp strip leading meta characters that match.
+* `trail` RegExp strip trailing meta characters that match.
 * `last` Boolean extract description from the last line.
 * `open` Function override default open function.
 * `close` Function override default close function.
