@@ -1,7 +1,37 @@
-function multi() {
+/**
+ *  Creates an array of language rules for the C family of languages.
+ *  
+ *  @function c
+ *  @param {Object} [opts] processing options.
+ *
+ *  @option {Object} multi multi-line rule configuration.
+ *  @option {Object} single single-line rule configuration.
+ *
+ *  @returns list of language rules.
+ */
+function c(opts) {
+  opts = opts || {};
+  var set = []
+    , useMulti = opts.multi !== undefined ? opts.multi : true
+    , useSingle = opts.single !== undefined ? opts.single : true;
+
+  if(useMulti) {
+    set.push(multi(opts.multi));
+  }
+
+  if(useSingle) {
+    set.push(single(opts.single)); 
+  }
+
+  return set;
+}
+
+function multi(opts) {
+  opts = opts || {};
+  var pattern = opts.greedy ? /\/\*/ : /\/\*\*/;
   return {
     start: function(line) {
-      return /\/\*\*/.exec(line);
+      return pattern.exec(line);
     },
     end: function(line) {
       return /\*\//.exec(line);
@@ -10,7 +40,7 @@ function multi() {
       return lines.map(function(line) {
 
         // this catchs opening declarations: '/**'
-        line = line.replace(/\/\*\*/, '');
+        line = line.replace(pattern, '');
 
         // this catches the close tag: `*/`, should come before pattern below!
         line = line.replace(/\*+\//, '');
@@ -25,7 +55,8 @@ function multi() {
   }
 }
 
-function single() {
+function single(opts) {
+  opts = opts || {};
   return {
     start: function(line) {
       return /\/\//.exec(line);
@@ -42,29 +73,7 @@ function single() {
   }
 }
 
-/**
- *  Creates an array of language rules for the C family of languages.
- *  
- *  @function c
- *  @param {Object} [opts] processing options.
- *
- *  @returns list of language rules.
- */
-function c(opts) {
-  opts = opts || {};
-  var set = []
-    , useMulti = typeof opts.multi === 'boolean' ? opts.multi : true
-    , useSingle = typeof opts.single === 'boolean' ? opts.single : true;
-
-  if(useMulti) {
-    set.push(multi());
-  }
-
-  if(useSingle) {
-    set.push(single()); 
-  }
-
-  return set;
-}
+c.multi = multi;
+c.single = single;
 
 module.exports = c;
