@@ -3,9 +3,9 @@ var expect = require('chai').expect
 
 describe('cparse:', function() {
 
-  it('should parse multiple multiline comment blocks w/ trailing start (/**)',
+  it('should parse multiple multiline comment blocks w/ trailing start (//)',
     function(done) {
-      var source = 'test/fixtures/multiple-trailing.js'
+      var source = 'test/fixtures/multiple-trailing-single.js'
         , stream = parse.load(source)
         , expected = 'Description text'
         , comments = [];
