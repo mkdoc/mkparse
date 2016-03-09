@@ -42,7 +42,29 @@ var multi = {
       last: false
     };
 
-module.exports = [
-  multi,
-  single
-]
+/**
+ *  Creates an array of language rules.
+ *  
+ *  @function rules
+ *  @param {Object} [opts] processing options.
+ *
+ *  @returns list of language rules.
+ */
+function rules(opts) {
+  opts = opts || {};
+  var set = []
+    , useMulti = typeof opts.multi === 'boolean' ? opts.multi : true
+    , useSingle = typeof opts.single === 'boolean' ? opts.single : true;
+
+  if(useMulti) {
+    set.push(multi); 
+  }
+
+  if(useSingle) {
+    set.push(single); 
+  }
+
+  return set;
+}
+
+module.exports = rules;
