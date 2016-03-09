@@ -17,11 +17,8 @@ Table of Contents
       * [Options](#options-2)
     * [Comment](#comment)
       * [Options](#options-3)
-    * [.comment](#comment)
     * [Parser](#parser)
       * [Options](#options-4)
-    * [.parser](#parser)
-      * [Events](#events)
     * [.stringify](#stringify)
     * [Tag](#tag)
       * [rule](#rule)
@@ -396,7 +393,11 @@ Returns single-line language rule.
 new Comment([opts])
 ```
 
-Creates a comment stream.
+Parse comments from an array of lines.
+
+When a comment is parsed an object is pushed to the stream
+with an array of `lines`, the `rule` for the comment and the
+`start` and `end` line numbers.
 
 * `opts` Object stream options.
 
@@ -404,29 +405,13 @@ Creates a comment stream.
 
 * `rules` Object defines the comment rules.
 
-### .comment
-
-```javascript
-protected Comment.prototype.comment(chunk, encoding, callback)
-```
-
-Parse comments from an array of lines.
-
-When a comment is parsed an object is pushed to the stream
-with an array of `lines`, the `rule` for the comment and the
-`start` and `end` line numbers.
-
-* `chunk` Array lines to process.
-* `encoding` String character encoding.
-* `callback` Function function.
-
 ### Parser
 
 ```javascript
 new Parser([opts])
 ```
 
-Creates a tag parser stream.
+Comment and tag parser, parses comment description and tags.
 
 * `opts` Object stream options.
 
@@ -434,22 +419,6 @@ Creates a tag parser stream.
 
 * `tag` Object defines the tag patterns, see [tag](#tag).
 * `dotted` Boolean parse dotted names in tags.
-
-### .parser
-
-```javascript
-protected Parser.prototype.parser(chunk, encoding, callback)
-```
-
-Comment and tag parser, parses comment description and tags.
-
-* `chunk` Array lines to process.
-* `encoding` String character encoding.
-* `callback` Function function.
-
-#### Events
-
-* `comment` when a comment has been parsed.
 
 ### .stringify
 
