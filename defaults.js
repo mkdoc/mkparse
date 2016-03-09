@@ -1,4 +1,6 @@
 /**
+ *  Default language pack for the C family.
+ *
  *  A language rule is an object containing the `open`, `close` and `strip` 
  *  functions.
  *
@@ -8,7 +10,7 @@
  *  The strip function is passed an array of lines for the entire comment and 
  *  should remove comment start, end and intermediate markup.
  *
- *  @module language
+ *  @module defaults
  */
 
 /**
@@ -23,7 +25,7 @@
  *  {multi: {greedy: true}
  *  ```
  *
- *  @function c
+ *  @function defaults
  *  @param {Object} [opts] processing options.
  *
  *  @option {Object} multi multi-line rule configuration.
@@ -31,7 +33,7 @@
  *
  *  @returns list of language rules.
  */
-function c(opts) {
+function defaults(opts) {
   opts = opts || {};
   var set = []
     , useMulti = opts.multi !== undefined ? opts.multi : true
@@ -150,7 +152,7 @@ function single(opts) {
   }
 }
 
-c.multi = multi;
-c.single = single;
+defaults.multi = multi;
+defaults.single = single;
 
-module.exports = c;
+module.exports = defaults;

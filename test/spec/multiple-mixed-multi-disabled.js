@@ -8,7 +8,7 @@ describe('cparse:', function() {
 
     function(done) {
       var source = 'test/fixtures/multiple-mixed.js'
-        , stream = parse.load(source, {comments: {multi: false}})
+        , stream = parse.load(source, {options: {multi: false}})
         , expected = 'request options'
         , comments = [];
 
