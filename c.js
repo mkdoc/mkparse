@@ -1,5 +1,5 @@
 /**
- *  A language rule is an object containing the `start`, `end` and `strip` 
+ *  A language rule is an object containing the `open`, `close` and `strip` 
  *  functions.
  *
  *  The start and end functions are passed the current line and should 
@@ -76,10 +76,10 @@ function multi(opts) {
   }
 
   return {
-    start: function(line) {
+    open: function(line) {
       return start.exec(line);
     },
-    end: function(line) {
+    close: function(line) {
       return end.exec(line);
     },
     strip: function(lines) {
@@ -137,8 +137,8 @@ function single(opts) {
   }
 
   return {
-    start: opts.open instanceof Function ? opts.open : open,
-    end: opts.close instanceof Function ? opts.close : close,
+    open: opts.open instanceof Function ? opts.open : open,
+    close: opts.close instanceof Function ? opts.close : close,
     strip: opts.strip instanceof Function ? opts.strip : strip,
     last: last
   }

@@ -323,7 +323,7 @@ Returns the parser stream.
 
 ### language
 
-A language rule is an object containing the `start`, `end` and `strip`
+A language rule is an object containing the `open`, `close` and `strip`
 functions.
 
 The start and end functions are passed the current line and should
