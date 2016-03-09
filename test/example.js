@@ -24,3 +24,7 @@
  *  @object point.x
  *  @object point.x.y.z
  */
+
+function request(url, opts /** @param {Object} opts request options */)
+
+const foo = 'bar';  // @private {String} foo private constant

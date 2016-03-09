@@ -1,5 +1,6 @@
 node_modules
 coverage
 target
+test/example.js
 test/fixtures
 test/fixtures/full.js

@@ -2,7 +2,7 @@
 module.exports = {
   multiline: {
     start: function(line) {
-      return /^\s*\/\*\*/.test(line);
+      return /\/\*\*/.test(line);
     },
     end: function(line) {
       return /\*\//.test(line);
@@ -26,10 +26,10 @@ module.exports = {
   },
   block: {
     start: function(line) {
-      return /^\s*\/\//.test(line);
+      return /^[^\/]*\/\//.test(line);
     },
     end: function(line) {
-      return !/^\s*\/\//.test(line);
+      return !/\/\//.test(line);
     },
     strip: function(lines) {
       return lines.map(function(line) {
