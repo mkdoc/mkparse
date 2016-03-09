@@ -16,8 +16,7 @@ Table of Contents
         * [Options](#options-1)
       * [#single](#single)
         * [Options](#options-2)
-      * [shell](#shell)
-        * [Options](#options-3)
+    * [shell](#shell)
     * [Comment](#comment)
     * [Parser](#parser)
       * [.stringify](#stringify)
@@ -407,27 +406,11 @@ Returns single-line language rule.
 * `close` Function override default close function.
 * `strip` Function override default strip function.
 
-#### shell
-
-```javascript
-shell([opts])
-```
+### shell
 
 Creates an array of language rules for shell and configuration files.
 
 Recognises continuous blocks of lines beginning with `#`.
-
-Returns list of language rules.
-
-* `opts` Object processing options.
-
-##### Options
-
-* `start` RegExp comment start pattern.
-* `end` RegExp comment end pattern.
-* `strip` RegExp comment strip pattern.
-* `trail` RegExp pattern to strip trailing comment characters.
-* `last` Boolean extract description from the last line.
 
 ### Comment
 

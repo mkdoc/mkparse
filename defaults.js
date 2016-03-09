@@ -131,9 +131,15 @@ function multi(opts) {
  */
 function single(opts) {
   opts = opts || {};
-  var start = opts.start instanceof RegExp ? opts.start : /\/\//
-    , end = opts.end instanceof RegExp ? opts.end : /\/\//
-    , lead = opts.lead instanceof RegExp ? opts.lead : /^\s*\/\//
+
+  var mark = opts.mark ? opts.mark : /\/\//
+    , start = opts.start instanceof RegExp
+        ? opts.start : new RegExp(mark.source)
+    , end = opts.end = opts.end instanceof RegExp
+        ? opts.end : new RegExp(mark.source)
+    , lead = opts.lead instanceof RegExp
+        ? opts.strip : new RegExp('^\\s*' + mark.source)
+    , trail = opts.trail instanceof RegExp ? opts.trail: false
     , last = opts.last !== undefined ? opts.last : false;
 
   function open(line) {
@@ -146,7 +152,11 @@ function single(opts) {
 
   function strip(lines) {
     return lines.map(function(line) {
-      return line.replace(lead, '');
+      line = line.replace(lead, '');
+      if(trail) {
+        line = line.replace(trail, '');
+      }
+      return line;
     }) 
   }
 
