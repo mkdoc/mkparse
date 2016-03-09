@@ -1,4 +1,5 @@
-var multi = {
+function multi() {
+  return {
     start: function(line) {
       return /\/\*\*/.exec(line);
     },
@@ -22,20 +23,24 @@ var multi = {
     },
     last: true
   }
-  , single = {
-      start: function(line) {
-        return /\/\//.exec(line);
-      },
-      end: function(line) {
-        return !/\/\//.exec(line);
-      },
-      strip: function(lines) {
-        return lines.map(function(line) {
-          return line.replace(/^\s*\/\//, '');
-        }) 
-      },
-      last: false
-    };
+}
+
+function single() {
+  return {
+    start: function(line) {
+      return /\/\//.exec(line);
+    },
+    end: function(line) {
+      return !/\/\//.exec(line);
+    },
+    strip: function(lines) {
+      return lines.map(function(line) {
+        return line.replace(/^\s*\/\//, '');
+      }) 
+    },
+    last: false
+  }
+}
 
 /**
  *  Creates an array of language rules for the C family of languages.
@@ -45,21 +50,21 @@ var multi = {
  *
  *  @returns list of language rules.
  */
-function rules(opts) {
+function c(opts) {
   opts = opts || {};
   var set = []
     , useMulti = typeof opts.multi === 'boolean' ? opts.multi : true
     , useSingle = typeof opts.single === 'boolean' ? opts.single : true;
 
   if(useMulti) {
-    set.push(multi); 
+    set.push(multi());
   }
 
   if(useSingle) {
-    set.push(single); 
+    set.push(single()); 
   }
 
   return set;
 }
 
-module.exports = rules;
+module.exports = c;
