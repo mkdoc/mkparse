@@ -60,7 +60,7 @@ function defaults(opts) {
  *  @option {Boolean} greedy include `/*` comments.
  *  @option {RegExp} start comment start pattern.
  *  @option {RegExp} end comment end pattern.
- *  @option {RegExp} lead comment lead strip pattern.
+ *  @option {RegExp} lead remove leading meta characters that match.
  *  @option {Boolean} last extract description from the last line.
  *  @option {Function} open override default open function.
  *  @option {Function} close override default close function.
@@ -122,8 +122,8 @@ function multi(opts) {
  *  @option {RegExp} mark sub pattern.
  *  @option {RegExp} start comment start pattern.
  *  @option {RegExp} end comment end pattern.
- *  @option {RegExp} lead strip leading meta characters that match.
- *  @option {RegExp} trail strip trailing meta characters that match.
+ *  @option {RegExp} lead remove leading meta characters that match.
+ *  @option {RegExp} trail remove trailing meta characters that match.
  *  @option {Boolean} last extract description from the last line.
  *  @option {Function} open override default open function.
  *  @option {Function} close override default close function.
