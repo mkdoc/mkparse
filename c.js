@@ -75,28 +75,34 @@ function multi(opts) {
     start = opts.start; 
   }
 
+  function open(line) {
+    return start.exec(line);
+  }
+
+  function close(line) {
+    return end.exec(line);
+  }
+
+  function strip(lines) {
+    return lines.map(function(line) {
+
+      // this catchs opening declarations: '/**'
+      line = line.replace(start, '');
+
+      // this catches the close tag: `*/`, should come before pattern below!
+      line = line.replace(end, '');
+
+      // and lines prefixed with ` *`
+      line = line.replace(lead, '$1');
+
+      return line;
+    }) 
+  }
+
   return {
-    open: function(line) {
-      return start.exec(line);
-    },
-    close: function(line) {
-      return end.exec(line);
-    },
-    strip: function(lines) {
-      return lines.map(function(line) {
-
-        // this catchs opening declarations: '/**'
-        line = line.replace(start, '');
-
-        // this catches the close tag: `*/`, should come before pattern below!
-        line = line.replace(end, '');
-
-        // and lines prefixed with ` *`
-        line = line.replace(lead, '$1');
-
-        return line;
-      }) 
-    },
+    open: opts.open instanceof Function ? opts.open : open,
+    close: opts.close instanceof Function ? opts.close : close,
+    strip: opts.strip instanceof Function ? opts.strip : strip,
     last: last
   }
 }
