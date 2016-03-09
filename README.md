@@ -15,10 +15,12 @@ Table of Contents
       * [Options](#options-1)
     * [single](#single)
       * [Options](#options-2)
-    * [Comment](#comment)
+    * [shell](#shell)
       * [Options](#options-3)
-    * [Parser](#parser)
+    * [Comment](#comment)
       * [Options](#options-4)
+    * [Parser](#parser)
+      * [Options](#options-5)
     * [.stringify](#stringify)
     * [Tag](#tag)
       * [rule](#rule)
@@ -109,7 +111,7 @@ stream.pipe(fs.createWriteStream('index-ast.json.log'));
  *  @object point.x.y.z
  */
 
-function request(url, opts /** @param {Object} opts request options */)
+function request(url, opts /** @param {Object} opts request options */){}
 
 const foo = 'bar';  // @private {String} foo private constant
 ```
@@ -337,6 +339,15 @@ return the `exec` match for the pattern.
 The strip function is passed an array of lines for the entire comment and
 should remove comment start, end and intermediate markup.
 
+By default recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+To include `/*` comments as well set the `greedy` option:
+
+```javascript
+{multi: {greedy: true}
+```
+
 Returns list of language rules.
 
 * `opts` Object processing options.
@@ -385,6 +396,28 @@ Returns single-line language rule.
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
 * `strip` RegExp comment strip pattern.
+* `last` Boolean extract description from the last line.
+
+### shell
+
+```javascript
+shell([opts])
+```
+
+Creates an array of language rules for shell and configuration files.
+
+Recognises continuous blocks of lines beginning with `#`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### Options
+
+* `start` RegExp comment start pattern.
+* `end` RegExp comment end pattern.
+* `strip` RegExp comment strip pattern.
+* `trail` RegExp pattern to strip trailing comment characters.
 * `last` Boolean extract description from the last line.
 
 ### Comment
