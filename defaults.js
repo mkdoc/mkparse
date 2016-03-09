@@ -119,6 +119,7 @@ function multi(opts) {
  *  @static {function} single
  *  @param {Object} [opts] processing options.
  *
+ *  @option {RegExp} mark sub pattern.
  *  @option {RegExp} start comment start pattern.
  *  @option {RegExp} end comment end pattern.
  *  @option {RegExp} strip comment strip pattern.

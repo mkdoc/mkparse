@@ -398,6 +398,7 @@ Returns single-line language rule.
 
 ##### Options
 
+* `mark` RegExp sub pattern.
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
 * `strip` RegExp comment strip pattern.
