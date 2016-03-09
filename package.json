@@ -33,7 +33,7 @@
     "clean": "rm -rf coverage",
     "readme": "mdp --force -v",
     "lint": "jshint . && jscs .",
-    "api": "mdapi ./*.js ./lib/*.js --level=2 --title=API",
+    "api": "mdapi index.js c.js ./lib/*.js --level=2 --title=API",
     "test": "NODE_env=test mocha ${SPEC:-test/spec}",
     "cover": "NODE_ENV=test istanbul cover _mocha -- ${SPEC:-test/spec}",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
@@ -67,7 +67,7 @@
         "language": "json"
       },
       {
-        "bin": "mdapi ./*.js lib/*.js --level=2 --title=API"
+        "bin": "mdapi index.js c.js lib/*.js --level=2 --title=API"
       },
       {
         "inc": [

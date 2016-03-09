@@ -1,6 +1,9 @@
-// C family comment blocks
-module.exports = [
-  {
+/**
+ *  Patterns for C style comment blocks.
+ *
+ *  @module C
+ */
+var multi = {
     start: function(line) {
       return /\/\*\*/.exec(line);
     },
@@ -23,19 +26,23 @@ module.exports = [
       }) 
     },
     last: true
-  },
-  {
-    start: function(line) {
-      return /\/\//.exec(line);
-    },
-    end: function(line) {
-      return !/\/\//.exec(line);
-    },
-    strip: function(lines) {
-      return lines.map(function(line) {
-        return line.replace(/^\s*\/\//, '');
-      }) 
-    },
-    last: false
   }
+  , single = {
+      start: function(line) {
+        return /\/\//.exec(line);
+      },
+      end: function(line) {
+        return !/\/\//.exec(line);
+      },
+      strip: function(lines) {
+        return lines.map(function(line) {
+          return line.replace(/^\s*\/\//, '');
+        }) 
+      },
+      last: false
+    };
+
+module.exports = [
+  multi,
+  single
 ]
