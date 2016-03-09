@@ -1,8 +1,12 @@
 // C family comment blocks
-module.exports = {
-  multiline: {
+module.exports = [
+  {
     start: function(line) {
-      return /\/\*\*/.test(line);
+      var match = /\/\*\*/.exec(line);
+      if(match) {
+        return line.substr(match.index);
+      }
+      return match;
     },
     end: function(line) {
       return /\*\//.test(line);
@@ -24,7 +28,7 @@ module.exports = {
     },
     last: true
   },
-  block: {
+  {
     start: function(line) {
       return /^[^\/]*\/\//.test(line);
     },
@@ -38,4 +42,4 @@ module.exports = {
     },
     last: false
   }
-}
+]
