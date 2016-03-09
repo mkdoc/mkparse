@@ -2,7 +2,6 @@ var parser = require('../index')
   , json = Boolean(~process.argv.indexOf('--json'))
   , opts = {dotted: true}
   , stream = parser.load(process.argv[2], opts);
-  //, stream = parser.parse('/**foo*/', opts);
 
 if(!json) {
   stream.on('comment', function(comment) {
