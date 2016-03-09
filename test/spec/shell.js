@@ -13,7 +13,7 @@ describe('cparse:', function() {
     })
 
     stream.on('finish', function() {
-      expect(comments.length).to.eql(2);
+      expect(comments.length).to.eql(3);
 
       expect(comments[0].description).to.eql('File description');
       expect(comments[0].tags.length).to.eql(1);
@@ -29,6 +29,8 @@ describe('cparse:', function() {
       expect(comments[1].tags[1].id).to.eql('param');
       expect(comments[1].tags[1].name).to.eql('1');
       expect(comments[1].tags[1].type).to.eql('String');
+
+      expect(comments[2].description).to.eql('Inline comment');
       done();
     })
   });

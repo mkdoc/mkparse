@@ -11,7 +11,7 @@
 # @param {String} 1 Error message
 ################################################################################
 error() {
-  echo "$1";
+  echo "$1"; # Inline comment
 }
 
 error "not enough arguments";
