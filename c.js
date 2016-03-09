@@ -28,30 +28,40 @@ function c(opts) {
 
 function multi(opts) {
   opts = opts || {};
-  var pattern = opts.greedy ? /\/\*/ : /\/\*\*/;
+  var start = opts.greedy ? /\/\*/ : /\/\*\*/
+    , end = opts.end instanceof RegExp ? opts.end : /\*\//
+    , close = opts.close instanceof RegExp ? opts.close : /\*+\//
+    , strip = opts.strip instanceof RegExp ? opts.strip : /^\s*\*([^\/]?)/
+    , last = opts.last !== undefined ? opts.last : true;
+
+  // override start pattern
+  if(opts.start instanceof RegExp) {
+    start = opts.start; 
+  }
+
   return {
     start: function(line) {
-      return pattern.exec(line);
+      return start.exec(line);
     },
     end: function(line) {
-      return /\*\//.exec(line);
+      return end.exec(line);
     },
     strip: function(lines) {
       return lines.map(function(line) {
 
         // this catchs opening declarations: '/**'
-        line = line.replace(pattern, '');
+        line = line.replace(start, '');
 
         // this catches the close tag: `*/`, should come before pattern below!
-        line = line.replace(/\*+\//, '');
+        line = line.replace(close, '');
 
         // and lines prefixed with ` *`
-        line = line.replace(/^\s*\*([^\/]?)/, '$1');
+        line = line.replace(strip, '$1');
 
         return line;
       }) 
     },
-    last: true
+    last: last
   }
 }
 
