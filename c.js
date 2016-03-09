@@ -9,7 +9,16 @@
  *
  *  The strip function is passed an array of lines for the entire comment and 
  *  should remove comment start, end and intermediate markup.
- *  
+ *
+ *  By default recognises continuous lines with `//` comments and terminated 
+ *  multi-line comments starting with `/**`.
+ *
+ *  To include `/*` comments as well set the `greedy` option:
+ *
+ *  ```javascript
+ *  {multi: {greedy: true}
+ *  ```
+ *
  *  @function c
  *  @param {Object} [opts] processing options.
  *
