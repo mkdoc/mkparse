@@ -1,8 +1,3 @@
-/**
- *  Patterns for C style comment blocks.
- *
- *  @module C
- */
 var multi = {
     start: function(line) {
       return /\/\*\*/.exec(line);
@@ -43,9 +38,9 @@ var multi = {
     };
 
 /**
- *  Creates an array of language rules.
+ *  Creates an array of language rules for the C family of languages.
  *  
- *  @function rules
+ *  @function c
  *  @param {Object} [opts] processing options.
  *
  *  @returns list of language rules.
