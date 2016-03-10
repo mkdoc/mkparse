@@ -7,7 +7,7 @@ function assert(comments) {
   expect(comments[0].description).to.eql('File description');
   expect(comments[0].tags.length).to.eql(1);
   expect(comments[0].tags[0].id).to.eql('file');
-  expect(comments[0].tags[0].name).to.eql('shell.sh');
+  expect(comments[0].tags[0].name).to.eql('spec.sh');
 
 
   expect(comments[1].description).to.eql('Print an error message');
@@ -25,7 +25,7 @@ function assert(comments) {
 describe('cparse:', function() {
 
   it('should use shell language', function(done) {
-    var source = 'test/fixtures/shell.sh'
+    var source = 'test/fixtures/spec.sh'
       , stream = parse.load(source, {rules: require('../../lang/shell')})
       , comments = [];
 
@@ -40,7 +40,7 @@ describe('cparse:', function() {
   });
 
   it('should use shell language w/ options', function(done) {
-    var source = 'test/fixtures/shell.sh'
+    var source = 'test/fixtures/spec.sh'
       , stream = parse.load(
           source, {
             rules: require('../../lang/shell'),
