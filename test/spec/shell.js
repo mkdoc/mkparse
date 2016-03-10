@@ -5,7 +5,7 @@ describe('cparse:', function() {
 
   it('should use shell language', function(done) {
     var source = 'test/fixtures/shell.sh'
-      , stream = parse.load(source, {rules: require('../../shell')})
+      , stream = parse.load(source, {rules: require('../../lang/shell')})
       , comments = [];
 
     stream.on('comment', function(comment) {
