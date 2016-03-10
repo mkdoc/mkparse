@@ -29,6 +29,8 @@ Table of Contents
       * [shell](#shell)
         * [Options](#options-5)
       * [toml](#toml)
+      * [vim](#vim)
+        * [Options](#options-6)
       * [yaml](#yaml)
     * [Comment](#comment)
     * [Parser](#parser)
@@ -605,6 +607,25 @@ See the [shell language](#shell).
 Returns list of language rules.
 
 * `opts` Object processing options.
+
+#### vim
+
+```javascript
+vim([opts])
+```
+
+Creates an array of language rules for vim files.
+
+Recognises continuous blocks of lines beginning with `"`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `mark` RegExp sub pattern.
+* `trail` RegExp pattern to strip trailing meta characters.
 
 #### yaml
 
