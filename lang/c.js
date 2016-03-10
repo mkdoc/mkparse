@@ -25,7 +25,7 @@
  *  {multi: {greedy: true}
  *  ```
  *
- *  @function defaults
+ *  @function c
  *  @param {Object} [opts] processing options.
  *
  *  @option {Object} multi multi-line rule configuration.

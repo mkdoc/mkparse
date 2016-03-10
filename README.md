@@ -10,16 +10,19 @@ Table of Contents
     * [load](#load)
     * [parse](#parse)
     * [Language](#language)
-      * [defaults](#defaults)
+      * [c](#c)
         * [Options](#options)
       * [#multi](#multi)
         * [Options](#options-1)
       * [#single](#single)
         * [Options](#options-2)
       * [conf](#conf)
+      * [ini](#ini)
+        * [Options](#options-3)
+      * [javascript](#javascript)
       * [properties](#properties)
       * [shell](#shell)
-        * [Options](#options-3)
+        * [Options](#options-4)
       * [toml](#toml)
       * [yaml](#yaml)
     * [Comment](#comment)
@@ -338,10 +341,10 @@ return the `exec` match for the pattern.
 The strip function is passed an array of lines for the entire comment and
 should remove comment meta characters from all lines.
 
-#### defaults
+#### c
 
 ```javascript
-defaults([opts])
+c([opts])
 ```
 
 Creates an array of language rules for the C family of languages.
@@ -424,6 +427,42 @@ Creates an array of language rules for conf files.
 Recognises continuous blocks of lines beginning with `#`.
 
 See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### ini
+
+```javascript
+ini([opts])
+```
+
+Creates an array of language rules for ini files.
+
+Recognises continuous blocks of lines beginning with `;`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `mark` RegExp sub pattern.
+* `trail` RegExp pattern to strip trailing meta characters.
+
+#### javascript
+
+```javascript
+javascript([opts])
+```
+
+Creates an array of language rules for javascript files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [c language](#c).
 
 Returns list of language rules.
 
