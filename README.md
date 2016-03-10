@@ -9,8 +9,8 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
-    * [actionscript](#actionscript)
     * [Language](#language)
+      * [actionscript](#actionscript)
       * [c](#c)
         * [Options](#options)
       * [#multi](#multi)
@@ -343,7 +343,22 @@ Returns the parser stream.
 * `opts` Object processing options.
 * `cb` Function callback function.
 
-### actionscript
+### Language
+
+Collection of language packs.
+
+Default language pack used is the [c language](#c).
+
+A language rule is an object containing the `open`, `close` and `strip`
+functions.
+
+The open and close functions are passed the current line and should
+return the `exec` match for the pattern.
+
+The strip function is passed an array of lines for the entire comment and
+should remove comment meta characters from all lines.
+
+#### actionscript
 
 ```javascript
 actionscript([opts])
@@ -359,19 +374,6 @@ See the [c language](#c).
 Returns list of language rules.
 
 * `opts` Object processing options.
-
-### Language
-
-Default language pack for the C family.
-
-A language rule is an object containing the `open`, `close` and `strip`
-functions.
-
-The open and close functions are passed the current line and should
-return the `exec` match for the pattern.
-
-The strip function is passed an array of lines for the entire comment and
-should remove comment meta characters from all lines.
 
 #### c
 
