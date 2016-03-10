@@ -5,7 +5,7 @@ var lang = require('./c');
  *
  *  Recognises continuous blocks of lines beginning with `#`.
  *
- *  @module {function} shell
+ *  @function shell
  *  @param {Object} [opts] processing options.
  *
  *  @option {RegExp} mark sub pattern.

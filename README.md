@@ -9,14 +9,19 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
-    * [defaults](#defaults)
-      * [defaults](#defaults-1)
+    * [Language](#language)
+      * [defaults](#defaults)
         * [Options](#options)
       * [#multi](#multi)
         * [Options](#options-1)
       * [#single](#single)
         * [Options](#options-2)
-    * [shell](#shell)
+      * [conf](#conf)
+      * [properties](#properties)
+      * [shell](#shell)
+        * [Options](#options-3)
+      * [toml](#toml)
+      * [yaml](#yaml)
     * [Comment](#comment)
     * [Parser](#parser)
       * [.stringify](#stringify)
@@ -320,14 +325,14 @@ Returns the parser stream.
 * `opts` Object processing options.
 * `cb` Function callback function.
 
-### defaults
+### Language
 
 Default language pack for the C family.
 
 A language rule is an object containing the `open`, `close` and `strip`
 functions.
 
-The start and end functions are passed the current line and should
+The open and close functions are passed the current line and should
 return the `exec` match for the pattern.
 
 The strip function is passed an array of lines for the entire comment and
@@ -408,11 +413,88 @@ Returns single-line language rule.
 * `close` Function override default close function.
 * `strip` Function override default strip function.
 
-### shell
+#### conf
 
-Creates an array of language rules for shell and configuration files.
+```javascript
+conf([opts])
+```
+
+Creates an array of language rules for conf files.
 
 Recognises continuous blocks of lines beginning with `#`.
+
+See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### properties
+
+```javascript
+properties([opts])
+```
+
+Creates an array of language rules for Java properties files.
+
+Recognises continuous blocks of lines beginning with `#`.
+
+See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### shell
+
+```javascript
+shell([opts])
+```
+
+Creates an array of language rules for shell files.
+
+Recognises continuous blocks of lines beginning with `#`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `mark` RegExp sub pattern.
+* `trail` RegExp pattern to strip trailing meta characters.
+
+#### toml
+
+```javascript
+toml([opts])
+```
+
+Creates an array of language rules for TOML files.
+
+Recognises continuous blocks of lines beginning with `#`.
+
+See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### yaml
+
+```javascript
+yaml([opts])
+```
+
+Creates an array of language rules for YAML files.
+
+Recognises continuous blocks of lines beginning with `#`.
+
+See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
 
 ### Comment
 
