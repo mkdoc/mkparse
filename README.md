@@ -9,6 +9,7 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
+    * [actionscript](#actionscript)
     * [Language](#language)
       * [c](#c)
         * [Options](#options)
@@ -19,10 +20,13 @@ Table of Contents
       * [conf](#conf)
       * [ini](#ini)
         * [Options](#options-3)
+      * [java](#java)
       * [javascript](#javascript)
       * [properties](#properties)
-      * [shell](#shell)
+      * [ruby](#ruby)
         * [Options](#options-4)
+      * [shell](#shell)
+        * [Options](#options-5)
       * [toml](#toml)
       * [yaml](#yaml)
     * [Comment](#comment)
@@ -65,7 +69,7 @@ var cparse = require('cparse')
   , stream = cparse.parse('/**Compact comment*/');
 stream.on('comment', function(comment) {
   console.dir(comment);
-}
+});
 ```
 
 Load and parse file contents:
@@ -75,7 +79,7 @@ var cparse = require('cparse')
   , stream = cparse.load('index.js');
 stream.on('comment', function(comment) {
   console.dir(comment);
-}
+});
 ```
 
 Parse and write comment data to file as newline delimited JSON:
@@ -85,6 +89,17 @@ var cparse = require('cparse')
   , fs = require('fs')
   , stream = cparse.load('index.js').stringify();
 stream.pipe(fs.createWriteStream('index-ast.json.log'));
+```
+
+Use a language pack:
+
+```javascript
+var cparse = require('cparse')
+  , stream = cparse.parse(
+      '# @file spec.rb', {rules: require('cparse/lang/ruby')});
+stream.on('comment', function(comment) {
+  console.dir(comment);
+});
 ```
 
 ## Input
@@ -328,6 +343,23 @@ Returns the parser stream.
 * `opts` Object processing options.
 * `cb` Function callback function.
 
+### actionscript
+
+```javascript
+actionscript([opts])
+```
+
+Creates an array of language rules for actionscript files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [c language](#c).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
 ### Language
 
 Default language pack for the C family.
@@ -451,6 +483,23 @@ Returns list of language rules.
 * `mark` RegExp sub pattern.
 * `trail` RegExp pattern to strip trailing meta characters.
 
+#### java
+
+```javascript
+java([opts])
+```
+
+Creates an array of language rules for java files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [c language](#c).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
 #### javascript
 
 ```javascript
@@ -483,6 +532,26 @@ See the [shell language](#shell).
 Returns list of language rules.
 
 * `opts` Object processing options.
+
+#### ruby
+
+```javascript
+ruby([opts])
+```
+
+Creates an array of language rules for ruby files.
+
+Recognises continuous blocks of lines beginning with `#`
+and `=begin`, `=end` multi-line comments.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `multi` Object multi-line rule configuration.
+* `single` Object single-line rule configuration.
 
 #### shell
 
