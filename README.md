@@ -24,6 +24,7 @@ Table of Contents
       * [java](#java)
       * [javascript](#javascript)
       * [properties](#properties)
+      * [python](#python)
       * [ruby](#ruby)
         * [Options](#options-4)
       * [shell](#shell)
@@ -548,6 +549,21 @@ Creates an array of language rules for Java properties files.
 Recognises continuous blocks of lines beginning with `#`.
 
 See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### python
+
+```javascript
+python([opts])
+```
+
+Creates an array of language rules for python files.
+
+Recognises continuous blocks of lines beginning with `#` and multi-line
+comments delimited with `"""`.
 
 Returns list of language rules.
 
