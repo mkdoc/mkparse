@@ -18,6 +18,7 @@ Table of Contents
       * [#single](#single)
         * [Options](#options-2)
       * [conf](#conf)
+      * [css](#css)
       * [ini](#ini)
         * [Options](#options-3)
       * [java](#java)
@@ -460,6 +461,22 @@ Creates an array of language rules for conf files.
 Recognises continuous blocks of lines beginning with `#`.
 
 See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### css
+
+```javascript
+css([opts])
+```
+
+Creates an array of language rules for css files.
+
+Recognises terminated multi-line comments starting with `/*`.
+
+See the [c language](#c).
 
 Returns list of language rules.
 
