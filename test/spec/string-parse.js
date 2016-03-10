@@ -1,4 +1,5 @@
-var parser = require('../../index');
+var expect = require('chai').expect
+  , parser = require('../../index');
 
 describe('cparse:', function() {
 
@@ -15,6 +16,16 @@ describe('cparse:', function() {
     }
     var stream = parser.parse('/**foo*/');
     stream.on('finish', complete);
+  });
+
+  it('should parse string w/ language pack (flush)', function(done) {
+    function complete(comment) {
+      expect(comment).to.be.an('object');
+      done(); 
+    }
+    var stream = parser.parse(
+      '# @file spec.rb', {rules: require('../../lang/ruby')});
+    stream.on('comment', complete);
   });
 
 });
