@@ -19,7 +19,7 @@ function python(opts) {
   // so that the close() function can use lastIndex 
   opts.multi.start = opts.multi.end = /"""/g;
   opts.multi.lead = /^\s*"+([^"]*)/;
-  return [].concat(shell(opts.single), lang.multi(opts.multi));
+  return shell(opts.single).concat(lang.multi(opts.multi));
 }
 
 module.exports = python;
