@@ -24,6 +24,7 @@ Table of Contents
         * [Options](#options-3)
       * [java](#java)
       * [javascript](#javascript)
+      * [markdown](#markdown)
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
@@ -550,6 +551,21 @@ Recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
 
 See the [c language](#c).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### markdown
+
+```javascript
+markdown([opts])
+```
+
+Creates an array of language rules for markdown files.
+
+Recognises multi-line comments started with `<!--` and terminated
+with `-->`.
 
 Returns list of language rules.
 
