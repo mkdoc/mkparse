@@ -111,7 +111,6 @@ function multi(opts) {
  *  @option {RegExp} end comment end pattern.
  *  @option {RegExp} lead remove leading meta characters that match.
  *  @option {RegExp} trail remove trailing meta characters that match.
- *  @option {Boolean} last extract description from the last line.
  *  @option {Function} open override default open function.
  *  @option {Function} close override default close function.
  *  @option {Function} strip override default strip function.
@@ -128,8 +127,7 @@ function single(opts) {
         ? opts.end : new RegExp(mark.source)
     , lead = opts.lead instanceof RegExp
         ? opts.strip : new RegExp('^\\s*' + mark.source)
-    , trail = opts.trail instanceof RegExp ? opts.trail: false
-    , last = opts.last !== undefined ? opts.last : false;
+    , trail = opts.trail instanceof RegExp ? opts.trail: false;
 
   function open(line) {
     return start.exec(line);
@@ -152,8 +150,7 @@ function single(opts) {
   return {
     open: opts.open instanceof Function ? opts.open : open,
     close: opts.close instanceof Function ? opts.close : close,
-    strip: opts.strip instanceof Function ? opts.strip : strip,
-    last: last
+    strip: opts.strip instanceof Function ? opts.strip : strip
   }
 }
 
