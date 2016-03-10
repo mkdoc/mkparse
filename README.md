@@ -19,6 +19,7 @@ Table of Contents
         * [Options](#options-2)
       * [conf](#conf)
       * [css](#css)
+      * [html](#html)
       * [ini](#ini)
         * [Options](#options-3)
       * [java](#java)
@@ -32,6 +33,7 @@ Table of Contents
       * [toml](#toml)
       * [vim](#vim)
         * [Options](#options-6)
+      * [xml](#xml)
       * [yaml](#yaml)
     * [Comment](#comment)
     * [Parser](#parser)
@@ -485,6 +487,21 @@ Returns list of language rules.
 
 * `opts` Object processing options.
 
+#### html
+
+```javascript
+html([opts])
+```
+
+Creates an array of language rules for HTML files.
+
+Recognises multi-line comments started with `<!--` and terminated
+with `-->`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
 #### ini
 
 ```javascript
@@ -642,6 +659,21 @@ Returns list of language rules.
 
 * `mark` RegExp sub pattern.
 * `trail` RegExp pattern to strip trailing meta characters.
+
+#### xml
+
+```javascript
+xml([opts])
+```
+
+Creates an array of language rules for XML files.
+
+Recognises multi-line comments started with `<!--` and terminated
+with `-->`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
 
 #### yaml
 
