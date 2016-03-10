@@ -1,7 +1,7 @@
 var lang = require('./c');
 
 /**
- *  Creates an array of language rules for shell and configuration files.
+ *  Creates an array of language rules for shell files.
  *
  *  Recognises continuous blocks of lines beginning with `#`.
  *
