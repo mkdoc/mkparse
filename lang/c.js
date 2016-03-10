@@ -10,7 +10,7 @@
  *  The strip function is passed an array of lines for the entire comment and 
  *  should remove comment meta characters from all lines.
  *
- *  @module defaults
+ *  @module language
  */
 
 /**

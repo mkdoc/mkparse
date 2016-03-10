@@ -1,4 +1,4 @@
-var lang = require('./defaults');
+var lang = require('./c');
 
 /**
  *  Creates an array of language rules for shell and configuration files.
