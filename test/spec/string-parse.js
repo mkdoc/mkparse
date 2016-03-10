@@ -28,4 +28,24 @@ describe('cparse:', function() {
     stream.on('comment', complete);
   });
 
+  it('should parse string w/ array of language packs', function(done) {
+    var comments = [];
+    function onComment(comment) {
+      expect(comment).to.be.an('object');
+      done(); 
+    }
+    function onComplete() {
+      expect(comments.length).to.eql(2);
+      done(); 
+    }
+    var stream = parser.parse(
+      '# @file spec.ini\n; @module spec',
+      {
+        rules: [require('../../lang/shell'), require('../../lang/ini')]
+      }
+    );
+    stream.on('comment', onComment);
+    stream.on('finish', onComplete);
+  });
+
 });

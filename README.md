@@ -445,7 +445,6 @@ Returns single-line language rule.
 * `end` RegExp comment end pattern.
 * `lead` RegExp remove leading meta characters that match.
 * `trail` RegExp remove trailing meta characters that match.
-* `last` Boolean extract description from the last line.
 * `open` Function override default open function.
 * `close` Function override default close function.
 * `strip` Function override default strip function.
