@@ -72,7 +72,7 @@ function multi(opts) {
   opts = opts || {};
   var start = opts.greedy ? /\/\*+/ : /\/\*\*+/
     , end = opts.end instanceof RegExp ? opts.end : /\*+\//
-    , lead = opts.lead instanceof RegExp ? opts.lead : /^\s*\*([^\/]?)/
+    , lead = opts.lead !== undefined ? opts.lead : /^\s*\*([^\/]?)/
     , last = opts.last !== undefined ? opts.last : true;
 
   // override start pattern
@@ -98,7 +98,9 @@ function multi(opts) {
       line = line.replace(end, '');
 
       // and lines prefixed with ` *`
-      line = line.replace(lead, '$1');
+      if(lead) {
+        line = line.replace(lead, '$1');
+      }
 
       return line;
     }) 
