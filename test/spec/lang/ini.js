@@ -1,5 +1,5 @@
 var expect = require('chai').expect
-  , parse = require('../../index');
+  , parse = require('../../../index');
 
 function assert(comments) {
 
@@ -20,9 +20,9 @@ function assert(comments) {
 describe('cparse:', function() {
 
   it('should use ini language', function(done) {
-    var source = 'test/fixtures/spec.ini'
+    var source = 'test/fixtures/lang/spec.ini'
       , stream = parse.load(
-          source, {rules: require('../../lang/ini')})
+          source, {rules: require('../../../lang/ini')})
       , comments = [];
 
     stream.on('comment', function(comment) {
@@ -36,10 +36,10 @@ describe('cparse:', function() {
   });
 
   it('should use ini language w/ options', function(done) {
-    var source = 'test/fixtures/spec.ini'
+    var source = 'test/fixtures/lang/spec.ini'
       , stream = parse.load(
           source, {
-            rules: require('../../lang/ini'),
+            rules: require('../../../lang/ini'),
             options: {mark: /;+/, trail: /\s*;+.*$/}})
       , comments = [];
 

@@ -1,5 +1,5 @@
 var expect = require('chai').expect
-  , parse = require('../../index');
+  , parse = require('../../../index');
 
 function assert(comments) {
   expect(comments.length).to.eql(3);
@@ -25,8 +25,8 @@ function assert(comments) {
 describe('cparse:', function() {
 
   it('should use shell language', function(done) {
-    var source = 'test/fixtures/spec.sh'
-      , stream = parse.load(source, {rules: require('../../lang/shell')})
+    var source = 'test/fixtures/lang/spec.sh'
+      , stream = parse.load(source, {rules: require('../../../lang/shell')})
       , comments = [];
 
     stream.on('comment', function(comment) {
@@ -40,10 +40,10 @@ describe('cparse:', function() {
   });
 
   it('should use shell language w/ options', function(done) {
-    var source = 'test/fixtures/spec.sh'
+    var source = 'test/fixtures/lang/spec.sh'
       , stream = parse.load(
           source, {
-            rules: require('../../lang/shell'),
+            rules: require('../../../lang/shell'),
             options: {mark: /#+/, trail: /\s*#+.*$/}})
       , comments = [];
 
