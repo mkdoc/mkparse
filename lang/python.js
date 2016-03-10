@@ -14,9 +14,12 @@ var lang = require('./c')
  */
 function python(opts) {
   opts = opts || {};
-  opts.multiple = opts.multiple || {};
-  opts.multiple.start = opts.multiple.end = '"""';
-  return [shell(opts.single), lang.multiple(opts.multiple)];
+  opts.multi = opts.multi || {};
+  // must use global flag with start and end the same
+  // so that the close() function can use lastIndex 
+  opts.multi.start = opts.multi.end = /"""/g;
+  opts.multi.lead = /^\s*"+([^"]*)/;
+  return [].concat(shell(opts.single), lang.multi(opts.multi));
 }
 
 module.exports = python;

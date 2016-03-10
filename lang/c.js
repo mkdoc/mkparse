@@ -69,7 +69,13 @@ function multi(opts) {
     return start.exec(line);
   }
 
-  function close(line) {
+  function close(line, match) {
+    end.lastIndex = 0;
+    var index;
+    if(match) {
+      index = match.index + match[0].length; 
+    }
+    end.lastIndex = index;
     return end.exec(line);
   }
 
