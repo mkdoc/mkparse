@@ -411,7 +411,9 @@ Defines the patterns and functions that perform the tag parsing.
 Create a custom tag definition if you wanted to use an alternative
 syntax or prefer something other than `@` as the tag identifier.
 
-The generic syntax for tags is:
+The generic syntax for tags is: `@id {type[=value]} name description`.
+
+Which when given:
 
 ```
 
