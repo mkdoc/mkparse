@@ -35,6 +35,7 @@ Table of Contents
         * [Options](#options-4)
       * [ini](#ini)
         * [Options](#options-5)
+      * [jade](#jade)
       * [java](#java)
       * [javascript](#javascript)
       * [markdown](#markdown)
@@ -673,6 +674,20 @@ Returns list of language rules.
 
 * `mark` RegExp sub pattern.
 * `trail` RegExp pattern to strip trailing meta characters.
+
+#### jade
+
+```javascript
+jade([opts])
+```
+
+Creates an array of language rules for jade files.
+
+Recognises continuous blocks starting with `//-` or `//`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
 
 #### java
 
