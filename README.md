@@ -12,14 +12,16 @@ Table of Contents
     * [Language](#language)
       * [actionscript](#actionscript)
       * [c](#c)
+      * [conf](#conf)
+      * [cpp](#cpp)
+      * [css](#css)
+      * [html](#html)
+      * [defaults](#defaults)
         * [Options](#options)
       * [#multi](#multi)
         * [Options](#options-1)
       * [#single](#single)
         * [Options](#options-2)
-      * [conf](#conf)
-      * [css](#css)
-      * [html](#html)
       * [ini](#ini)
         * [Options](#options-3)
       * [java](#java)
@@ -376,7 +378,7 @@ Creates an array of language rules for actionscript files.
 Recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
 
-See the [c language](#c).
+See the [default settings](#defaults).
 
 Returns list of language rules.
 
@@ -388,7 +390,87 @@ Returns list of language rules.
 c([opts])
 ```
 
-Creates an array of language rules for the C family of languages.
+Creates an array of language rules for C files.
+
+Recognises terminated multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### conf
+
+```javascript
+conf([opts])
+```
+
+Creates an array of language rules for conf files.
+
+Recognises continuous blocks of lines beginning with `#`.
+
+See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### cpp
+
+```javascript
+cpp([opts])
+```
+
+Creates an array of language rules for C++ files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### css
+
+```javascript
+css([opts])
+```
+
+Creates an array of language rules for css files.
+
+Recognises terminated multi-line comments starting with `/*`.
+
+See the [c language](#c).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### html
+
+```javascript
+html([opts])
+```
+
+Creates an array of language rules for HTML files.
+
+Recognises multi-line comments started with `<!--` and terminated
+with `-->`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### defaults
+
+```javascript
+defaults([opts])
+```
+
+Creates the default language rules for the C family of languages.
 
 By default recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
@@ -456,53 +538,6 @@ Returns single-line language rule.
 * `close` Function override default close function.
 * `strip` Function override default strip function.
 
-#### conf
-
-```javascript
-conf([opts])
-```
-
-Creates an array of language rules for conf files.
-
-Recognises continuous blocks of lines beginning with `#`.
-
-See the [shell language](#shell).
-
-Returns list of language rules.
-
-* `opts` Object processing options.
-
-#### css
-
-```javascript
-css([opts])
-```
-
-Creates an array of language rules for css files.
-
-Recognises terminated multi-line comments starting with `/*`.
-
-See the [c language](#c).
-
-Returns list of language rules.
-
-* `opts` Object processing options.
-
-#### html
-
-```javascript
-html([opts])
-```
-
-Creates an array of language rules for HTML files.
-
-Recognises multi-line comments started with `<!--` and terminated
-with `-->`.
-
-Returns list of language rules.
-
-* `opts` Object processing options.
-
 #### ini
 
 ```javascript
@@ -533,7 +568,7 @@ Creates an array of language rules for java files.
 Recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
 
-See the [c language](#c).
+See the [default settings](#defaults).
 
 Returns list of language rules.
 
@@ -550,7 +585,7 @@ Creates an array of language rules for javascript files.
 Recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
 
-See the [c language](#c).
+See the [default settings](#defaults).
 
 Returns list of language rules.
 

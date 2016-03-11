@@ -4,11 +4,11 @@
  *  Recognises continuous lines with `//` comments and terminated 
  *  multi-line comments starting with `/**`.
  *
- *  See the [c language](#c).
+ *  See the [default settings](#defaults).
  *
  *  @function actionscript
  *  @param {Object} [opts] processing options.
  *
  *  @returns list of language rules.
  */
-module.exports = require('./c');
+module.exports = require('./index.js');

@@ -1,4 +1,4 @@
-var lang = require('./c');
+var lang = require('./index.js');
 
 /**
  *  Creates an array of language rules for ini files.

@@ -1,12 +1,12 @@
 /**
- *  Creates an array of language rules for javascript files.
+ *  Creates an array of language rules for C++ files.
  *
  *  Recognises continuous lines with `//` comments and terminated 
  *  multi-line comments starting with `/**`.
  *
  *  See the [default settings](#defaults).
  *
- *  @function javascript
+ *  @function cpp
  *  @param {Object} [opts] processing options.
  *
  *  @returns list of language rules.

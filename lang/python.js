@@ -1,4 +1,4 @@
-var lang = require('./c')
+var lang = require('./index.js')
   , shell = require('./shell');
 
 /**
