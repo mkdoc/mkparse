@@ -6,6 +6,8 @@ var lang = require('./index.js');
  *  Recognises multi-line comments started with `<!---` and terminated 
  *  with `-->`.
  *
+ *  See the [pandoc website](http://pandoc.org).
+ *
  *  @function pandoc
  *  @param {Object} [opts] processing options.
  *

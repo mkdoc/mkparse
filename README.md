@@ -38,6 +38,7 @@ Table of Contents
       * [java](#java)
       * [javascript](#javascript)
       * [markdown](#markdown)
+      * [pandoc](#pandoc)
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
@@ -696,6 +697,23 @@ Creates an array of language rules for markdown files.
 
 Recognises multi-line comments started with `<!--` and terminated
 with `-->`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### pandoc
+
+```javascript
+pandoc([opts])
+```
+
+Creates an array of language rules for pandoc files.
+
+Recognises multi-line comments started with `<!---` and terminated
+with `-->`.
+
+See the [pandoc website](http://pandoc.org).
 
 Returns list of language rules.
 
