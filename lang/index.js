@@ -126,12 +126,12 @@ function multi(opts) {
 function single(opts) {
   opts = opts || {};
 
-  var mark = opts.mark ? opts.mark : /\/\//
-    , start = opts.start instanceof RegExp
+  var mark = (opts.mark instanceof RegExp) ? opts.mark : /\/\//
+    , start = (opts.start instanceof RegExp)
         ? opts.start : new RegExp(mark.source)
-    , end = opts.end = opts.end instanceof RegExp
+    , end = (opts.end instanceof RegExp)
         ? opts.end : new RegExp(mark.source)
-    , lead = opts.lead instanceof RegExp
+    , lead = (opts.lead instanceof RegExp)
         ? opts.strip : new RegExp('^\\s*' + mark.source)
     , trail = opts.trail instanceof RegExp ? opts.trail: false;
 

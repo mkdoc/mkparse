@@ -479,7 +479,7 @@ c([opts])
 
 Creates an array of language rules for C files.
 
-Recognises terminated multi-line comments starting with `/**`.
+Recognises terminated multi-line comments starting with `/*`.
 
 See the [default settings](#defaults).
 
@@ -489,7 +489,7 @@ Returns list of language rules.
 
 ##### Options
 
-* `greedy` Boolean include `/*` comments.
+* `greedy` Boolean=true disable to use `/**` comments only.
 
 #### conf
 
