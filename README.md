@@ -724,8 +724,8 @@ pandoc([opts])
 
 Creates an array of language rules for pandoc files.
 
-Recognises multi-line comments started with `<!---` and terminated
-with `-->`.
+Recognises multi-line comments starting with `<!--` or `<!---` and
+terminated with `-->`, extends the [html language](#html).
 
 See the [pandoc website](http://pandoc.org).
 

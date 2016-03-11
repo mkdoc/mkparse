@@ -1,4 +1,4 @@
-<!---
+<!--
   File description
 
   @file spec.pandoc.md

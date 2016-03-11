@@ -1,10 +1,11 @@
-var lang = require('./index.js');
+var lang = require('./index.js')
+  , html = require('./html');
 
 /**
  *  Creates an array of language rules for pandoc files.
  *
- *  Recognises multi-line comments started with `<!---` and terminated 
- *  with `-->`.
+ *  Recognises multi-line comments starting with `<!--` or `<!---` and 
+ *  terminated with `-->`, extends the [html language](#html).
  *
  *  See the [pandoc website](http://pandoc.org).
  *
@@ -18,7 +19,8 @@ function pandoc(opts) {
   opts.start = /<!---/;
   opts.end = /-->/;
   opts.lead = false;
-  return [lang.multi(opts)];
+  // longer pattern should come first
+  return [lang.multi(opts)].concat(html());
 }
 
 module.exports = pandoc;
