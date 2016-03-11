@@ -13,6 +13,7 @@ Table of Contents
     * [Parser](#parser)
       * [.stringify](#stringify)
     * [Tag](#tag)
+      * [rule](#rule)
       * [pattern](#pattern)
       * [optional](#optional)
       * [whitespace](#whitespace)
@@ -413,9 +414,21 @@ syntax or prefer something other than `@` as the tag identifier.
 
 The generic syntax for tags is: `@id {type[=value]} name description`.
 
-Which when given:
+Which when given: `@property {String=tmpfs} [nickname] user` will expand
+to a tag object such as:
 
+```javascript
+{
+id: 'property',
+type: 'String',
+value: 'tmpfs',
+name: 'nickname',
+description: 'user',
+optional: true
+}
 ```
+
+See the [tag parser](#parser).
 
 #### rule
 
