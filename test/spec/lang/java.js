@@ -7,7 +7,7 @@ function assert(comments) {
   expect(comments[0].description).to.eql('File description');
   expect(comments[0].tags.length).to.eql(1);
   expect(comments[0].tags[0].id).to.eql('file');
-  expect(comments[0].tags[0].name).to.eql('spec.as');
+  expect(comments[0].tags[0].name).to.eql('spec.java');
 
   expect(comments[1].description).to.eql('Print an error message');
   expect(comments[1].tags.length).to.eql(2);
@@ -23,10 +23,9 @@ function assert(comments) {
 
 describe('cparse:', function() {
 
-  it('should use actionscript language', function(done) {
-    var source = 'test/fixtures/lang/spec.as'
-      , stream = parse.load(
-          source, {rules: require('../../../lang/actionscript')})
+  it('should use java language', function(done) {
+    var source = 'test/fixtures/lang/spec.java'
+      , stream = parse.load(source, {rules: require('../../../lang/java')})
       , comments = [];
 
     stream.on('comment', function(comment) {

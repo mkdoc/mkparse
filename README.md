@@ -201,6 +201,7 @@ const foo = 'bar';  // @private {String} foo private constant
       "line": 12,
       "source": "@public {function} getNinja super fly stuff.",
       "name": "getNinja",
+      "value": "",
       "description": "super fly stuff."
     },
     {
@@ -210,6 +211,7 @@ const foo = 'bar';  // @private {String} foo private constant
       "line": 13,
       "source": "@param {Object} [opts] configuration options.",
       "name": "opts",
+      "value": "",
       "description": "configuration options."
     },
     {
@@ -219,6 +221,7 @@ const foo = 'bar';  // @private {String} foo private constant
       "line": 14,
       "source": "@returns {Object} a command line ninja.",
       "name": "a",
+      "value": "",
       "description": "command line ninja."
     }
   ]
@@ -239,6 +242,7 @@ const foo = 'bar';  // @private {String} foo private constant
       "line": 17,
       "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
       "name": "",
+      "value": "",
       "description": "var x = 'y'\n  , v = 'w';"
     }
   ]
@@ -266,6 +270,7 @@ const foo = 'bar';  // @private {String} foo private constant
           "line": 24,
           "source": " @object point.x",
           "name": "x",
+          "value": "",
           "description": "",
           "tags": [
             {
@@ -282,6 +287,7 @@ const foo = 'bar';  // @private {String} foo private constant
                   "line": 25,
                   "source": " @object point.x.y.z \n",
                   "name": "z",
+                  "value": "",
                   "description": ""
                 }
               ]
@@ -308,6 +314,7 @@ const foo = 'bar';  // @private {String} foo private constant
       "line": 28,
       "source": "@param {Object} opts request options ",
       "name": "opts",
+      "value": "",
       "description": "request options"
     }
   ]
@@ -328,6 +335,7 @@ const foo = 'bar';  // @private {String} foo private constant
       "line": 30,
       "source": "@private {String} foo private constant",
       "name": "foo",
+      "value": "",
       "description": "private constant"
     }
   ]
