@@ -9,6 +9,15 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
+    * [Comment](#comment)
+    * [Parser](#parser)
+      * [.stringify](#stringify)
+    * [Tag](#tag)
+      * [rule](#rule)
+      * [pattern](#pattern)
+      * [optional](#optional)
+      * [whitespace](#whitespace)
+      * [parse](#parse-1)
     * [Language](#language)
       * [actionscript](#actionscript)
       * [c](#c)
@@ -38,15 +47,6 @@ Table of Contents
         * [Options](#options-6)
       * [xml](#xml)
       * [yaml](#yaml)
-    * [Comment](#comment)
-    * [Parser](#parser)
-      * [.stringify](#stringify)
-    * [Tag](#tag)
-      * [rule](#rule)
-      * [pattern](#pattern)
-      * [optional](#optional)
-      * [whitespace](#whitespace)
-      * [parse](#parse-1)
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
@@ -351,6 +351,91 @@ Returns the parser stream.
 * `buffer` String|Buffer input data.
 * `opts` Object processing options.
 * `cb` Function callback function.
+
+### Comment
+
+Parse comments from an array of lines.
+
+When a comment is parsed an object is pushed to the stream
+with an array of `lines`, the `rule` for the comment and the
+`start` and `end` line numbers.
+
+### Parser
+
+Comment and tag parser, parses comment description and tags.
+
+#### .stringify
+
+```javascript
+Parser.prototype.stringify(indent)
+```
+
+Creates a stream that transforms to newline-delimited JSON, the
+created stream is piped from this parser.
+
+Returns the stringify stream.
+
+* `indent` Number the number of spaces to indent the JSON.
+
+### Tag
+
+Defines the patterns and functions that perform the tag parsing.
+
+Create a custom tag definition if you wanted to use an alternative
+syntax or prefer something other than `@` as the tag identifier.
+
+See the [tag parser](#parser).
+
+#### rule
+
+```javascript
+RegExp rule
+```
+
+Pattern that collects tag lines.
+
+#### pattern
+
+```javascript
+RegExp pattern
+```
+
+Pattern that collects tag component parts.
+
+#### optional
+
+```javascript
+RegExp optional
+```
+
+Pattern that determines optionality.
+
+#### whitespace
+
+```javascript
+RegExp whitespace
+```
+
+Pattern that determines how to strip leading whitespace from
+lines.
+
+By default will match a single space or a tab character once, depending
+upon your comment style you should adjust this so that whitespace is
+preserved as intended.
+
+#### parse
+
+```javascript
+parse(line, tag)
+```
+
+Parses the component parts of a tag definition.
+
+This will add the `id`, `type`, `name` and `description`
+fields to the input `tag` argument.
+
+* `line` String current line being parsed.
+* `tag` Object target for parsed data.
 
 ### Language
 
@@ -741,91 +826,6 @@ See the [shell language](#shell).
 Returns list of language rules.
 
 * `opts` Object processing options.
-
-### Comment
-
-Parse comments from an array of lines.
-
-When a comment is parsed an object is pushed to the stream
-with an array of `lines`, the `rule` for the comment and the
-`start` and `end` line numbers.
-
-### Parser
-
-Comment and tag parser, parses comment description and tags.
-
-#### .stringify
-
-```javascript
-Parser.prototype.stringify(indent)
-```
-
-Creates a stream that transforms to newline-delimited JSON, the
-created stream is piped from this parser.
-
-Returns the stringify stream.
-
-* `indent` Number the number of spaces to indent the JSON.
-
-### Tag
-
-Defines the patterns and functions that perform the tag parsing.
-
-Create a custom tag definition if you wanted to use an alternative
-syntax or prefer something other than `@` as the tag identifier.
-
-See the [tag parser](#parser).
-
-#### rule
-
-```javascript
-RegExp rule
-```
-
-Pattern that collects tag lines.
-
-#### pattern
-
-```javascript
-RegExp pattern
-```
-
-Pattern that collects tag component parts.
-
-#### optional
-
-```javascript
-RegExp optional
-```
-
-Pattern that determines optionality.
-
-#### whitespace
-
-```javascript
-RegExp whitespace
-```
-
-Pattern that determines how to strip leading whitespace from
-lines.
-
-By default will match a single space or a tab character once, depending
-upon your comment style you should adjust this so that whitespace is
-preserved as intended.
-
-#### parse
-
-```javascript
-parse(line, tag)
-```
-
-Parses the component parts of a tag definition.
-
-This will add the `id`, `type`, `name` and `description`
-fields to the input `tag` argument.
-
-* `line` String current line being parsed.
-* `tag` Object target for parsed data.
 
 ## Developer
 
