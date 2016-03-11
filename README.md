@@ -114,6 +114,18 @@ stream.on('comment', function(comment) {
 });
 ```
 
+Combine language pack rules:
+
+```javascript
+var cparse = require('cparse')
+  , stream = cparse.parse(
+      '; ini style comment\n# shell style comment',
+      {rules: [require('cparse/lang/ini'), require('cparse/lang/shell')]});
+stream.on('comment', function(comment) {
+  console.dir(comment);
+});
+```
+
 ## Input
 
 ```javascript
