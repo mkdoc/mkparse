@@ -710,6 +710,8 @@ Creates an array of language rules for markdown files.
 Recognises multi-line comments started with `<!--` and terminated
 with `-->`.
 
+See the [html language](#html).
+
 Returns list of language rules.
 
 * `opts` Object processing options.
@@ -846,6 +848,8 @@ Creates an array of language rules for XML files.
 
 Recognises multi-line comments started with `<!--` and terminated
 with `-->`.
+
+See the [html language](#html).
 
 Returns list of language rules.
 

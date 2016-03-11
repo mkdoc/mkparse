@@ -4,6 +4,8 @@
  *  Recognises multi-line comments started with `<!--` and terminated 
  *  with `-->`.
  *
+ *  See the [html language](#html).
+ *
  *  @function markdown
  *  @param {Object} [opts] processing options.
  *
