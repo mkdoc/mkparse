@@ -41,6 +41,7 @@ Table of Contents
       * [markdown](#markdown)
       * [pandoc](#pandoc)
       * [php](#php)
+      * [pi](#pi)
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
@@ -769,6 +770,21 @@ Recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
 
 See the [default settings](#defaults).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### pi
+
+```javascript
+pi([opts])
+```
+
+Creates an array of language rules for SGML/XML processing instructions.
+
+Recognises multi-line comments started with `<?` and terminated
+with `?>`.
 
 Returns list of language rules.
 
