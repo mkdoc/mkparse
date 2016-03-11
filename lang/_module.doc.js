@@ -1,7 +1,7 @@
 /**
  *  Collection of language packs.
  *
- *  Default language pack used is the [c language](#c).
+ *  Default language pack used is the [cpp language](#cpp).
  *
  *  A language rule is an object containing the `open`, `close` and `strip` 
  *  functions.
