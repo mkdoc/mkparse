@@ -48,9 +48,11 @@ Table of Contents
         * [Options](#options-6)
       * [shell](#shell)
         * [Options](#options-7)
+      * [sql](#sql)
+        * [Options](#options-8)
       * [toml](#toml)
       * [vim](#vim)
-        * [Options](#options-8)
+        * [Options](#options-9)
       * [xml](#xml)
       * [yaml](#yaml)
   * [Developer](#developer)
@@ -859,6 +861,28 @@ Returns list of language rules.
 
 * `mark` RegExp sub pattern.
 * `trail` RegExp pattern to strip trailing meta characters.
+
+#### sql
+
+```javascript
+sql([opts])
+```
+
+Creates an array of language rules for SQL statements.
+
+Recognises terminated multi-line comments started with `/*` and
+continuous lines beginning with `--`.
+
+If the `mysql` option is given continuous lines beginning with `#` are
+also recognised.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `include` Boolean mysql specific comment rule.
 
 #### toml
 
