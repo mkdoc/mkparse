@@ -10,6 +10,8 @@ var lang = require('./index');
  *  @function c
  *  @param {Object} [opts] processing options.
  *
+ *  @option {Boolean} greedy include `/*` comments.
+ *
  *  @returns list of language rules.
  */
 function c(opts) {

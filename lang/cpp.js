@@ -9,6 +9,8 @@
  *  @function cpp
  *  @param {Object} [opts] processing options.
  *
+ *  @option {Boolean} greedy include `/*` comments.
+ *
  *  @returns list of language rules.
  */
 module.exports = require('./index.js');

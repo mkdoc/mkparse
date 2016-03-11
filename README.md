@@ -21,30 +21,32 @@ Table of Contents
     * [Language](#language)
       * [actionscript](#actionscript)
       * [c](#c)
+        * [Options](#options)
       * [conf](#conf)
       * [cpp](#cpp)
+        * [Options](#options-1)
       * [css](#css)
       * [html](#html)
       * [defaults](#defaults)
-        * [Options](#options)
-      * [#multi](#multi)
-        * [Options](#options-1)
-      * [#single](#single)
         * [Options](#options-2)
-      * [ini](#ini)
+      * [#multi](#multi)
         * [Options](#options-3)
+      * [#single](#single)
+        * [Options](#options-4)
+      * [ini](#ini)
+        * [Options](#options-5)
       * [java](#java)
       * [javascript](#javascript)
       * [markdown](#markdown)
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
-        * [Options](#options-4)
+        * [Options](#options-6)
       * [shell](#shell)
-        * [Options](#options-5)
+        * [Options](#options-7)
       * [toml](#toml)
       * [vim](#vim)
-        * [Options](#options-6)
+        * [Options](#options-8)
       * [xml](#xml)
       * [yaml](#yaml)
   * [Developer](#developer)
@@ -485,6 +487,10 @@ Returns list of language rules.
 
 * `opts` Object processing options.
 
+##### Options
+
+* `greedy` Boolean include `/*` comments.
+
 #### conf
 
 ```javascript
@@ -517,6 +523,10 @@ See the [default settings](#defaults).
 Returns list of language rules.
 
 * `opts` Object processing options.
+
+##### Options
+
+* `greedy` Boolean include `/*` comments.
 
 #### css
 
