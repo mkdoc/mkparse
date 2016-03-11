@@ -29,6 +29,7 @@ Table of Contents
       * [erlang](#erlang)
         * [Options](#options-2)
       * [go](#go)
+      * [groovy](#groovy)
       * [html](#html)
       * [defaults](#defaults)
         * [Options](#options-3)
@@ -617,6 +618,23 @@ go([opts])
 ```
 
 Creates an array of language rules for go files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### groovy
+
+```javascript
+groovy([opts])
+```
+
+Creates an array of language rules for groovy files.
 
 Recognises continuous lines with `//` comments and terminated
 multi-line comments starting with `/**`.
