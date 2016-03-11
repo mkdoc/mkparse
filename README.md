@@ -39,6 +39,7 @@ Table of Contents
       * [javascript](#javascript)
       * [markdown](#markdown)
       * [pandoc](#pandoc)
+      * [php](#php)
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
@@ -728,6 +729,23 @@ Recognises multi-line comments starting with `<!--` or `<!---` and
 terminated with `-->`, extends the [html language](#html).
 
 See the [pandoc website](http://pandoc.org).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### php
+
+```javascript
+php([opts])
+```
+
+Creates an array of language rules for php files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
 
 Returns list of language rules.
 
