@@ -26,6 +26,7 @@ Table of Contents
       * [cpp](#cpp)
         * [Options](#options-1)
       * [css](#css)
+      * [go](#go)
       * [html](#html)
       * [defaults](#defaults)
         * [Options](#options-2)
@@ -583,6 +584,23 @@ Creates an array of language rules for css files.
 Recognises terminated multi-line comments starting with `/*`.
 
 See the [c language](#c).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### go
+
+```javascript
+go([opts])
+```
+
+Creates an array of language rules for go files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
 
 Returns list of language rules.
 
