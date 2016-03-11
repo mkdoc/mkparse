@@ -22,6 +22,7 @@ Table of Contents
       * [actionscript](#actionscript)
       * [c](#c)
         * [Options](#options)
+      * [coffeescript](#coffeescript)
       * [conf](#conf)
       * [cpp](#cpp)
         * [Options](#options-1)
@@ -537,6 +538,21 @@ Returns list of language rules.
 ##### Options
 
 * `greedy` Boolean=true disable to use `/**` comments only.
+
+#### coffeescript
+
+```javascript
+coffeescript([opts])
+```
+
+Creates an array of language rules for coffeescript files.
+
+Recognises continuous blocks of lines beginning with `#` and multi-line
+comments delimited with `###`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
 
 #### conf
 
