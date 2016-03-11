@@ -51,6 +51,7 @@ Table of Contents
       * [sql](#sql)
         * [Options](#options-8)
       * [toml](#toml)
+      * [typescript](#typescript)
       * [vim](#vim)
         * [Options](#options-9)
       * [xml](#xml)
@@ -912,6 +913,23 @@ Creates an array of language rules for TOML files.
 Recognises continuous blocks of lines beginning with `#`.
 
 See the [shell language](#shell).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### typescript
+
+```javascript
+typescript([opts])
+```
+
+Creates an array of language rules for typescript files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
 
 Returns list of language rules.
 
