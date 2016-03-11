@@ -8,16 +8,12 @@ var lang = require('./index.js');
  *  @function erlang
  *  @param {Object} [opts] processing options.
  *
- *  @option {RegExp} mark sub pattern.
- *  @option {RegExp} trail pattern to strip trailing meta characters.
- *
  *  @returns list of language rules.
  */
 function erlang(opts) {
   opts = opts || {};
-  opts.mark = opts.mark ? opts.mark : /%+/;
-  opts.trail = opts.trail instanceof RegExp
-    ? opts.trail: new RegExp('\\s*' + opts.mark.source + '.*$');
+  opts.mark = /%+/;
+  opts.trail = new RegExp('\\s*' + opts.mark.source + '.*$');
   // single rule style for this language pack
   return [lang.single(opts)];
 }

@@ -27,18 +27,17 @@ Table of Contents
         * [Options](#options-1)
       * [css](#css)
       * [erlang](#erlang)
-        * [Options](#options-2)
       * [go](#go)
       * [groovy](#groovy)
       * [html](#html)
       * [defaults](#defaults)
-        * [Options](#options-3)
+        * [Options](#options-2)
       * [#multi](#multi)
-        * [Options](#options-4)
+        * [Options](#options-3)
       * [#single](#single)
-        * [Options](#options-5)
+        * [Options](#options-4)
       * [ini](#ini)
-        * [Options](#options-6)
+        * [Options](#options-5)
       * [jade](#jade)
       * [java](#java)
       * [javascript](#javascript)
@@ -49,15 +48,15 @@ Table of Contents
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
-        * [Options](#options-7)
+        * [Options](#options-6)
       * [shell](#shell)
-        * [Options](#options-8)
+        * [Options](#options-7)
       * [sql](#sql)
-        * [Options](#options-9)
+        * [Options](#options-8)
       * [toml](#toml)
       * [typescript](#typescript)
       * [vim](#vim)
-        * [Options](#options-10)
+        * [Options](#options-9)
       * [xml](#xml)
       * [yaml](#yaml)
   * [Developer](#developer)
@@ -605,11 +604,6 @@ Recognises continuous blocks of lines beginning with `%`.
 Returns list of language rules.
 
 * `opts` Object processing options.
-
-##### Options
-
-* `mark` RegExp sub pattern.
-* `trail` RegExp pattern to strip trailing meta characters.
 
 #### go
 
