@@ -7,12 +7,6 @@ Table of Contents
   * [Comments](#comments)
     * [Tags](#tags)
     * [Block](#block)
-  * [Developer](#developer)
-    * [Test](#test)
-    * [Cover](#cover)
-    * [Lint](#lint)
-    * [Clean](#clean)
-    * [Readme](#readme)
   * [License](#license)
 
 Comment Parser
@@ -189,48 +183,6 @@ Will result in two comments, whilst:
 ```
 
 Results in a single comment.
-
-## Developer
-
-### Test
-
-To run the test suite:
-
-```
-npm test
-```
-
-### Cover
-
-To generate code coverage run:
-
-```
-npm run cover
-```
-
-### Lint
-
-Run the source tree through [jshint](http://jshint.com) and [jscs](http://jscs.info):
-
-```
-npm run lint
-```
-
-### Clean
-
-Remove generated files:
-
-```
-npm run clean
-```
-
-### Readme
-
-To build the readme file from the partial definitions (requires [mdp](https://github.com/tmpfs/mdp)):
-
-```
-npm run readme
-```
 
 ## License
 

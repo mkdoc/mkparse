@@ -64,12 +64,7 @@
       },
       {
         "inc": [
-          "block.md"
-        ]
-      },
-      {
-        "inc": [
-          "developer.md",
+          "guide.md",
           "license.md"
         ]
       }
