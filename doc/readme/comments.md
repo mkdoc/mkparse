@@ -16,6 +16,4 @@ A comment consists of a multi-line description and optional tag annotations:
 // @name method
 ```
 
-See [EXAMPLE.md](/EXAMPLE.md) for sample input and output.
-
 All the following comments resolve to the same description with the default settings:
