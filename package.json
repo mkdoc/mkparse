@@ -31,7 +31,9 @@
   },
   "scripts": {
     "clean": "rm -rf coverage",
+    "docs": "npm run example && npm run readme",
     "readme": "mdp --force -v",
+    "example": "mdp --force -v -i doc/example.json -o EXAMPLE.md",
     "lint": "jshint . && jscs .",
     "api": "mkapi index.js ./lib/*.js ./lang/*.js --level=2 --title=API",
     "test": "NODE_env=test mocha ${SPEC:-test/spec/**}",
@@ -51,20 +53,15 @@
         "inc": [
           "introduction.md",
           "install.md",
-          "usage.md"
+          "usage.md",
+          "example.md"
         ]
       },
       {
-        "title": "Input",
-        "inc": "../../test/example.js",
+        "inc": "../../test/fixtures/comment-examples.js",
         "type": "code",
         "language": "javascript"
-      },
-      {
-        "title": "Output",
-        "bin": "INDENT=2 node test/spec test/example.js --json",
-        "type": "code",
-        "language": "json"
+        
       },
       {
         "bin": "mkapi index.js lib/*.js ./lang/*.js --level=2 --title=API"

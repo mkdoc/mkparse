@@ -1,0 +1,23 @@
+{
+  "title": "Comment Parser Example",
+  "pedantic": true,
+  "include": "doc/readme",
+  "require": "lib",
+  "links": "links.md",
+  "toc": "Table of Contents",
+  "base": "https://github.com/tmpfs/cparse",
+  "partial": [
+    {
+      "title": "Input",
+      "inc": "../../test/example.js",
+      "type": "code",
+      "language": "javascript"
+    },
+    {
+      "title": "Output",
+      "bin": "INDENT=2 node test/spec test/example.js --json",
+      "type": "code",
+      "language": "json"
+    }
+  ]
+}

@@ -4,8 +4,7 @@ Table of Contents
 * [Comment Parser](#comment-parser)
   * [Install](#install)
   * [Usage](#usage)
-  * [Input](#input)
-  * [Output](#output)
+  * [Example](#example)
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
@@ -142,226 +141,26 @@ stream.on('comment', function(comment) {
 });
 ```
 
-## Input
+## Example
+
+See [EXAMPLE.md](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) for input and output, all the following comments resolve to the same description with the default settings:
 
 ```javascript
-/**Short multi-line comment*/
+/** Comment description */
 
-/*
- *  Comment is ignored, single leading asterisk.
+/**
+ * Comment description
  */
 
-// Single-line comment
+/*************************
+ * Comment description   *
+ ************************/
 
-// 
-// Super fly
+// Comment description //
+
 //
-// @public {function} getNinja super fly stuff.
-// @param {Object} [opts] configuration options.
-// @returns {Object} a command line ninja.
-
-/**
- * @usage
- *
- * var x = 'y'
- *   , v = 'w';
- */
-
-/**
- *  @object point.x
- *  @object point.x.y.z
- */
-
-function request(url, opts /** @param {Object} opts request options */){}
-
-const foo = 'bar';  // @private {String} foo private constant
-```
-
-## Output
-
-```json
-{
-  "source": "/**Short multi-line comment*/",
-  "description": "Short multi-line comment",
-  "line": 1,
-  "pos": {
-    "start": 1,
-    "end": 1
-  },
-  "newline": true,
-  "tags": []
-}
-{
-  "source": "// Single-line comment",
-  "description": "Single-line comment",
-  "line": 7,
-  "pos": {
-    "start": 7,
-    "end": 7
-  },
-  "newline": true,
-  "tags": []
-}
-{
-  "source": "// \n// Super fly\n//\n// @public {function} getNinja super fly stuff.\n// @param {Object} [opts] configuration options.\n// @returns {Object} a command line ninja.",
-  "description": "Super fly",
-  "line": 9,
-  "pos": {
-    "start": 9,
-    "end": 14
-  },
-  "newline": true,
-  "tags": [
-    {
-      "id": "public",
-      "type": "function",
-      "optional": false,
-      "line": 12,
-      "source": "@public {function} getNinja super fly stuff.",
-      "name": "getNinja",
-      "value": "",
-      "description": "super fly stuff."
-    },
-    {
-      "id": "param",
-      "type": "Object",
-      "optional": true,
-      "line": 13,
-      "source": "@param {Object} [opts] configuration options.",
-      "name": "opts",
-      "value": "",
-      "description": "configuration options."
-    },
-    {
-      "id": "returns",
-      "type": "Object",
-      "optional": false,
-      "line": 14,
-      "source": "@returns {Object} a command line ninja.",
-      "name": "a",
-      "value": "",
-      "description": "command line ninja."
-    }
-  ]
-}
-{
-  "source": "/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */",
-  "description": "",
-  "line": 16,
-  "pos": {
-    "start": 16,
-    "end": 21
-  },
-  "newline": true,
-  "tags": [
-    {
-      "id": "usage",
-      "type": "",
-      "optional": false,
-      "line": 17,
-      "source": "@usage\n var x = 'y'\n   , v = 'w';\n \n",
-      "name": "",
-      "value": "",
-      "description": "var x = 'y'\n  , v = 'w';"
-    }
-  ]
-}
-{
-  "source": "/**\n *  @object point.x\n *  @object point.x.y.z\n */",
-  "description": "",
-  "line": 23,
-  "pos": {
-    "start": 23,
-    "end": 26
-  },
-  "newline": true,
-  "tags": [
-    {
-      "id": "object",
-      "line": 24,
-      "name": "point",
-      "type": "",
-      "description": "",
-      "tags": [
-        {
-          "id": "object",
-          "type": "",
-          "optional": false,
-          "line": 24,
-          "source": " @object point.x",
-          "name": "x",
-          "value": "",
-          "description": "",
-          "tags": [
-            {
-              "id": "object",
-              "line": 25,
-              "name": "y",
-              "type": "",
-              "description": "",
-              "tags": [
-                {
-                  "id": "object",
-                  "type": "",
-                  "optional": false,
-                  "line": 25,
-                  "source": " @object point.x.y.z \n",
-                  "name": "z",
-                  "value": "",
-                  "description": ""
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-{
-  "source": "/** @param {Object} opts request options */",
-  "description": "",
-  "line": 28,
-  "pos": {
-    "start": 28,
-    "end": 28
-  },
-  "newline": false,
-  "tags": [
-    {
-      "id": "param",
-      "type": "Object",
-      "optional": false,
-      "line": 28,
-      "source": "@param {Object} opts request options ",
-      "name": "opts",
-      "value": "",
-      "description": "request options"
-    }
-  ]
-}
-{
-  "source": "// @private {String} foo private constant",
-  "description": "",
-  "line": 30,
-  "pos": {
-    "start": 30,
-    "end": 30
-  },
-  "newline": true,
-  "tags": [
-    {
-      "id": "private",
-      "type": "String",
-      "optional": false,
-      "line": 30,
-      "source": "@private {String} foo private constant",
-      "name": "foo",
-      "value": "",
-      "description": "private constant"
-    }
-  ]
-}
+// Comment description
+//
 ```
 
 ## API
