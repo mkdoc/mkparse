@@ -46,6 +46,7 @@ function defaults(opts) {
  *  @option {RegExp} start comment start pattern.
  *  @option {RegExp} end comment end pattern.
  *  @option {RegExp} lead remove leading meta characters that match.
+ *  @option {RegExp} trail remove trailing meta characters that match.
  *  @option {Function} open override default open function.
  *  @option {Function} close override default close function.
  *  @option {Function} strip override default strip function.
@@ -56,7 +57,8 @@ function multi(opts) {
   opts = opts || {};
   var start = opts.greedy ? /\/\*+/ : /\/\*\*+/
     , end = opts.end instanceof RegExp ? opts.end : /\*+\//
-    , lead = opts.lead !== undefined ? opts.lead : /^\s*\*([^\/]?)/;
+    , lead = opts.lead !== undefined ? opts.lead : /^\s*\*([^\/]?)/
+    , trail = opts.trail instanceof RegExp ? opts.trail: /\s*\*+\s*$/;
 
   // override start pattern
   if(opts.start instanceof RegExp) {
@@ -89,6 +91,10 @@ function multi(opts) {
       // and lines prefixed with ` *`
       if(lead) {
         line = line.replace(lead, '$1');
+      }
+
+      if(trail) {
+        line = line.replace(trail, '');
       }
 
       return line;
@@ -124,14 +130,15 @@ function multi(opts) {
 function single(opts) {
   opts = opts || {};
 
-  var mark = (opts.mark instanceof RegExp) ? opts.mark : /\/\//
-    , start = (opts.start instanceof RegExp)
+  var mark = opts.mark instanceof RegExp ? opts.mark : /\/\//
+    , start = opts.start instanceof RegExp
         ? opts.start : new RegExp(mark.source)
-    , end = (opts.end instanceof RegExp)
+    , end = opts.end instanceof RegExp
         ? opts.end : new RegExp('^\\s*' + mark.source)
-    , lead = (opts.lead instanceof RegExp)
+    , lead = opts.lead instanceof RegExp
         ? opts.strip : new RegExp('^\\s*' + mark.source)
-    , trail = opts.trail instanceof RegExp ? opts.trail: false;
+    , trail = opts.trail instanceof RegExp
+        ? opts.trail: new RegExp('\\s*' + mark.source + '\\s*$');
 
   function open(line) {
     return start.exec(line);

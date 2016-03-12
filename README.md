@@ -798,6 +798,7 @@ Returns multi-line language rule.
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
 * `lead` RegExp remove leading meta characters that match.
+* `trail` RegExp remove trailing meta characters that match.
 * `open` Function override default open function.
 * `close` Function override default close function.
 * `strip` Function override default strip function.
