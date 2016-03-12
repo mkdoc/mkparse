@@ -426,6 +426,10 @@ When a comment is parsed an object is pushed to the stream
 with an array of `lines`, the `rule` for the comment and the
 `start` and `end` line numbers.
 
+When a content block is encountered a string is pushed for inline content
+(between comments on a single-line or trailing content after multi-line),
+otherwise an array of lines is pushed.
+
 ### Parser
 
 Comment and tag parser, parses comment description and tags.
