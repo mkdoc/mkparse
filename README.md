@@ -438,13 +438,13 @@ Allows for writing files that contains only content, only comments or
 both content and comments. By default this stream will pass through
 comments and content.
 
-To disable content from the stream use (comments only) use:
+To disable content from the stream (comments only) use:
 
 ```javascript
 {content: false}
 ```
 
-To disable comments from the stream use (source content only) use:
+To disable comments from the stream (source content only) use:
 
 ```javascript
 {comment: false}
