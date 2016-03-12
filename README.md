@@ -125,13 +125,19 @@ A comment consists of a multi-line description and optional tag annotations:
 
 ### Tags
 
+Tags allow annotating a comment with meaningful information to consumers of the comment data.
+
+Ihe tag parser recognises tags beginning with an `@` and is able to parse `type`, 
+`value` (default), `name`, `description` and an `optional` flag.
+
 The default tag parser uses the grammar:
 
 ```
-@id {type[=value]} name description
+@id {type=value} [name] description
 ```
 
-All fields but the tag `id` are considered optional.
+All fields but the tag `id` are considered optional, to set the `optional` flag 
+enclose `name` in square brackets (`[]`).
 
 When given: `@property {String=mkdoc} [nickname] user` it expand to a tag object such as:
 
