@@ -10,9 +10,13 @@ Table of Contents
     * [load](#load)
     * [parse](#parse)
     * [Collator](#collator)
+      * [Options](#options)
     * [Comment](#comment)
+      * [Options](#options-1)
     * [Parser](#parser)
-      * [.stringify](#stringify)
+      * [Options](#options-2)
+      * [Events](#events)
+    * [.stringify](#stringify)
     * [Tag](#tag)
       * [rule](#rule)
       * [pattern](#pattern)
@@ -22,24 +26,24 @@ Table of Contents
     * [Language](#language)
       * [actionscript](#actionscript)
       * [c](#c)
-        * [Options](#options)
+        * [Options](#options-3)
       * [coffeescript](#coffeescript)
       * [conf](#conf)
       * [cpp](#cpp)
-        * [Options](#options-1)
+        * [Options](#options-4)
       * [css](#css)
       * [erlang](#erlang)
       * [go](#go)
       * [groovy](#groovy)
       * [html](#html)
       * [defaults](#defaults)
-        * [Options](#options-2)
-      * [#multi](#multi)
-        * [Options](#options-3)
-      * [#single](#single)
-        * [Options](#options-4)
-      * [ini](#ini)
         * [Options](#options-5)
+      * [#multi](#multi)
+        * [Options](#options-6)
+      * [#single](#single)
+        * [Options](#options-7)
+      * [ini](#ini)
+        * [Options](#options-8)
       * [jade](#jade)
       * [java](#java)
       * [javascript](#javascript)
@@ -50,16 +54,16 @@ Table of Contents
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
-        * [Options](#options-6)
+        * [Options](#options-9)
       * [scala](#scala)
       * [shell](#shell)
-        * [Options](#options-7)
+        * [Options](#options-10)
       * [sql](#sql)
-        * [Options](#options-8)
+        * [Options](#options-11)
       * [toml](#toml)
       * [typescript](#typescript)
       * [vim](#vim)
-        * [Options](#options-9)
+        * [Options](#options-12)
       * [xml](#xml)
       * [yaml](#yaml)
   * [Developer](#developer)
@@ -396,6 +400,10 @@ Returns the parser stream.
 
 ### Collator
 
+```javascript
+Collator([opts])
+```
+
 Collate comments and source content into a stream.
 
 Allows for writing files that contains only content, only comments or
@@ -418,7 +426,21 @@ When the `buffer` option is set all output is buffered into
 the `buffer` property as a `string`, listen for the `finish` event before
 attempting to access the buffer contents.
 
+* `opts` Object stream options.
+
+#### Options
+
+* `content` Boolean push content chunks to the stream.
+* `comment` Boolean push comment chunks to the stream.
+* `buffer` Boolean buffer output.
+* `stringify` Boolean convert output to JSON strings.
+* `indent` Number number of spaces to indent JSON.
+
 ### Comment
+
+```javascript
+Comment([opts])
+```
 
 Parse comments from an array of lines.
 
@@ -430,11 +452,34 @@ When a content block is encountered a string is pushed for inline content
 (between comments on a single-line or trailing content),
 otherwise an array of lines is pushed.
 
+* `opts` Object stream options.
+
+#### Options
+
+* `rules` Array|Function defines the comment rules.
+* `options` Object to pass to the `rules` function.
+
 ### Parser
+
+```javascript
+Parser([opts])
+```
 
 Comment and tag parser, parses comment description and tags.
 
-#### .stringify
+* `opts` Object stream options.
+
+#### Options
+
+* `tag` Object defines the tag patterns, see [tag](#tag).
+* `dotted` Boolean parse dotted names in tags.
+
+#### Events
+
+* `comment` when a comment has been parsed.
+* `content` when a content chunk is received.
+
+### .stringify
 
 ```javascript
 Parser.prototype.stringify(indent, comment)
