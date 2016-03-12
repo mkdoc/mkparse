@@ -57,10 +57,12 @@ Table of Contents
         * [Options](#options-10)
       * [sql](#sql)
         * [Options](#options-11)
+      * [stylus](#stylus)
+        * [Options](#options-12)
       * [toml](#toml)
       * [typescript](#typescript)
       * [vim](#vim)
-        * [Options](#options-12)
+        * [Options](#options-13)
       * [xml](#xml)
       * [yaml](#yaml)
 
@@ -204,7 +206,7 @@ syntax or prefer something other than `@` as the tag identifier.
 The generic syntax for tags is: `@id {type[=value]} name description`;
 everything but the tag `id` is considered optional.
 
-Which when given: `@property {String=tmpfs} [nickname] user` will expand
+Which when given: `@property {String=mkdoc} [nickname] user` will expand
 to a tag object such as:
 
 ```javascript
@@ -803,6 +805,30 @@ Returns list of language rules.
 ##### Options
 
 * `include` Boolean mysql specific comment rule.
+
+#### stylus
+
+```javascript
+stylus([opts])
+```
+
+Creates an array of language rules for stylus files.
+
+Recognises terminated multi-line comments starting with `/*` and
+buffered multi-line blocks starting with `/*!` as well as
+continuous blocks of single-line comments beginning with `//`.
+
+See the [css language](#css).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `single` Object|Boolean=true single-line comment options.
+* `multi` Object|Boolean=true multi-line comment options.
+* `buffer` Object|Boolean=true buffer comment options.
 
 #### toml
 

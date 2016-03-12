@@ -16,7 +16,7 @@ var lang = require('./css');
 function less(opts) {
   opts = opts || {};
   // enable single line comments
-  opts.single = {};
+  opts.single = opts.single !== undefined ? opts.single : {};
   return lang(opts);
 }
 module.exports = less;
