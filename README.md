@@ -451,7 +451,7 @@ To disable comments from the stream (source content only) use:
 ```
 
 When the `buffer` option is set all output is buffered into
-the `buffer` property, listen for the `finish` event before
+the `buffer` property as a `string`, listen for the `finish` event before
 attempting to access the buffer contents.
 
 ### Comment
