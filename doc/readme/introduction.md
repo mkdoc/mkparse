@@ -4,8 +4,9 @@
 
 Fast, streaming and configurable comment parser.
 
-For polyglot programmers to:
+Designed for polyglot programmers to:
 
+* Combine comments from various files (HTML, CSS and Javacript for example)
 * Parse comments from any language
 * Strip comments from any file
 * Separate comments into another file
