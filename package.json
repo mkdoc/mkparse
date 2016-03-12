@@ -1,5 +1,5 @@
 {
-  "name": "cparse",
+  "name": "mkparse",
   "version": "1.5.0",
   "description": "Generic comments parser",
   "main": "index.js",
