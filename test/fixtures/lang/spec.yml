@@ -9,5 +9,4 @@
 #
 # @property {String=value} prop
 ################################################################################
-
 prop: value # Inline comment

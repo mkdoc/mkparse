@@ -9,6 +9,4 @@
 #
 # @property {String=value} prop
 ################################################################################
-
-[section]
 prop = value # Inline comment

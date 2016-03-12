@@ -128,7 +128,7 @@ function single(opts) {
     , start = (opts.start instanceof RegExp)
         ? opts.start : new RegExp(mark.source)
     , end = (opts.end instanceof RegExp)
-        ? opts.end : new RegExp(mark.source)
+        ? opts.end : new RegExp('^\\s*' + mark.source)
     , lead = (opts.lead instanceof RegExp)
         ? opts.strip : new RegExp('^\\s*' + mark.source)
     , trail = opts.trail instanceof RegExp ? opts.trail: false;
@@ -137,7 +137,11 @@ function single(opts) {
     return start.exec(line);
   }
 
-  function close(line) {
+  function close(line, match) {
+    // testing on the same line
+    if(match) {
+      return null; 
+    }
     return !end.exec(line);
   }
 

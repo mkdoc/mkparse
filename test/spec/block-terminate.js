@@ -17,8 +17,12 @@ describe('cparse:', function() {
         expect(comments.length).to.eql(2);
         expect(comments[0].description).to.eql(
           'This is a multi-line \ndescription');
+        expect(comments[0].line).to.eql(1);
+        expect(comments[0].pos.start).to.eql(1);
+        expect(comments[0].pos.end).to.eql(2);
         expect(comments[1].description).to.eql(
           'This is another comment');
+        expect(comments[1].line).to.eql(3);
         done();
       })
     }

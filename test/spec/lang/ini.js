@@ -3,7 +3,7 @@ var expect = require('chai').expect
 
 function assert(comments) {
 
-  expect(comments.length).to.eql(2);
+  expect(comments.length).to.eql(3);
   expect(comments[0].description).to.eql('File description');
   expect(comments[0].tags.length).to.eql(1);
   expect(comments[0].tags[0].id).to.eql('file');
@@ -15,6 +15,8 @@ function assert(comments) {
   expect(comments[1].tags[0].name).to.eql('prop');
   expect(comments[1].tags[1].id).to.eql('default');
   expect(comments[1].tags[1].name).to.eql('value');
+
+  expect(comments[2].description).to.eql('Inline comment');
 }
 
 describe('cparse:', function() {

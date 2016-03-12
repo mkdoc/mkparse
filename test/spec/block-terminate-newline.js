@@ -3,9 +3,9 @@ var expect = require('chai').expect
 
 describe('cparse:', function() {
 
-  it('should parse single-line comment block (terminated w/ multi-line comment)',
+  it('should parse single-line comment block (terminated w/ newline)',
     function(done) {
-      var source = 'test/fixtures/block-terminate-multiline.js'
+      var source = 'test/fixtures/block-terminate-newline.js'
         , stream = parse.load(source)
         , comments = [];
 
@@ -22,7 +22,7 @@ describe('cparse:', function() {
         expect(comments[0].pos.end).to.eql(2);
         expect(comments[1].description).to.eql(
           'This is another comment');
-        expect(comments[1].line).to.eql(3);
+        expect(comments[1].line).to.eql(4);
         done();
       })
     }
