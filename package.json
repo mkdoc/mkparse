@@ -1,6 +1,6 @@
 {
   "name": "cparse",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Generic comments parser",
   "main": "index.js",
   "author": "muji",
@@ -61,7 +61,6 @@
         "inc": "../../test/fixtures/comment-examples.js",
         "type": "code",
         "language": "javascript"
-        
       },
       {
         "inc": [
