@@ -6,11 +6,11 @@
   "author": "muji",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tmpfs/cparse/issues"
+    "url": "https://github.com/mkdoc/mkparse/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tmpfs/cparse.git"
+    "url": "git+https://github.com/mkdoc/mkparse.git"
   },
   "keywords": [
     "comment",
@@ -47,7 +47,7 @@
     "require": "lib",
     "links": "links.md",
     "toc": "Table of Contents",
-    "base": "https://github.com/tmpfs/cparse",
+    "base": "https://github.com/mkdoc/mkparse",
     "partial": [
       {
         "inc": [

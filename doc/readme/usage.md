@@ -3,8 +3,8 @@
 Parse a string or buffer:
 
 ```javascript
-var cparse = require('cparse')
-  , stream = cparse.parse('/**Compact comment*/');
+var mkparse = require('mkparse')
+  , stream = mkparse.parse('/**Compact comment*/');
 stream.on('comment', function(comment) {
   console.dir(comment);
 });
@@ -13,8 +13,8 @@ stream.on('comment', function(comment) {
 Load and parse file contents:
 
 ```javascript
-var cparse = require('cparse')
-  , stream = cparse.load('index.js');
+var mkparse = require('mkparse')
+  , stream = mkparse.load('index.js');
 stream.on('comment', function(comment) {
   console.dir(comment);
 });
@@ -23,18 +23,18 @@ stream.on('comment', function(comment) {
 Parse and write comment data to file as newline delimited JSON:
 
 ```javascript
-var cparse = require('cparse')
+var mkparse = require('mkparse')
   , fs = require('fs')
-  , stream = cparse.load('index.js').stringify();
+  , stream = mkparse.load('index.js').stringify();
 stream.pipe(fs.createWriteStream('index-ast.json.log'));
 ```
 
 Use a language pack:
 
 ```javascript
-var cparse = require('cparse')
-  , stream = cparse.parse(
-      '# @file spec.rb', {rules: require('cparse/lang/ruby')});
+var mkparse = require('mkparse')
+  , stream = mkparse.parse(
+      '# @file spec.rb', {rules: require('mkparse/lang/ruby')});
 stream.on('comment', function(comment) {
   console.dir(comment);
 });
@@ -43,10 +43,10 @@ stream.on('comment', function(comment) {
 Combine language pack rules:
 
 ```javascript
-var cparse = require('cparse')
-  , stream = cparse.parse(
+var mkparse = require('mkparse')
+  , stream = mkparse.parse(
       '; ini style comment\n# shell style comment',
-      {rules: [require('cparse/lang/ini'), require('cparse/lang/shell')]});
+      {rules: [require('mkparse/lang/ini'), require('mkparse/lang/shell')]});
 stream.on('comment', function(comment) {
   console.dir(comment);
 });

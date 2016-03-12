@@ -5,7 +5,7 @@
   "require": "lib",
   "links": "links.md",
   "toc": "Table of Contents",
-  "base": "https://github.com/tmpfs/cparse",
+  "base": "https://github.com/mkdoc/mkparse",
   "partial": [
     {
       "bin": "mkapi index.js lib/*.js ./lang/*.js --level=2"

@@ -1,5 +1,5 @@
 ## Install
 
 ```
-npm i cparse
+npm i mkparse
 ```
