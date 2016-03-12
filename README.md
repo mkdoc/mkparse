@@ -4,7 +4,6 @@ Table of Contents
 * [Comment Parser](#comment-parser)
   * [Install](#install)
   * [Usage](#usage)
-  * [API](#api)
   * [Comments](#comments)
     * [Block](#block)
   * [Developer](#developer)
@@ -82,8 +81,6 @@ stream.on('comment', function(comment) {
   console.dir(comment);
 });
 ```
-
-## API
 
 For more detail see the [api docs](https://github.com/tmpfs/cparse/blob/master/API.md).
 
