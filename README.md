@@ -5,6 +5,7 @@ Table of Contents
   * [Install](#install)
   * [Usage](#usage)
   * [Comments](#comments)
+    * [Tags](#tags)
     * [Block](#block)
   * [Developer](#developer)
     * [Test](#test)
@@ -105,6 +106,47 @@ See [EXAMPLE.md](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) for inp
 // Comment description
 //
 ```
+
+A comment consists of a multi-line description and optional tag annotations:
+
+```javascript
+/**
+ * Method description
+ * that can span multiple lines.
+ *
+ * @name method
+ */
+
+// Method description
+// that can span multiple lines.
+//
+// @name method
+```
+
+### Tags
+
+The default tag parser uses the grammar:
+
+```
+@id {type[=value]} name description
+```
+
+All fields but the tag `id` are considered optional.
+
+When given: `@property {String=mkdoc} [nickname] user` it expand to a tag object such as:
+
+```javascript
+{
+  id: 'property',
+  type: 'String',
+  value: 'mkdoc',
+  name: 'nickname',
+  description: 'user',
+  optional: true
+}
+```
+
+See the [tag api docs](https://github.com/tmpfs/cparse/blob/master/API.md#tag) to change the tag parsing.
 
 ### Block
 

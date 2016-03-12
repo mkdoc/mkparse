@@ -1,3 +1,44 @@
+A comment consists of a multi-line description and optional tag annotations:
+
+```javascript
+/**
+ * Method description
+ * that can span multiple lines.
+ *
+ * @name method
+ */
+
+// Method description
+// that can span multiple lines.
+//
+// @name method
+```
+
+### Tags
+
+The default tag parser uses the grammar:
+
+```
+@id {type[=value]} name description
+```
+
+All fields but the tag `id` are considered optional.
+
+When given: `@property {String=mkdoc} [nickname] user` it expand to a tag object such as:
+
+```javascript
+{
+  id: 'property',
+  type: 'String',
+  value: 'mkdoc',
+  name: 'nickname',
+  description: 'user',
+  optional: true
+}
+```
+
+See the [tag api docs](/API.md#tag) to change the tag parsing.
+
 ### Block
 
 By default continuous single-line comments are gathered into a single `comment` object. The 
