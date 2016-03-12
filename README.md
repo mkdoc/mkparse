@@ -427,7 +427,7 @@ with an array of `lines`, the `rule` for the comment and the
 `start` and `end` line numbers.
 
 When a content block is encountered a string is pushed for inline content
-(between comments on a single-line or trailing content after multi-line),
+(between comments on a single-line or trailing content),
 otherwise an array of lines is pushed.
 
 ### Parser
