@@ -4,7 +4,8 @@ Table of Contents
 * [Comment Parser](#comment-parser)
   * [Install](#install)
   * [Usage](#usage)
-  * [Example](#example)
+  * [Comments](#comments)
+    * [Block](#block)
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
@@ -141,7 +142,7 @@ stream.on('comment', function(comment) {
 });
 ```
 
-## Example
+## Comments
 
 See [EXAMPLE.md](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) for input and output, all the following comments resolve to the same description with the default settings:
 
@@ -162,6 +163,31 @@ See [EXAMPLE.md](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) for inp
 // Comment description
 //
 ```
+
+### Block
+
+By default continuous single-line comments are gathered into a single `comment` object. The 
+rule is that if the next line does not match whitespace followed by the start of a 
+single-line comment then the block is terminated.
+
+Note that inline comments also break the block:
+
+```javascript
+// 
+// Comment description
+// 
+var foo; // Separate inline comment
+```
+
+Will result in two comments, whilst:
+
+```javascript
+// Comment description
+// 
+// More information.
+```
+
+Results in a single comment.
 
 ## API
 
