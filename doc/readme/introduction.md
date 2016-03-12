@@ -13,3 +13,5 @@ Designed for polyglot programmers to:
 * Implement custom tag systems (annotations)
 * Operate on processing instructions (see the [pi language](/API.md#pi))
 * Document JSON files, read comments then strip in build process
+
+See the [i/o sample](/EXAMPLE.md) and the [api docs](/API.md).

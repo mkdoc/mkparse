@@ -28,6 +28,8 @@ Designed for polyglot programmers to:
 * Operate on processing instructions (see the [pi language](https://github.com/tmpfs/cparse/blob/master/API.md#pi)).
 * Document JSON files, read comments then strip in build process.
 
+See the [i/o sample](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) and the [api docs](https://github.com/tmpfs/cparse/blob/master/API.md).
+
 ## Install
 
 ```
@@ -92,7 +94,25 @@ For more detail see the [api docs](https://github.com/tmpfs/cparse/blob/master/A
 
 ## Comments
 
-See [EXAMPLE.md](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) for input and output, all the following comments resolve to the same description with the default settings:
+A comment consists of a multi-line description and optional tag annotations:
+
+```javascript
+/**
+ * Method description
+ * that can span multiple lines.
+ *
+ * @name method
+ */
+
+// Method description
+// that can span multiple lines.
+//
+// @name method
+```
+
+See [EXAMPLE.md](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) for sample input and output.
+
+All the following comments resolve to the same description with the default settings:
 
 ```javascript
 /** Comment description */
@@ -110,22 +130,6 @@ See [EXAMPLE.md](https://github.com/tmpfs/cparse/blob/master/EXAMPLE.md) for inp
 //
 // Comment description
 //
-```
-
-A comment consists of a multi-line description and optional tag annotations:
-
-```javascript
-/**
- * Method description
- * that can span multiple lines.
- *
- * @name method
- */
-
-// Method description
-// that can span multiple lines.
-//
-// @name method
 ```
 
 ### Tags

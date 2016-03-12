@@ -1,19 +1,3 @@
-A comment consists of a multi-line description and optional tag annotations:
-
-```javascript
-/**
- * Method description
- * that can span multiple lines.
- *
- * @name method
- */
-
-// Method description
-// that can span multiple lines.
-//
-// @name method
-```
-
 ### Tags
 
 Tags allow annotating a comment with meaningful information to consumers of the comment data.
