@@ -21,7 +21,7 @@ Comment Parser
 [<img src="http://img.shields.io/npm/v/cparse.svg?v=2" alt="npm version">](https://npmjs.org/package/cparse)
 [<img src="https://coveralls.io/repos/tmpfs/cparse/badge.svg?branch=master&service=github&v=2" alt="Coverage Status">](https://coveralls.io/github/tmpfs/cparse?branch=master).
 
-Fast, streaming and configurable comment parser.
+Fast, streaming and configurable comment parser; currently supports 30+ languages.
 
 Designed for polyglot programmers to:
 
