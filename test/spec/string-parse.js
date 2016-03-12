@@ -32,7 +32,7 @@ describe('cparse:', function() {
     var comments = [];
     function onComment(comment) {
       expect(comment).to.be.an('object');
-      done(); 
+      comments.push(comment);
     }
     function onComplete() {
       expect(comments.length).to.eql(2);
