@@ -26,8 +26,6 @@ function ruby(opts) {
   opts.multi.end = /^=end/;
   // do not strip intermediate lines
   opts.multi.lead = false;
-  // no content on last line
-  opts.multi.last = false;
 
   // single rule style like `shell` and =begin / =end
   return [lang.single(opts.single), lang.multi(opts.multi)];

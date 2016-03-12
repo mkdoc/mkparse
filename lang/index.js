@@ -46,7 +46,6 @@ function defaults(opts) {
  *  @option {RegExp} start comment start pattern.
  *  @option {RegExp} end comment end pattern.
  *  @option {RegExp} lead remove leading meta characters that match.
- *  @option {Boolean} last extract description from the last line.
  *  @option {Function} open override default open function.
  *  @option {Function} close override default close function.
  *  @option {Function} strip override default strip function.
@@ -57,8 +56,7 @@ function multi(opts) {
   opts = opts || {};
   var start = opts.greedy ? /\/\*+/ : /\/\*\*+/
     , end = opts.end instanceof RegExp ? opts.end : /\*+\//
-    , lead = opts.lead !== undefined ? opts.lead : /^\s*\*([^\/]?)/
-    , last = opts.last !== undefined ? opts.last : true;
+    , lead = opts.lead !== undefined ? opts.lead : /^\s*\*([^\/]?)/;
 
   // override start pattern
   if(opts.start instanceof RegExp) {
@@ -101,7 +99,7 @@ function multi(opts) {
     open: opts.open instanceof Function ? opts.open : open,
     close: opts.close instanceof Function ? opts.close : close,
     strip: opts.strip instanceof Function ? opts.strip : strip,
-    last: last
+    multiline: true
   }
 }
 
