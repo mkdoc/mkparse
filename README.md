@@ -31,6 +31,7 @@ Designed for polyglot programmers to:
 * Separate comments into another file.
 * Implement custom tag systems (annotations).
 * Operate on processing instructions (see the [pi language](https://github.com/tmpfs/cparse/blob/master/API.md#pi)).
+* Document JSON files, read comments then strip in build process.
 
 ## Install
 
