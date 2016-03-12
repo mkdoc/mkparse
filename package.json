@@ -69,7 +69,8 @@
       },
       {
         "inc": [
-          "developer.md"
+          "developer.md",
+          "license.md"
         ]
       }
     ]
