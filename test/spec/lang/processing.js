@@ -25,7 +25,8 @@ describe('mkparse:', function() {
 
   it('should use processing language', function(done) {
     var source = 'test/fixtures/lang/spec.processing.java'
-      , stream = parse.load(source, {rules: require('../../../lang/processing')})
+      , stream = parse.load(
+          source, {rules: require('../../../lang/processing')})
       , comments = [];
 
     stream.on('comment', function(comment) {

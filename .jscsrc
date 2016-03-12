@@ -15,6 +15,7 @@
       "doc/readme",
       "node_modules",
       "lib/linkdownc.js",
+      "test/fixtures",
       "coverage",
       "target"
     ]

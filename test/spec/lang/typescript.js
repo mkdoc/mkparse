@@ -25,7 +25,8 @@ describe('mkparse:', function() {
 
   it('should use typescript language', function(done) {
     var source = 'test/fixtures/lang/spec.ts'
-      , stream = parse.load(source, {rules: require('../../../lang/typescript')})
+      , stream = parse.load(
+          source, {rules: require('../../../lang/typescript')})
       , comments = [];
 
     stream.on('comment', function(comment) {

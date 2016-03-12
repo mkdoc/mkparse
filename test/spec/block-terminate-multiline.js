@@ -3,7 +3,7 @@ var expect = require('chai').expect
 
 describe('mkparse:', function() {
 
-  it('should parse single-line comment block (terminated w/ multi-line comment)',
+  it('should parse single-line block (terminated w/ multi-line comment)',
     function(done) {
       var source = 'test/fixtures/block-terminate-multiline.js'
         , stream = parse.load(source)

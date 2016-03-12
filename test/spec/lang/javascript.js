@@ -25,7 +25,8 @@ describe('mkparse:', function() {
 
   it('should use javascript language', function(done) {
     var source = 'test/fixtures/lang/spec.js'
-      , stream = parse.load(source, {rules: require('../../../lang/javascript')})
+      , stream = parse.load(
+          source, {rules: require('../../../lang/javascript')})
       , comments = [];
 
     stream.on('comment', function(comment) {
