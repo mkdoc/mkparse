@@ -47,6 +47,7 @@ Table of Contents
       * [jade](#jade)
       * [java](#java)
       * [javascript](#javascript)
+      * [less](#less)
       * [markdown](#markdown)
       * [pandoc](#pandoc)
       * [php](#php)
@@ -55,6 +56,7 @@ Table of Contents
       * [python](#python)
       * [ruby](#ruby)
         * [Options](#options-9)
+      * [sass](#sass)
       * [scala](#scala)
       * [shell](#shell)
         * [Options](#options-10)
@@ -719,6 +721,23 @@ Returns list of language rules.
 
 * `opts` Object processing options.
 
+#### less
+
+```javascript
+less([opts])
+```
+
+Creates an array of language rules for less files.
+
+Recognises terminated multi-line comments starting with `/*` and
+continuous blocks of single-line comments beginning with `//`.
+
+See the [css language](#css).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
 #### markdown
 
 ```javascript
@@ -835,6 +854,23 @@ Returns list of language rules.
 
 * `multi` Object multi-line rule configuration.
 * `single` Object single-line rule configuration.
+
+#### sass
+
+```javascript
+sass([opts])
+```
+
+Creates an array of language rules for sass files.
+
+Recognises terminated multi-line comments starting with `/*` and
+continuous blocks of single-line comments beginning with `//`.
+
+See the [css language](#css).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
 
 #### scala
 
