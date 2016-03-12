@@ -54,11 +54,14 @@ function defaults(opts) {
  *  @returns {Object} multi-line language rule.
  */
 function multi(opts) {
+
+  // @todo {WARN} trail should be disabled for many multi-line styles
+
   opts = opts || {};
   var start = opts.greedy ? /\/\*+/ : /\/\*\*+/
     , end = opts.end instanceof RegExp ? opts.end : /\*+\//
     , lead = opts.lead !== undefined ? opts.lead : /^\s*\*([^\/]?)/
-    , trail = opts.trail instanceof RegExp ? opts.trail: /\s*\*+\s*$/;
+    , trail = opts.trail !== undefined ? opts.trail: /\s*\*+\s*$/;
 
   // override start pattern
   if(opts.start instanceof RegExp) {
