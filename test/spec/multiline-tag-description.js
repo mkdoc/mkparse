@@ -2,7 +2,7 @@ var expect = require('chai').expect
   , fs = require('fs')
   , parse = require('../../index');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should parse tag description w/ single tag (multiline)', function(done) {
     var source = 'test/fixtures/multiline-tag-description.js'

@@ -2,7 +2,7 @@ var expect = require('chai').expect
   , fs = require('fs')
   , parse = require('../../index');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should parse multiline comment block w/ flag tag', function(done) {
     var source = 'test/fixtures/multiline-flag.js'

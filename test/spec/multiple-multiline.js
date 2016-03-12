@@ -1,7 +1,7 @@
 var expect = require('chai').expect
   , parse = require('../../index');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should parse multiple multiline comment blocks on same line',
     function(done) {

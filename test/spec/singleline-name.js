@@ -2,7 +2,7 @@ var expect = require('chai').expect
   , fs = require('fs')
   , parse = require('../../index');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should parse singleline comment block w/ tag name', function(done) {
     var source = 'test/fixtures/singleline-name.js'

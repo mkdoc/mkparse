@@ -1,6 +1,6 @@
 var parse = require('../../index');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should emit end event', function(done) {
     var source = 'test/fixtures/multiline.js'

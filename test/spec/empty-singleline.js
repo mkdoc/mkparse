@@ -1,7 +1,7 @@
 var expect = require('chai').expect
   , parse = require('../../index');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should parse empty singleline comment block', function(done) {
     var source = 'test/fixtures/empty-singleline.js'

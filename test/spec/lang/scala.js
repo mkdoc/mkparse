@@ -21,7 +21,7 @@ function assert(comments) {
   expect(comments[2].description).to.eql('Inline comment');
 }
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should use scala language', function(done) {
     var source = 'test/fixtures/lang/spec.scala'

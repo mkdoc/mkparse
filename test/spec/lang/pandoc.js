@@ -12,7 +12,7 @@ function assert(comments) {
   expect(comments[2].description).to.eql('Meta data');
 }
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should use markdown language w/ pandoc variant', function(done) {
     var source = 'test/fixtures/lang/spec.pandoc.md'

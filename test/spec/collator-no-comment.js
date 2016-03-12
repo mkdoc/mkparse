@@ -2,7 +2,7 @@ var expect = require('chai').expect
   , parse = require('../../index')
   , Collator = require('../../lib/collator');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should collate content without comments',
     function(done) {

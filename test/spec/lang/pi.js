@@ -11,7 +11,7 @@ function assert(comments) {
   expect(comments[2].description).to.eql('Meta data');
 }
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should use html language w/ processing instructions (pi)',
     function(done) {

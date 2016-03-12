@@ -1,7 +1,7 @@
 var expect = require('chai').expect
   , parser = require('../../index');
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should parse string input w/ callback', function(done) {
     function complete() {

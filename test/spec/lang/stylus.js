@@ -17,7 +17,7 @@ function assert(comments) {
   expect(comments[2].tags[0].name).to.eql('slider');
 }
 
-describe('cparse:', function() {
+describe('mkparse:', function() {
 
   it('should use stylus language', function(done) {
     var source = 'test/fixtures/lang/spec.styl'
