@@ -47,6 +47,7 @@ Table of Contents
       * [pandoc](#pandoc)
       * [php](#php)
       * [pi](#pi)
+      * [processing](#processing)
       * [properties](#properties)
       * [python](#python)
       * [ruby](#ruby)
@@ -675,6 +676,23 @@ Creates an array of language rules for SGML/XML processing instructions.
 
 Recognises multi-line comments started with `<?` and terminated
 with `?>`.
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+#### processing
+
+```javascript
+processing([opts])
+```
+
+Creates an array of language rules for processing files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
 
 Returns list of language rules.
 
