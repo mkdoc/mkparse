@@ -3,3 +3,11 @@
 [![Coverage Status](https://coveralls.io/repos/tmpfs/cparse/badge.svg?branch=master&service=github&v=2)](https://coveralls.io/github/tmpfs/cparse?branch=master)
 
 Fast, streaming and configurable comment parser.
+
+For polyglot programmers to:
+
+* Parse comments from any language
+* Strip comments from any file
+* Separate comments into another file
+* Implement custom tag systems (annotations)
+* Operate on processing instructions (see the [pi language](/API.md#pi))

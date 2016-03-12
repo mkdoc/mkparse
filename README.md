@@ -23,6 +23,14 @@ Comment Parser
 
 Fast, streaming and configurable comment parser.
 
+For polyglot programmers to:
+
+* Parse comments from any language.
+* Strip comments from any file.
+* Separate comments into another file.
+* Implement custom tag systems (annotations).
+* Operate on processing instructions (see the [pi language](https://github.com/tmpfs/cparse/blob/master/API.md#pi)).
+
 ## Install
 
 ```
