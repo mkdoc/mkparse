@@ -51,3 +51,7 @@ stream.on('comment', function(comment) {
   console.dir(comment);
 });
 ```
+
+## API
+
+For more detail see the [api docs](/API.md).
