@@ -187,21 +187,6 @@ const foo = 'bar';  // @private {String} foo private constant
   "newline": true,
   "tags": []
 }
-[
-  ""
-]
-[
-  "/*"
-]
-[
-  " *  Comment is ignored, single leading asterisk."
-]
-[
-  " */"
-]
-[
-  ""
-]
 {
   "source": "// Single-line comment",
   "description": "Single-line comment",
@@ -213,9 +198,6 @@ const foo = 'bar';  // @private {String} foo private constant
   "newline": true,
   "tags": []
 }
-[
-  ""
-]
 {
   "source": "// \n// Super fly\n//\n// @public {function} getNinja super fly stuff.\n// @param {Object} [opts] configuration options.\n// @returns {Object} a command line ninja.",
   "description": "Super fly",
@@ -258,9 +240,6 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
-[
-  ""
-]
 {
   "source": "/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */",
   "description": "",
@@ -283,9 +262,6 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
-[
-  ""
-]
 {
   "source": "/**\n *  @object point.x\n *  @object point.x.y.z\n */",
   "description": "",
@@ -338,10 +314,6 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
-[
-  ""
-]
-"function request(url, opts "
 {
   "source": "/** @param {Object} opts request options */",
   "description": "",
@@ -364,11 +336,6 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
-"){}"
-[
-  ""
-]
-"const foo = 'bar';  "
 {
   "source": "// @private {String} foo private constant",
   "description": "",
@@ -391,9 +358,6 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
-[
-  ""
-]
 ```
 
 ## API
@@ -469,7 +433,7 @@ Comment and tag parser, parses comment description and tags.
 #### .stringify
 
 ```javascript
-Parser.prototype.stringify(indent)
+Parser.prototype.stringify(indent, comment)
 ```
 
 Creates a stream that transforms to newline-delimited JSON, the
@@ -478,6 +442,7 @@ created stream is piped from this parser.
 Returns the stringify stream.
 
 * `indent` Number the number of spaces to indent the JSON.
+* `comment` Boolean only include comment output.
 
 ### Tag
 

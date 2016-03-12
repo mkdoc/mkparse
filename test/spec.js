@@ -8,7 +8,7 @@ if(!json) {
     console.dir(comment)
   });
 }else{
-  stream = stream.stringify(parseInt(process.env.INDENT));
+  stream = stream.stringify(parseInt(process.env.INDENT), true);
   stream.pipe(process.stdout);
 }
 
