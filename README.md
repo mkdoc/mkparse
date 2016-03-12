@@ -9,6 +9,7 @@ Table of Contents
   * [API](#api)
     * [load](#load)
     * [parse](#parse)
+    * [Collator](#collator)
     * [Comment](#comment)
     * [Parser](#parser)
       * [.stringify](#stringify)
@@ -50,6 +51,7 @@ Table of Contents
       * [python](#python)
       * [ruby](#ruby)
         * [Options](#options-6)
+      * [scala](#scala)
       * [shell](#shell)
         * [Options](#options-7)
       * [sql](#sql)
@@ -182,8 +184,24 @@ const foo = 'bar';  // @private {String} foo private constant
     "start": 1,
     "end": 1
   },
+  "newline": true,
   "tags": []
 }
+[
+  ""
+]
+[
+  "/*"
+]
+[
+  " *  Comment is ignored, single leading asterisk."
+]
+[
+  " */"
+]
+[
+  ""
+]
 {
   "source": "// Single-line comment",
   "description": "Single-line comment",
@@ -192,8 +210,12 @@ const foo = 'bar';  // @private {String} foo private constant
     "start": 7,
     "end": 7
   },
+  "newline": true,
   "tags": []
 }
+[
+  ""
+]
 {
   "source": "// \n// Super fly\n//\n// @public {function} getNinja super fly stuff.\n// @param {Object} [opts] configuration options.\n// @returns {Object} a command line ninja.",
   "description": "Super fly",
@@ -202,6 +224,7 @@ const foo = 'bar';  // @private {String} foo private constant
     "start": 9,
     "end": 14
   },
+  "newline": true,
   "tags": [
     {
       "id": "public",
@@ -235,6 +258,9 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
+[
+  ""
+]
 {
   "source": "/**\n * @usage\n *\n * var x = 'y'\n *   , v = 'w';\n */",
   "description": "",
@@ -243,6 +269,7 @@ const foo = 'bar';  // @private {String} foo private constant
     "start": 16,
     "end": 21
   },
+  "newline": true,
   "tags": [
     {
       "id": "usage",
@@ -256,6 +283,9 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
+[
+  ""
+]
 {
   "source": "/**\n *  @object point.x\n *  @object point.x.y.z\n */",
   "description": "",
@@ -264,6 +294,7 @@ const foo = 'bar';  // @private {String} foo private constant
     "start": 23,
     "end": 26
   },
+  "newline": true,
   "tags": [
     {
       "id": "object",
@@ -307,6 +338,10 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
+[
+  ""
+]
+"function request(url, opts "
 {
   "source": "/** @param {Object} opts request options */",
   "description": "",
@@ -315,6 +350,7 @@ const foo = 'bar';  // @private {String} foo private constant
     "start": 28,
     "end": 28
   },
+  "newline": false,
   "tags": [
     {
       "id": "param",
@@ -328,6 +364,11 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
+"){}"
+[
+  ""
+]
+"const foo = 'bar';  "
 {
   "source": "// @private {String} foo private constant",
   "description": "",
@@ -336,6 +377,7 @@ const foo = 'bar';  // @private {String} foo private constant
     "start": 30,
     "end": 30
   },
+  "newline": true,
   "tags": [
     {
       "id": "private",
@@ -349,6 +391,9 @@ const foo = 'bar';  // @private {String} foo private constant
     }
   ]
 }
+[
+  ""
+]
 ```
 
 ## API
@@ -384,6 +429,30 @@ Returns the parser stream.
 * `buffer` String|Buffer input data.
 * `opts` Object processing options.
 * `cb` Function callback function.
+
+### Collator
+
+Collate comments and source content into a stream.
+
+Allows for writing files that contains only content, only comments or
+both content and comments. By default this stream will pass through
+comments and content.
+
+To disable content from the stream use (comments only) use:
+
+```javascript
+{content: false}
+```
+
+To disable comments from the stream use (source content only) use:
+
+```javascript
+{comment: false}
+```
+
+When the `buffer` option is set all output is buffered into
+the `buffer` property, listen for the `finish` event before
+attempting to access the buffer contents.
 
 ### Comment
 
@@ -715,7 +784,6 @@ Returns multi-line language rule.
 * `start` RegExp comment start pattern.
 * `end` RegExp comment end pattern.
 * `lead` RegExp remove leading meta characters that match.
-* `last` Boolean extract description from the last line.
 * `open` Function override default open function.
 * `close` Function override default close function.
 * `strip` Function override default strip function.
@@ -927,6 +995,23 @@ Returns list of language rules.
 
 * `multi` Object multi-line rule configuration.
 * `single` Object single-line rule configuration.
+
+#### scala
+
+```javascript
+scala([opts])
+```
+
+Creates an array of language rules for scala files.
+
+Recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+See the [default settings](#defaults).
+
+Returns list of language rules.
+
+* `opts` Object processing options.
 
 #### shell
 

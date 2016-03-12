@@ -1,17 +1,17 @@
 var expect = require('chai').expect
-  , fs = require('fs')
   , parse = require('../../index')
   , Collator = require('../../lib/collator');
 
 describe('cparse:', function() {
 
-  it('should parse content elements',
+  it('should collate comments without content',
     function(done) {
       var source = 'test/fixtures/content.js'
         , stream = parse.load(source)
         , comments = []
-        , expected = '' + fs.readFileSync(source)
-        , collator = new Collator({buffer: true});
+        , expected = '/**foo opt*//**bar opt*/// final comment\n'
+            + '/**compact comment*/'
+        , collator = new Collator({buffer: true, content: false});
 
       stream.pipe(collator);
 
