@@ -28,6 +28,8 @@ function load(path, opts, cb) {
     , comment = new Comment(opts)
     , parser = new Parser(opts);
 
+  parser.file = path;
+
   if(cb) {
     source
       .once('error', cb)
