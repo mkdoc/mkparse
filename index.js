@@ -7,19 +7,32 @@ var fs = require('fs')
 /**
  *  Load and parse file contents.
  *
- *  The options are passed to the `LineStream`, `Comment` and `Parser`.
+ *  When a callback function is given it is added as a listener for 
+ *  the error and finish events on the parser stream.
  *
  *  @function load
  *  @param {String} file path.
  *  @param {Object} [opts] processing options.
+ *  @param {Function} [cb] callback function.
  *
  *  @returns the parser stream.
  */
-function load(path, opts) {
+function load(path, opts, cb) {
+  if(typeof opts === 'function') {
+    cb = opts;
+    opts =  null;
+  }
+
   var source = fs.createReadStream(path)
     , lines = new LineStream(opts)
     , comment = new Comment(opts)
     , parser = new Parser(opts);
+
+  if(cb) {
+    source
+      .once('error', cb)
+      .once('end', cb);
+  }
 
   return source
     .pipe(lines)
