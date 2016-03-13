@@ -15,7 +15,7 @@
     },
     {
       "title": "Output",
-      "bin": "INDENT=2 node test/spec test/example.js --json",
+      "bin": "mkparse test/example.js --json --dotted --indent=2",
       "type": "code",
       "language": "json"
     }
