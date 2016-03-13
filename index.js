@@ -8,7 +8,7 @@ var fs = require('fs')
  *  Load and parse file contents.
  *
  *  When a callback function is given it is added as a listener for 
- *  the error and finish events on the parser stream.
+ *  the error and end events on the source file stream.
  *
  *  @function load
  *  @param {String} file path.
