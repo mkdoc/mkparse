@@ -1,6 +1,6 @@
 var fs = require('fs')
-  , path = require('path')
   , util = require('util')
+  , execSync = require('child_process').execSync
   // prevent jshint error
   , map = {}
   , dir = 'lang'
@@ -15,7 +15,8 @@ function load(id) {
   // only try to load known languages
   // consumer should use exists() first
   if(exists(id)) {
-    return require('./' + id); 
+    var info = map[id];
+    return require('./' + info.name); 
   }
   throw new Error('cannot load unknown language pack: ' + id);
 }
@@ -35,7 +36,7 @@ println('// automatically generated on '
 // print id to require path map
 println('var map = {');
 contents.forEach(function(name, index) {
-  var i, excluded, id, file;
+  var i, excluded, id, exts;
 
   for(i = 0;i < excludes.length;i++) {
     if(excludes[i].test(name)) {
@@ -46,13 +47,12 @@ contents.forEach(function(name, index) {
 
   if(!excluded) {
     id = name.replace(ext, '');
-    file = dir + path.sep + name;
-
+    exts = '' + execSync('node doc/extensions.js lang/' + name);
     // map key id
     print('  \'%s\': ', id);
 
     // map value object
-    print('\'%s\'', name);
+    print('{name: "%s", ext: %s}', name, exts);
 
     if(index < contents.length - 1) {
       println(',');

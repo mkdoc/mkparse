@@ -1,3 +1,5 @@
+// @extensions as
+
 /**
  *  Creates an array of language rules for actionscript files.
  *
