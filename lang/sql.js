@@ -1,4 +1,4 @@
-var lang = require('./index.js');
+var lang = require('../lib/rule');
 
 /**
  *  Creates an array of language rules for SQL statements.

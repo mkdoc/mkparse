@@ -11,4 +11,4 @@
  *
  *  @returns list of language rules.
  */
-module.exports = require('./index.js');
+module.exports = require('../lib/rule');

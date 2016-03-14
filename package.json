@@ -34,7 +34,7 @@
     "docs": "npm run api && npm run example && npm run readme",
     "readme": "mdp --force -v",
     "example": "mdp --force -v -i doc/example.json -o EXAMPLE.md",
-    "lang": "node doc/languages.js > languages.js",
+    "lang": "node doc/languages.js > lang/index.js",
     "api": "mdp --force -v -i doc/api.json -o API.md",
     "lint": "jshint . && jscs .",
     "test": "NODE_env=test mocha ${SPEC:-test/spec/**}",

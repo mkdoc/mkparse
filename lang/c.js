@@ -1,4 +1,4 @@
-var lang = require('./index');
+var lang = require('../lib/rule');
 
 /**
  *  Creates an array of language rules for C files.
