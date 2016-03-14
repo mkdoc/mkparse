@@ -1,6 +1,5 @@
 var fs = require('fs')
   , util = require('util')
-  // prevent jshint error
   , map = {}
   , dir = 'lang'
   , excludes = [/^index\.js$/, /\.doc.js$/]
@@ -52,57 +51,76 @@ var contents = fs.readdirSync(dir)
   , files = contents.slice()
   , index = 0;
 
-println('// automatically generated on '
-  + new Date() + ' (node doc/languages.js)');
-// print id to require path map
-println('var map = {');
-
-function next() {
-  var name = files.shift();
-
-  if(!name) {
-    return complete();
-  }
-
-  var i, excluded, id;
-
-  for(i = 0;i < excludes.length;i++) {
-    if(excludes[i].test(name)) {
-      excluded = true;
-      break; 
-    } 
-  }
-
-  if(excluded) { return next(); }
-
-  if(!process.stdout.isTTY) {
-    console.error('build: %s', name);
-  }
-
-  getExtensions(name, function(exts) {
-    id = name.replace(ext, '');
-
-    // map key id
-    print('  \'%s\': ', id);
-
-    // map value object
-    print('{name: "%s", ext: %j}', name, exts);
-
-    if(index < contents.length - 1) {
-      println(',');
-    }else{
-      println();
-    }
-
-    index++;
-    next();
-  });
+function header() {
+  println('// automatically generated on '
+    + new Date() + ' (node doc/languages.js)');
+  // print id to item map
+  println('var map = {');
 }
 
-next();
+function body() {
+  function next() {
+    var name = files.shift();
 
-function complete() {
+    if(!name) {
+      return footer();
+    }
+
+    var i, excluded, id, item;
+
+    for(i = 0;i < excludes.length;i++) {
+      if(excludes[i].test(name)) {
+        excluded = true;
+        break; 
+      } 
+    }
+
+    if(excluded) { return next(); }
+
+    if(!process.stdout.isTTY) {
+      console.error('build: %s', name);
+    }
+
+    getExtensions(name, function(exts) {
+      id = name.replace(ext, '');
+
+      item = {name: name, ext: exts};
+
+      // map key id
+      print('  \'%s\': ', id);
+
+      // map value object
+      print('%j', item);
+      println(',');
+
+      map[id] = item;
+
+      index++;
+      next();
+    });
+  }
+
+  next();
+}
+
+function footer() {
   println('};');
+
+  println();
+  println('var ext = {');
+
+  function iterator(ext) {
+    // last declared ext will win!
+    print('  \'%s\: \'%s\'', ext, k);
+    println(',');
+  }
+
+  for(var k in map) {
+    map[k].ext.forEach(iterator);
+  }
+
+  println('};');
+
   println();
   println(exists.toString());
   println();
@@ -110,7 +128,11 @@ function complete() {
   println();
   println('module.exports = {');
   println(' map: map,');
+  println(' ext: ext,');
   println(' exists: exists,');
   println(' load: load');
   println('};');
 }
+
+header();
+body();
