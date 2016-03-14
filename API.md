@@ -12,31 +12,36 @@ Table of Contents
     * [Options](#options-2)
     * [Events](#events)
   * [.stringify](#stringify)
+    * [rule](#rule)
+      * [defaults](#defaults)
+        * [Options](#options-3)
+      * [#multi](#multi)
+        * [Options](#options-4)
+      * [#single](#single)
+        * [Options](#options-5)
     * [Tag](#tag)
-      * [rule](#rule)
+      * [rule](#rule-1)
       * [pattern](#pattern)
       * [optional](#optional)
       * [whitespace](#whitespace)
       * [parse](#parse-1)
-    * [Language](#language)
+    * [language](#language)
+      * [exists](#exists)
+      * [load](#load-1)
+        * [Throws](#throws)
+    * [Languages](#languages)
       * [actionscript](#actionscript)
       * [c](#c)
-        * [Options](#options-3)
+        * [Options](#options-6)
       * [coffeescript](#coffeescript)
       * [conf](#conf)
       * [cpp](#cpp)
-        * [Options](#options-4)
+        * [Options](#options-7)
       * [css](#css)
       * [erlang](#erlang)
       * [go](#go)
       * [groovy](#groovy)
       * [html](#html)
-      * [defaults](#defaults)
-        * [Options](#options-5)
-      * [#multi](#multi)
-        * [Options](#options-6)
-      * [#single](#single)
-        * [Options](#options-7)
       * [ini](#ini)
         * [Options](#options-8)
       * [jade](#jade)
@@ -199,6 +204,91 @@ Returns the stringify stream.
 * `indent` Number the number of spaces to indent the JSON.
 * `comment` Boolean only include comment output.
 
+### rule
+
+A language rule is an object containing the `open`, `close` and `strip`
+functions.
+
+The open and close functions are passed the current line and should
+return the `exec` match for the pattern.
+
+The strip function is passed an array of lines for the entire comment and
+should remove comment meta characters from all lines.
+
+#### defaults
+
+```javascript
+defaults([opts])
+```
+
+Creates the default language rules for the C family of languages.
+
+By default recognises continuous lines with `//` comments and terminated
+multi-line comments starting with `/**`.
+
+To include `/*` comments as well set the `greedy` option:
+
+```javascript
+{multi: {greedy: true}
+```
+
+Returns list of language rules.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `multi` Object multi-line rule configuration.
+* `single` Object single-line rule configuration.
+
+#### #multi
+
+```javascript
+static multi([opts])
+```
+
+Creates a multi-line rule, when no options are given creates the
+default C family multi-line rule.
+
+Returns multi-line language rule.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `greedy` Boolean include `/*` comments.
+* `start` RegExp comment start pattern.
+* `end` RegExp comment end pattern.
+* `lead` RegExp remove leading meta characters that match.
+* `trail` RegExp remove trailing meta characters that match.
+* `open` Function override default open function.
+* `close` Function override default close function.
+* `strip` Function override default strip function.
+
+#### #single
+
+```javascript
+static single([opts])
+```
+
+Creates a single-line rule, when no options are given creates the
+default C family single-line rule.
+
+Returns single-line language rule.
+
+* `opts` Object processing options.
+
+##### Options
+
+* `mark` RegExp sub pattern.
+* `start` RegExp comment start pattern.
+* `end` RegExp comment end pattern.
+* `lead` RegExp remove leading meta characters that match.
+* `trail` RegExp remove trailing meta characters that match.
+* `open` Function override default open function.
+* `close` Function override default close function.
+* `strip` Function override default strip function.
+
 ### Tag
 
 Defines the patterns and functions that perform the tag parsing.
@@ -276,20 +366,42 @@ fields to the input `tag` argument.
 * `line` String current line being parsed.
 * `tag` Object target for parsed data.
 
-### Language
+### language
+
+Contains utilities for testing whether a language id is valid, loading
+language packs by id and finding language identifiers by file extension.
+
+#### exists
+
+```javascript
+exists(id)
+```
+
+Test whether a language exists by identifier.
+
+Returns whether the language pack exists.
+
+* `id` String language pack identifier.
+
+#### load
+
+```javascript
+load(id)
+```
+
+Load a language pack by identifier.
+
+* `id` String language pack identifier.
+
+##### Throws
+
+* `if` Error the language pack does not exist.
+
+### Languages
 
 Collection of language packs.
 
 Default language pack used is the [cpp language](#cpp).
-
-A language rule is an object containing the `open`, `close` and `strip`
-functions.
-
-The open and close functions are passed the current line and should
-return the `exec` match for the pattern.
-
-The strip function is passed an array of lines for the entire comment and
-should remove comment meta characters from all lines.
 
 #### actionscript
 
@@ -458,80 +570,6 @@ with `-->`.
 Returns list of language rules.
 
 * `opts` Object processing options.
-
-#### defaults
-
-```javascript
-defaults([opts])
-```
-
-Creates the default language rules for the C family of languages.
-
-By default recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
-
-To include `/*` comments as well set the `greedy` option:
-
-```javascript
-{multi: {greedy: true}
-```
-
-Returns list of language rules.
-
-* `opts` Object processing options.
-
-##### Options
-
-* `multi` Object multi-line rule configuration.
-* `single` Object single-line rule configuration.
-
-#### #multi
-
-```javascript
-static multi([opts])
-```
-
-Creates a multi-line rule, when no options are given creates the
-default C family multi-line rule.
-
-Returns multi-line language rule.
-
-* `opts` Object processing options.
-
-##### Options
-
-* `greedy` Boolean include `/*` comments.
-* `start` RegExp comment start pattern.
-* `end` RegExp comment end pattern.
-* `lead` RegExp remove leading meta characters that match.
-* `trail` RegExp remove trailing meta characters that match.
-* `open` Function override default open function.
-* `close` Function override default close function.
-* `strip` Function override default strip function.
-
-#### #single
-
-```javascript
-static single([opts])
-```
-
-Creates a single-line rule, when no options are given creates the
-default C family single-line rule.
-
-Returns single-line language rule.
-
-* `opts` Object processing options.
-
-##### Options
-
-* `mark` RegExp sub pattern.
-* `start` RegExp comment start pattern.
-* `end` RegExp comment end pattern.
-* `lead` RegExp remove leading meta characters that match.
-* `trail` RegExp remove trailing meta characters that match.
-* `open` Function override default open function.
-* `close` Function override default close function.
-* `strip` Function override default strip function.
 
 #### ini
 
@@ -937,6 +975,7 @@ Returns list of language rules.
 
 Generated by [mdp(1)](https://github.com/tmpfs/mdp).
 
+[mkdoc]: https://github.com/mkdoc/mkdoc
 [jshint]: http://jshint.com
 [jscs]: http://jscs.info
 [mdp]: https://github.com/tmpfs/mdp

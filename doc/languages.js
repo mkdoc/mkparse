@@ -1,6 +1,7 @@
 var fs = require('fs')
   , util = require('util')
   , map = {}
+  , methods = require('./lang.index.js')
   , dir = 'lang'
   , excludes = [/^index\.js$/, /\.doc.js$/]
   , ext = /\.js$/;
@@ -23,20 +24,6 @@ function getExtensions(file, cb) {
       } 
     })
   });
-}
-
-function exists(id) {
-  return Boolean(map[id]);
-}
-
-function load(id) {
-  // only try to load known languages
-  // consumer should use exists() first
-  if(exists(id)) {
-    var info = map[id];
-    return require('./' + info.name); 
-  }
-  throw new Error('cannot load unknown language pack: ' + id);
 }
 
 function println() {
@@ -122,9 +109,9 @@ function footer() {
   println('};');
 
   println();
-  println(exists.toString());
+  println(methods.exists.toString());
   println();
-  println(load.toString());
+  println(methods.load.toString());
   println();
   println('module.exports = {');
   println(' map: map,');

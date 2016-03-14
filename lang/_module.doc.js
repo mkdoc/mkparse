@@ -3,5 +3,5 @@
  *
  *  Default language pack used is the [cpp language](#cpp).
  *
- *  @module Language
+ *  @module Languages
  */

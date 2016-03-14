@@ -1,4 +1,4 @@
-// automatically generated on Mon Mar 14 2016 12:38:57 GMT+0800 (WITA) (node doc/languages.js)
+// automatically generated on Mon Mar 14 2016 13:03:34 GMT+0800 (WITA) (node doc/languages.js)
 var map = {
   'actionscript': {"name":"actionscript.js","ext":["as"]},
   'c': {"name":"c.js","ext":["c","h"]},
