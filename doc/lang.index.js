@@ -1,7 +1,6 @@
 /**
- *
  *  Contains utilities for testing whether a language id is valid, loading 
- *  language packs by id and finding language identifiers by file extension.
+ *  language packs and finding language identifiers by file extension.
  *
  *  @module language
  *
@@ -10,8 +9,25 @@
  *  @output lang/index.js
  *  @build node doc/languages.js
  */
-
 var map = {};
+
+/**
+ *  Find a language pack identifier by file extension.
+ *
+ *  File extensions must *not* include the leading period.
+ *
+ *  @function find
+ *  @param {String} ext file extension.
+ *
+ *  @returns language pack identifier if found.
+ */
+function find(extension) {
+  for(var k in map) {
+    if(~map[k].ext.indexOf(extension)) {
+      return k; 
+    } 
+  }
+}
 
 /**
  *  Test whether a language exists by identifier.
@@ -45,5 +61,6 @@ function load(id) {
 
 module.exports = {
   exists: exists,
-  load: load
+  load: load,
+  find: find
 }

@@ -1,4 +1,4 @@
-// automatically generated on Mon Mar 14 2016 13:03:34 GMT+0800 (WITA) (node doc/languages.js)
+// automatically generated on Mon Mar 14 2016 13:11:43 GMT+0800 (WITA) (node doc/languages.js)
 var map = {
   'actionscript': {"name":"actionscript.js","ext":["as"]},
   'c': {"name":"c.js","ext":["c","h"]},
@@ -92,9 +92,18 @@ function load(id) {
   throw new Error('cannot load unknown language pack: ' + id);
 }
 
+function find(extension) {
+  for(var k in map) {
+    if(~map[k].ext.indexOf(extension)) {
+      return k; 
+    } 
+  }
+}
+
 module.exports = {
  map: map,
  ext: ext,
+ find: find,
  exists: exists,
  load: load
 };

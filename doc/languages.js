@@ -113,9 +113,12 @@ function footer() {
   println();
   println(methods.load.toString());
   println();
+  println(methods.find.toString());
+  println();
   println('module.exports = {');
   println(' map: map,');
   println(' ext: ext,');
+  println(' find: find,');
   println(' exists: exists,');
   println(' load: load');
   println('};');

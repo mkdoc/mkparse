@@ -23,6 +23,12 @@ describe('mkparse:', function() {
     done();
   });
 
+  it('should find language pack by extension', function(done) {
+    expect(lang.find('as')).to.eql('actionscript');
+    expect(lang.find('non-existent')).to.eql(undefined);
+    done();
+  });
+
   it('should error on load invalid language', function(done) {
     function fn() {
       lang.load('non-existent');
