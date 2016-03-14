@@ -1,3 +1,5 @@
+// @extensions ts
+
 /**
  *  Creates an array of language rules for typescript files.
  *

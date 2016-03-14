@@ -1,3 +1,4 @@
+// @extensions coffee
 var lang = require('../lib/rule');
 
 /**

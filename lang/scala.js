@@ -1,3 +1,5 @@
+// @extensions scala
+
 /**
  *  Creates an array of language rules for scala files.
  *

@@ -1,3 +1,5 @@
+// @extensions py
+
 var lang = require('../lib/rule')
   , shell = require('./shell');
 

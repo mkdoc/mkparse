@@ -1,3 +1,5 @@
+// @extensions yml
+
 /**
  *  Creates an array of language rules for YAML files.
  *

@@ -1,3 +1,5 @@
+// @extensions md markdown
+
 /**
  *  Creates an array of language rules for markdown files.
  *

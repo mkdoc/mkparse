@@ -1,3 +1,5 @@
+// @extensions xml xhtml xsl
+
 /**
  *  Creates an array of language rules for XML files.
  *

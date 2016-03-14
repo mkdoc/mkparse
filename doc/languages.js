@@ -111,7 +111,7 @@ function footer() {
 
   function iterator(ext) {
     // last declared ext will win!
-    print('  \'%s\: \'%s\'', ext, k);
+    print('  \'%s\': \'%s\'', ext, k);
     println(',');
   }
 

@@ -1,3 +1,5 @@
+// @extensions rb
+
 var lang = require('../lib/rule');
 
 /**

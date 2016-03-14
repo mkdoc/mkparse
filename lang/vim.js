@@ -1,3 +1,5 @@
+// @extensions vim
+
 var lang = require('../lib/rule');
 
 /**

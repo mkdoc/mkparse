@@ -1,3 +1,5 @@
+// @extensions erl beam
+
 var lang = require('../lib/rule');
 
 /**

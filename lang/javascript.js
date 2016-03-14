@@ -1,3 +1,5 @@
+// @extensions js
+
 /**
  *  Creates an array of language rules for javascript files.
  *

@@ -1,3 +1,5 @@
+// @extensions styl
+
 var lang = require('../lib/rule')
   , css = require('./css');
 

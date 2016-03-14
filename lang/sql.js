@@ -1,3 +1,5 @@
+// @extensions sql
+
 var lang = require('../lib/rule');
 
 /**

@@ -1,3 +1,5 @@
+// @extensions properties
+
 /**
  *  Creates an array of language rules for Java properties files.
  *

@@ -1,3 +1,5 @@
+// @extensions sh zsh bash
+
 var lang = require('../lib/rule');
 
 /**

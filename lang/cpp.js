@@ -1,3 +1,5 @@
+// @extensions cpp
+
 /**
  *  Creates an array of language rules for C++ files.
  *

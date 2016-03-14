@@ -1,3 +1,5 @@
+// @extensions groovy
+
 /**
  *  Creates an array of language rules for groovy files.
  *

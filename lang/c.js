@@ -1,3 +1,4 @@
+// @extensions c h
 var lang = require('../lib/rule');
 
 /**

@@ -1,3 +1,5 @@
+// @extensions sass
+
 var lang = require('./css');
 
 /**

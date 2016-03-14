@@ -1,3 +1,5 @@
+// @extensions java
+
 /**
  *  Creates an array of language rules for java files.
  *

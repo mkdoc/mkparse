@@ -1,3 +1,5 @@
+// @extensions php phps
+
 /**
  *  Creates an array of language rules for php files.
  *

@@ -1,3 +1,5 @@
+// @extensions conf
+
 /**
  *  Creates an array of language rules for conf files.
  *

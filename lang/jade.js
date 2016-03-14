@@ -1,3 +1,5 @@
+// @extensions jade
+
 var lang = require('../lib/rule');
 
 /**

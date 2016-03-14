@@ -1,3 +1,5 @@
+// @extensions htm html html5
+
 var lang = require('../lib/rule');
 
 /**

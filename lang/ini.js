@@ -1,3 +1,5 @@
+// @extensions ini
+
 var lang = require('../lib/rule');
 
 /**

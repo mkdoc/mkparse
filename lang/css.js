@@ -1,3 +1,5 @@
+// @extensions css
+
 var lang = require('../lib/rule');
 
 /**

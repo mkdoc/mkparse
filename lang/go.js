@@ -1,3 +1,5 @@
+// @extensions go
+
 /**
  *  Creates an array of language rules for go files.
  *

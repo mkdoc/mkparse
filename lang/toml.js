@@ -1,3 +1,5 @@
+// @extensions toml
+
 /**
  *  Creates an array of language rules for TOML files.
  *
