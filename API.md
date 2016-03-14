@@ -26,6 +26,7 @@ Table of Contents
       * [whitespace](#whitespace)
       * [parse](#parse-1)
     * [language](#language)
+      * [find](#find)
       * [exists](#exists)
       * [load](#load-1)
         * [Throws](#throws)
@@ -369,7 +370,21 @@ fields to the input `tag` argument.
 ### language
 
 Contains utilities for testing whether a language id is valid, loading
-language packs by id and finding language identifiers by file extension.
+language packs and finding language identifiers by file extension.
+
+#### find
+
+```javascript
+find(ext)
+```
+
+Find a language pack identifier by file extension.
+
+File extensions must *not* include the leading period.
+
+Returns language pack identifier if found.
+
+* `ext` String file extension.
 
 #### exists
 
