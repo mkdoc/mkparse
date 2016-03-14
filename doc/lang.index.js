@@ -31,7 +31,7 @@ function exists(id) {
  *  @function load
  *  @param {String} id language pack identifier.
  *
- *  @throws {Error} if the language pack does not exist.
+ *  @throws Error if the language pack does not exist.
  */
 function load(id) {
   // only try to load known languages

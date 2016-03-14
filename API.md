@@ -395,7 +395,7 @@ Load a language pack by identifier.
 
 ##### Throws
 
-* `if` Error the language pack does not exist.
+* `Error` if the language pack does not exist.
 
 ### Languages
 
