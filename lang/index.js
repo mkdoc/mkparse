@@ -1,4 +1,4 @@
-// automatically generated on Mon Mar 14 2016 11:55:34 GMT+0800 (WITA) (node doc/languages.js)
+// automatically generated on Mon Mar 14 2016 12:10:12 GMT+0800 (WITA) (node doc/languages.js)
 var map = {
   'actionscript': {name: "actionscript.js", ext: ["as"]},
   'c': {name: "c.js", ext: []},
@@ -32,7 +32,7 @@ var map = {
   'typescript': {name: "typescript.js", ext: []},
   'vim': {name: "vim.js", ext: []},
   'xml': {name: "xml.js", ext: []},
-  'yaml': {name: "yaml.js", ext: []}
+  'yaml': {name: "yaml.js", ext: []},
 };
 
 function exists(id) {
