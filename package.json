@@ -1,6 +1,6 @@
 {
   "name": "mkparse",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "Generic comments parser",
   "main": "index.js",
   "author": "muji",
