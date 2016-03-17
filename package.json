@@ -1,7 +1,7 @@
 {
   "name": "mkparse",
   "version": "1.5.7",
-  "description": "Generic comments parser",
+  "description": "Parse source file comments",
   "main": "index.js",
   "author": "muji",
   "license": "MIT",
