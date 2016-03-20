@@ -23,6 +23,11 @@ function load(path, opts, cb) {
     opts =  null;
   }
 
+  opts = opts || {};
+
+  opts.highWaterMark = opts.highWaterMark !== undefined
+    ? opts.highWaterMark : 1024;
+
   var source = fs.createReadStream(path)
     , lines = new LineStream(opts)
     , comment = new Comment(opts)
@@ -33,7 +38,7 @@ function load(path, opts, cb) {
   if(cb) {
     source
       .once('error', cb)
-      .once('end', cb);
+    parser.once('finish', cb);
   }
 
   return source
