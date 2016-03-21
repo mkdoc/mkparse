@@ -4,7 +4,7 @@
 [![npm version](http://img.shields.io/npm/v/mkparse.svg?v=3)](https://npmjs.org/package/mkparse)
 [![Coverage Status](https://coveralls.io/repos/mkdoc/mkparse/badge.svg?branch=master&service=github&v=3)](https://coveralls.io/github/mkdoc/mkparse?branch=master)
 
-> Parses comments
+> Parse source file comments
 
 Fast, streaming and configurable comment parser; currently supports 30+ languages.
 
@@ -15,10 +15,10 @@ Designed for polyglot programmers to:
 * Strip comments from any file
 * Separate comments into another file
 * Implement custom tag systems (annotations)
-* Operate on processing instructions (see the [pi language](git+https://github.com/mkdoc/mkparse/blob/master/API.md#pi))
+* Operate on processing instructions (see the [pi language](https://github.com/mkdoc/mkparse/blob/master/API.md#pi))
 * Document JSON files, read comments then strip in build process
 
-See the [i/o sample](git+https://github.com/mkdoc/mkparse/blob/master/EXAMPLE.md) and the [api docs](git+https://github.com/mkdoc/mkparse/blob/master/API.md).
+See the [i/o sample](https://github.com/mkdoc/mkparse/blob/master/EXAMPLE.md) and the [api docs](https://github.com/mkdoc/mkparse/blob/master/API.md).
 
 ## Install
 
@@ -82,7 +82,7 @@ stream.on('comment', function(comment) {
 });
 ```
 
-For more detail see the [api docs](git+https://github.com/mkdoc/mkparse/blob/master/API.md).
+For more detail see the [api docs](https://github.com/mkdoc/mkparse/blob/master/API.md).
 
 ## Comments
 
@@ -151,7 +151,7 @@ When given `@property {String=mkdoc} [nickname] user` it expands to a tag object
 }
 ```
 
-See the [tag api docs](git+https://github.com/mkdoc/mkparse/blob/master/API.md#tag) to change the tag parsing.
+See the [tag api docs](https://github.com/mkdoc/mkparse/blob/master/API.md#tag) to change the tag parsing.
 
 ### Block
 

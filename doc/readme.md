@@ -2,7 +2,7 @@
 
 <? @include readme/badges.md ?>
 
-> Parses comments
+> Parse source file comments
 
 Fast, streaming and configurable comment parser; currently supports 30+ languages.
 
