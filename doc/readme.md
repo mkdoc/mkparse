@@ -22,6 +22,6 @@ See the [i/o sample](/EXAMPLE.md) and the [api docs](/API.md).
 
 <? @source {javascript} ../test/fixtures/comment-examples.js ?>
 
-<? @include {=readme} guide.md ?>
+<? @include {=readme} guide.md help.md ?>
 
 <? @include {=readme} license.md links.md ?>

@@ -178,6 +178,25 @@ Will result in two comments, whilst:
 
 Results in a single comment.
 
+## Help
+
+```
+mkparse [options] [files...]
+
+Parse source file comments.
+
+  -l, --lang=[LANG]   Set language for all files
+  -s, --strip         Print content only, remove comments
+  -c, --content       Include non-comment content
+  -d, --dotted        Parse dotted names
+  -j, --json          Print comments as JSON
+  -i, --indent=[NUM]  Number of spaces for JSON (default: 0)
+  -h, --help          Display this help and exit
+  --version           Print the version and exit
+
+Report bugs to https://github.com/mkdoc/mkparse/issues
+```
+
 ## License
 
 MIT
