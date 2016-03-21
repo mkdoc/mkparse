@@ -31,8 +31,7 @@
   },
   "scripts": {
     "clean": "rm -rf coverage",
-    "docs": "npm run api && npm run example && npm run readme",
-    "readme": "mdp --force -v",
+    "docs": "npm run api && npm run example",
     "example": "mdp --force -v -i doc/example.json -o EXAMPLE.md",
     "lang": "node doc/languages.js > lang/index.js",
     "api": "mdp --force -v -i doc/api.json -o API.md",
@@ -40,35 +39,5 @@
     "test": "NODE_env=test mocha ${SPEC:-test/spec/**}",
     "cover": "NODE_ENV=test istanbul cover _mocha -- ${SPEC:-test/spec/**}",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  },
-  "mdp": {
-    "title": "Comment Parser",
-    "pedantic": true,
-    "include": "doc/readme",
-    "require": "lib",
-    "links": "links.md",
-    "toc": "Table of Contents",
-    "base": "https://github.com/mkdoc/mkparse",
-    "partial": [
-      {
-        "inc": [
-          "introduction.md",
-          "install.md",
-          "usage.md",
-          "comments.md"
-        ]
-      },
-      {
-        "inc": "../../test/fixtures/comment-examples.js",
-        "type": "code",
-        "language": "javascript"
-      },
-      {
-        "inc": [
-          "guide.md",
-          "license.md"
-        ]
-      }
-    ]
   }
 }

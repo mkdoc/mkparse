@@ -1,3 +1,9 @@
+# Comment Parser
+
+<? @include readme/badges.md ?>
+
+> Parses comments
+
 Fast, streaming and configurable comment parser; currently supports 30+ languages.
 
 Designed for polyglot programmers to:
@@ -11,3 +17,11 @@ Designed for polyglot programmers to:
 * Document JSON files, read comments then strip in build process
 
 See the [i/o sample](/EXAMPLE.md) and the [api docs](/API.md).
+
+<? @include {=readme} install.md usage.md comments.md ?>
+
+<? @source {javascript} ../test/fixtures/comment-examples.js ?>
+
+<? @include {=readme} guide.md ?>
+
+<? @include {=readme} license.md links.md ?>
