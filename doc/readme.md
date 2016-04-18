@@ -18,7 +18,13 @@ Designed for polyglot programmers to:
 
 See the [i/o sample](/EXAMPLE.md) and the [api docs](/API.md).
 
-<? @include {=readme} install.md usage.md comments.md ?>
+<? @include {=readme} install.md ?>
+
+***
+<!-- @toc -->
+***
+
+<? @include {=readme} usage.md example.md comments.md ?>
 
 <? @source {javascript} ../test/fixtures/comment-examples.js ?>
 
