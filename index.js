@@ -35,16 +35,26 @@ function load(path, opts, cb) {
 
   parser.file = path;
 
-  if(cb) {
-    source
-      .once('error', cb)
-    parser.once('finish', cb);
-  }
-
-  return source
+  var stream = source
     .pipe(lines)
     .pipe(comment)
     .pipe(parser);
+
+  source.once('error', function onError(err) {
+    stream.emit('error', err);
+    if(cb) {
+      cb(err); 
+    }
+  });
+
+  parser.once('finish', function onFinish() {
+    source.removeAllListeners();
+    if(cb) {
+      cb();
+    }
+  });
+
+  return stream;
 }
 
 /**

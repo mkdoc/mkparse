@@ -39,5 +39,10 @@
     "test": "NODE_env=test mocha ${SPEC:-test/spec/**}",
     "cover": "NODE_ENV=test istanbul cover _mocha -- ${SPEC:-test/spec/**}",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "config": {
+    "man": {
+      "example": true
+    }
   }
 }
