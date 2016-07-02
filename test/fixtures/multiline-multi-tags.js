@@ -1,8 +1,8 @@
 /**
- * @usage
+ *  @usage
  *
- * var foo = 'bar'
- *   , x = 'y';
+ *  var foo = 'bar'
+ *    , x = 'y';
  *
- * @private
+ *  @private
  */

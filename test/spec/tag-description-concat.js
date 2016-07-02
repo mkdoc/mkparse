@@ -9,7 +9,7 @@ describe('mkparse:', function() {
       var source = 'test/fixtures/tag-description-concat.js'
         , stream = parse.load(source)
         , expected = ('' + fs.readFileSync(source)).trim()
-        , desc = 'Perform some operation, then try:\n\n var x = \'y\';';
+        , desc = 'Perform some operation, then try:\n\nvar x = \'y\';';
 
       stream.once('comment', function(comment) {
         expect(comment.source).to.eql(expected);
