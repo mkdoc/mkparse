@@ -10,7 +10,7 @@ describe('mkparse:', function() {
         , stream = parse.load(source)
         , comments = []
         , expected = 'function anon(foo, bar){}\n\n'
-            + '/*ignored comment*/\n\nconst baz;\n'
+            + '/*ignored comment*/\n\nconst baz;'
         , collator = new Collator({buffer: true, comment: false});
 
       stream.pipe(collator);
@@ -21,7 +21,7 @@ describe('mkparse:', function() {
 
       stream.on('finish', function() {
         //console.dir(collator.buffer)
-        expect(collator.buffer).to.eql(expected);
+        expect(collator.buffer.trim()).to.eql(expected);
         expect(comments.length).to.eql(4);
         expect(comments[0].description).to.eql('foo opt');
         expect(comments[1].description).to.eql('bar opt');

@@ -10,7 +10,7 @@ describe('collator:', function() {
       var source = 'test/fixtures/content.js'
         , stream = parse.load(source)
         , comments = []
-        , expected = '' + fs.readFileSync(source)
+        , expected = ('' + fs.readFileSync(source)).trim()
         , collator = new Collator({buffer: true});
 
       stream.pipe(collator);
@@ -20,7 +20,7 @@ describe('collator:', function() {
       })
 
       stream.on('finish', function() {
-        expect(collator.buffer).to.eql(expected);
+        expect(collator.buffer.trim()).to.eql(expected);
         expect(comments.length).to.eql(4);
         expect(comments[0].description).to.eql('foo opt');
         expect(comments[1].description).to.eql('bar opt');
