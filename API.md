@@ -1,80 +1,80 @@
-Table of Contents
-=================
+# Comment Parser API
 
-* [Comment Parser API](#comment-parser-api)
-  * [load](#load)
-  * [parse](#parse)
-  * [Collator](#collator)
-    * [Options](#options)
-  * [Comment](#comment)
-    * [Options](#options-1)
-  * [Parser](#parser)
-    * [Options](#options-2)
-    * [Events](#events)
-  * [.stringify](#stringify)
-    * [rule](#rule)
-      * [defaults](#defaults)
-        * [Options](#options-3)
-      * [#multi](#multi)
-        * [Options](#options-4)
-      * [#single](#single)
-        * [Options](#options-5)
-    * [Tag](#tag)
-      * [rule](#rule-1)
-      * [pattern](#pattern)
-      * [optional](#optional)
-      * [whitespace](#whitespace)
-      * [parse](#parse-1)
-    * [language](#language)
-      * [find](#find)
-      * [exists](#exists)
-      * [load](#load-1)
-        * [Throws](#throws)
-    * [Languages](#languages)
-      * [actionscript](#actionscript)
-      * [c](#c)
-        * [Options](#options-6)
-      * [coffeescript](#coffeescript)
-      * [conf](#conf)
-      * [cpp](#cpp)
-        * [Options](#options-7)
-      * [css](#css)
-      * [erlang](#erlang)
-      * [go](#go)
-      * [groovy](#groovy)
-      * [html](#html)
-      * [ini](#ini)
-        * [Options](#options-8)
-      * [jade](#jade)
-      * [java](#java)
-      * [javascript](#javascript)
-      * [less](#less)
-      * [markdown](#markdown)
-      * [pandoc](#pandoc)
-      * [php](#php)
-      * [pi](#pi)
-      * [processing](#processing)
-      * [properties](#properties)
-      * [python](#python)
-      * [ruby](#ruby)
-        * [Options](#options-9)
-      * [sass](#sass)
-      * [scala](#scala)
-      * [shell](#shell)
-        * [Options](#options-10)
-      * [sql](#sql)
-        * [Options](#options-11)
-      * [stylus](#stylus)
-        * [Options](#options-12)
-      * [toml](#toml)
-      * [typescript](#typescript)
-      * [vim](#vim)
-        * [Options](#options-13)
-      * [xml](#xml)
-      * [yaml](#yaml)
+---
 
-Comment Parser API
-==================
+- [load](#load)
+- [parse](#parse)
+- [Collator](#collator)
+  - [Options](#options)
+- [Comment](#comment)
+  - [Options](#options-1)
+- [Parser](#parser)
+  - [Options](#options-2)
+  - [Events](#events)
+- [.stringify](#stringify)
+  - [rule](#rule)
+    - [defaults](#defaults)
+      - [Options](#options-3)
+    - [#multi](#multi)
+      - [Options](#options-4)
+    - [#single](#single)
+      - [Options](#options-5)
+  - [Tag](#tag)
+    - [rule](#rule-1)
+    - [unescape](#unescape)
+    - [pattern](#pattern)
+    - [optional](#optional)
+    - [whitespace](#whitespace)
+    - [parse](#parse-1)
+  - [language](#language)
+    - [find](#find)
+    - [exists](#exists)
+    - [load](#load-1)
+      - [Throws](#throws)
+    - [actionscript](#actionscript)
+    - [c](#c)
+      - [Options](#options-6)
+    - [coffeescript](#coffeescript)
+    - [conf](#conf)
+    - [cpp](#cpp)
+      - [Options](#options-7)
+    - [css](#css)
+    - [erlang](#erlang)
+    - [go](#go)
+    - [groovy](#groovy)
+    - [html](#html)
+    - [ini](#ini)
+      - [Options](#options-8)
+    - [jade](#jade)
+    - [java](#java)
+    - [javascript](#javascript)
+    - [less](#less)
+    - [markdown](#markdown)
+  - [Languages](#languages)
+    - [pandoc](#pandoc)
+    - [php](#php)
+    - [pi](#pi)
+    - [processing](#processing)
+    - [properties](#properties)
+    - [python](#python)
+    - [ruby](#ruby)
+      - [Options](#options-9)
+    - [sass](#sass)
+    - [scala](#scala)
+    - [shell](#shell)
+      - [Options](#options-10)
+    - [sql](#sql)
+      - [Options](#options-11)
+    - [stylus](#stylus)
+      - [Options](#options-12)
+    - [toml](#toml)
+    - [typescript](#typescript)
+    - [vim](#vim)
+      - [Options](#options-13)
+    - [xml](#xml)
+    - [yaml](#yaml)
+
+---
 
 ## load
 
@@ -183,7 +183,7 @@ Comment and tag parser, parses comment description and tags.
 
 ### Options
 
-* `tag` Object defines the tag patterns, see [tag](#tag).
+* `tag` Object defines the tag patterns, see [tag](#tag)
 * `dotted` Boolean parse dotted names in tags.
 
 ### Events
@@ -225,7 +225,7 @@ defaults([opts])
 Creates the default language rules for the C family of languages.
 
 By default recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 To include `/*` comments as well set the `greedy` option:
 
@@ -305,12 +305,12 @@ to a tag object such as:
 
 ```javascript
 {
-id: 'property',
-type: 'String',
-value: 'tmpfs',
-name: 'nickname',
-description: 'user',
-optional: true
+  id: 'property',
+  type: 'String',
+  value: 'mkdoc',
+  name: 'nickname',
+  description: 'user',
+  optional: true
 }
 ```
 
@@ -323,6 +323,14 @@ RegExp rule
 ```
 
 Pattern that collects tag lines.
+
+#### unescape
+
+```javascript
+Object unescape
+```
+
+Pattern that unescapes tag sequences after parsing.
 
 #### pattern
 
@@ -349,9 +357,8 @@ RegExp whitespace
 Pattern that determines how to strip leading whitespace from
 lines.
 
-By default will match a single space or a tab character once, depending
-upon your comment style you should adjust this so that whitespace is
-preserved as intended.
+By default will match one or two spaces, depending upon your comment style
+you should adjust this so that whitespace is preserved as intended.
 
 #### parse
 
@@ -412,12 +419,6 @@ Load a language pack by identifier.
 
 * `Error` if the language pack does not exist.
 
-### Languages
-
-Collection of language packs.
-
-Default language pack used is the [cpp language](#cpp).
-
 #### actionscript
 
 ```javascript
@@ -427,7 +428,7 @@ actionscript([opts])
 Creates an array of language rules for actionscript files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -453,7 +454,7 @@ Returns list of language rules.
 
 ##### Options
 
-* `greedy` Boolean=true disable to use `/**` comments only.
+* `greedy` Boolean=true disable to use `` comments only.
 
 #### coffeescript
 
@@ -495,7 +496,7 @@ cpp([opts])
 Creates an array of language rules for C++ files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -546,7 +547,7 @@ go([opts])
 Creates an array of language rules for go files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -563,7 +564,7 @@ groovy([opts])
 Creates an array of language rules for groovy files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -628,7 +629,7 @@ java([opts])
 Creates an array of language rules for java files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -645,7 +646,7 @@ javascript([opts])
 Creates an array of language rules for javascript files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -687,6 +688,12 @@ Returns list of language rules.
 
 * `opts` Object processing options.
 
+### Languages
+
+Collection of language packs.
+
+Default language pack used is the [cpp language](#cpp).
+
 #### pandoc
 
 ```javascript
@@ -713,7 +720,7 @@ php([opts])
 Creates an array of language rules for php files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -745,7 +752,7 @@ processing([opts])
 Creates an array of language rules for processing files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -830,7 +837,7 @@ scala([opts])
 Creates an array of language rules for scala files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -928,7 +935,7 @@ typescript([opts])
 Creates an array of language rules for typescript files.
 
 Recognises continuous lines with `//` comments and terminated
-multi-line comments starting with `/**`.
+multi-line comments starting with ``.
 
 See the [default settings](#defaults).
 
@@ -988,9 +995,7 @@ Returns list of language rules.
 
 * `opts` Object processing options.
 
-Generated by [mdp(1)](https://github.com/tmpfs/mdp).
+---
 
-[mkdoc]: https://github.com/mkdoc/mkdoc
-[jshint]: http://jshint.com
-[jscs]: http://jscs.info
-[mdp]: https://github.com/tmpfs/mdp
+Created by [mkdoc](https://github.com/mkdoc/mkdoc) on January 3, 2017
+
